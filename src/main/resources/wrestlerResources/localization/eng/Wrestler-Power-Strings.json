@@ -1,0 +1,22 @@
+{
+    "wrestler:GrapplePower": {
+        "NAME": "Grapple",
+        "DESCRIPTIONS": ["Each turn, Grapple is reduced by 1."]
+    },
+    "wrestler:HorrorPower": {
+        "NAME": "Horror",
+        "DESCRIPTIONS": [
+            "If Horror was applied since last turn, at the start of ",
+            "your", "its"," turn, lose #b", " HP. Otherwise, lose #b",
+            " Horror. (Horror #bhas ", "#bnot ", "been applied."
+        ]
+    },
+    "wrestler:ChillTouchPower": {
+        "NAME": "Chill Touch",
+        "DESCRIPTIONS": ["Whenever you apply #bGrapple, that enemy loses #b", " strength this turn."]
+    },
+    "wrestler:WearDownPower": {
+        "NAME": "Wear Down",
+        "DESCRIPTIONS": ["At the end of your turn, #bGrappled enemies lose #b", "% of their current HP."]
+    }
+}

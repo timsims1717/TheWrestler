@@ -1,0 +1,44 @@
+Wrestler:
+Psychic Wrestler, Psychic powers are boosted when on a Grappled character, Fighter + GOO Warlock
+Grapple
+	Doesn't actually do anything on its own, but most cards will interact with the grappled target, or will buff you if there is a target grappled.
+	Grapple counts down by 1.
+
+Themes:
+Wide Grapple vs Deep Grapple
+Weak & str down (Psychic) vs Vuln & dex up (Wrestle)
+Exhausting Cards:
+	Returning exhausted cards to hand
+	Returning random exhausted cards to hand
+Status Cards:
+	Void
+Void being a good thing (in certain situations)
+Scaling Block through str down (enemy), dex up (self)
+Scaling Damage through grapple, str up (self), reflecting damage
+
+19 common 19 rare 4 basic 33 uncommon
+
+Keywords:
+	Devoid: When you play this card, shuffle a void into your draw pile.
+	Boon: Type of Skill card that can be created into your hand or deck
+		0 power
+		Devoid
+		Next turn benefit
+Buffs/Debuffs:
+	Grapple: Duration debuff on enemies (no benefit by itself)
+Cycles:
+	0 cost uncommon "if the enemy is grappled, ___"
+	1 cost uncommon "(Innate.) ___. Exhaust."
+
+
+Madness Idea:
+At the start of the enemy turn, they lose HP equal to half their madness and lose that much madness.
+
+
+Colors:
+BG:
+	11114d
+Skin:
+	42520a
+	2f3b07
+	191f04
