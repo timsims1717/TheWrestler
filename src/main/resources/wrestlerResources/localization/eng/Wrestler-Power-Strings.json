@@ -20,6 +20,10 @@
         "NAME": "Chill Touch",
         "DESCRIPTIONS": ["Whenever you apply #bGrapple, that enemy loses #b", " strength this turn."]
     },
+    "wrestler:CloseQuartersPower": {
+        "NAME": "Close Quarters",
+        "DESCRIPTIONS": ["Your attacks deal #b", " additional damage to #bGrappled enemies."]
+    },
     "wrestler:CraveNothingPower": {
         "NAME": "Crave Nothing",
         "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]

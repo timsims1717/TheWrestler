@@ -30,6 +30,9 @@ Cycles:
 	0 cost uncommon "if the enemy is grappled, ___"
 	1 cost uncommon "(Innate.) ___. Exhaust."
 
+Thoughts:
+Not sure if there is enough variation. May need one more mechanic or theme.
+
 
 Colors:
 BG:

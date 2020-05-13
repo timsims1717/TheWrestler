@@ -29,7 +29,7 @@
   },
   "wrestler:HalfNelson_Wrestler": {
     "NAME": "Half Nelson",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal an extra !M! damage. NL Apply !wrestler:Grapple! wrestler:Grapple."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal an additional !M! damage. NL Apply !wrestler:Grapple! wrestler:Grapple."
   },
   "wrestler:InvisibleHand_Wrestler": {
     "NAME": "Invisible Hand",
@@ -114,11 +114,11 @@
   },
   "wrestler:Go_Wrestler": {
     "NAME": "Go",
-    "DESCRIPTION": "Innate. NL Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !M! extra damage. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !M! additional damage. NL Exhaust."
   },
   "wrestler:HammerStrike_Wrestler": {
     "NAME": "Hammer Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength this turn. NL Draw 1 card."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Draw 1 card."
   },
   "wrestler:Lariat_Wrestler": {
     "NAME": "Lariat",
@@ -142,6 +142,10 @@
     "NAME": "Chill Touch",
     "DESCRIPTION": "wrestler:Devoid. NL Whenever you apply wrestler:Grapple, apply !M! wrestler:Horror."
   },
+  "wrestler:CloseQuarters_Wrestler": {
+    "NAME": "Close Quarters",
+    "DESCRIPTION": "Your attacks deal !M! additional damage to wrestler:Grappled enemies."
+  },
   "wrestler:CraveNothing_Wrestler": {
     "NAME": "Crave Nothing",
     "DESCRIPTION": "Whenever a Void card exhausts, heal !M! HP."
@@ -159,6 +163,10 @@
     "NAME": "Chokehold",
     "DESCRIPTION": "The enemy loses HP equal to !M! times their wrestler:Grapple."
   },
+  "wrestler:CircleBehind_Wrestler": {
+    "NAME": "Circle Behind",
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, gain !B! Block."
+  },
   "wrestler:GetReady_Wrestler": {
     "NAME": "Get Ready",
     "DESCRIPTION": "Innate. NL Gain !M! Strength and !M! Dexterity. NL Exhaust."
@@ -166,6 +174,40 @@
   "wrestler:GetSet_Wrestler": {
     "NAME": "Get Set",
     "DESCRIPTION": "Innate. NL Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL Exhaust."
+  },
+  "wrestler:GrowingDread_Wrestler": {
+    "NAME": "Growing Dread",
+    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! wrestler:Horror and increase the value of this card by 4."
+  },
+  "wrestler:Humiliate_Wrestler": {
+    "NAME": "Humiliate",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, apply !M! Vulnerable."
+  },
+  "wrestler:MindRead_Wrestler": {
+    "NAME": "Mind Read",
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, draw !M! cards."
+  },
+  "wrestler:OutOfReach_Wrestler": {
+    "NAME": "Out of Reach",
+    "DESCRIPTION": "Gain !B! Block for all wrestler:Grapple on ALL enemies. NL Remove all wrestler:Grapple from ALL enemies."
+  },
+  "wrestler:Scramble_Wrestler": {
+    "NAME": "Scramble",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Dexterity. NL Draw 1 card."
+  },
+  "wrestler:UnearthlyVisions_Wrestler": {
+    "NAME": "Unearthly Visions",
+    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! wrestler:Horror to ALL enemies for each Void card in your exhaust pile. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [" NL (Applies !D! wrestler:Horror .)"]
+  },
+  "wrestler:VitalityDrain_Wrestler": {
+    "NAME": "Vitality Drain",
+    "DESCRIPTION": "Enemy loses !M! Strength for each Void card in your exhaust pile. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [" NL (They lose !D! Strength.)"]
+  },
+  "wrestler:VoidCage_Wrestler": {
+    "NAME": "Void Cage",
+    "DESCRIPTION": "wrestler:Devoid. NL Gain !B! Block."
   },
   "wrestler:Whispers_Wrestler": {
     "NAME": "Whispers",

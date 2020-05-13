@@ -54,11 +54,13 @@ public class HorrorPower extends AbstractPower implements CloneablePowerInterfac
     public void atStartOfTurn() {
         if (amount > 0 && oldAmount != amount) {
             addToBot(new LoseHPAction(this.owner, (AbstractCreature) null, amount, AbstractGameAction.AttackEffect.FIRE));
+            oldAmount = amount;
         } else {
             addToBot(new ReducePowerAction(this.owner, this.owner, POWER_ID, half()));
+            oldAmount = amount - half();
         }
         flash();
-        oldAmount = amount;
+        updateDescription();
     }
 
     @Override
