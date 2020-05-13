@@ -14,6 +14,8 @@ import wrestler.powers.GrapplePower;
 
 import java.util.Iterator;
 
+import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
+
 public abstract class AbstractWrestlerCard extends CustomCard {
 
     public int grapple;
@@ -26,16 +28,13 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     final static public String NotGrappledMessage = "That enemy is not Grappled.";
 
     public AbstractWrestlerCard(final String id,
-                                final String name,
                                 final String img,
                                 final int cost,
-                                final String rawDescription,
                                 final CardType type,
                                 final CardColor color,
                                 final CardRarity rarity,
                                 final CardTarget target) {
-
-        super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
         // Set all the things to their default values.
         isCostModified = false;

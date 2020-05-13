@@ -7,13 +7,34 @@
         "NAME": "Horror",
         "DESCRIPTIONS": [
             "If Horror was applied since last turn, at the start of ",
-            "your", "its"," turn, lose #b", " HP. Otherwise, lose #b",
-            " Horror. (Horror #bhas ", "#bnot ", "been applied."
+            "your", "its", " turn, loses #b", " HP. Otherwise, loses #b",
+            " Horror. (Horror #bhas ", "#bnot ", "been applied.)"
         ]
+    },
+
+    "wrestler:BodyShieldPower": {
+        "NAME": "Body Shield",
+        "DESCRIPTIONS": ["Whenever you are attacked, deal #b", " to each #bgrappled enemy."]
     },
     "wrestler:ChillTouchPower": {
         "NAME": "Chill Touch",
         "DESCRIPTIONS": ["Whenever you apply #bGrapple, that enemy loses #b", " strength this turn."]
+    },
+    "wrestler:CraveNothingPower": {
+        "NAME": "Crave Nothing",
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]
+    },
+    "wrestler:StickyFingersPower": {
+        "NAME": "Sticky Fingers",
+        "DESCRIPTIONS": ["Whenever you are attacked, apply #b", " #bgrapple."]
+    },
+    "wrestler:UnnervingLaughterPower": {
+        "NAME": "Unnerving Laughter",
+        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #bhorror to a random enemy."]
+    },
+    "wrestler:VanishingPower": {
+        "NAME": "Vanishing",
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, gain #b", " #bDexterity."]
     },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",

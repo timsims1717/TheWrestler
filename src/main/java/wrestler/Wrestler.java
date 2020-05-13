@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import wrestler.cards.*;
+import wrestler.cards.indigo.*;
 import wrestler.characters.TheWrestler;
 import wrestler.potions.PlaceholderPotion;
 import wrestler.relics.StartingRelic;
@@ -440,12 +440,12 @@ public class Wrestler implements
         UnlockTracker.unlockCard(CarefulApproach_Wrestler.ID);
         BaseMod.addCard(new CharmingWords_Wrestler());
         UnlockTracker.unlockCard(CharmingWords_Wrestler.ID);
+        BaseMod.addCard(new DarkSuggestion_Wrestler());
+        UnlockTracker.unlockCard(DarkSuggestion_Wrestler.ID);
         BaseMod.addCard(new EldritchInsight_Wrestler());
         UnlockTracker.unlockCard(EldritchInsight_Wrestler.ID);
         BaseMod.addCard(new FiremanLift_Wrestler());
         UnlockTracker.unlockCard(FiremanLift_Wrestler.ID);
-        BaseMod.addCard(new DarkSuggestion_Wrestler());
-        UnlockTracker.unlockCard(DarkSuggestion_Wrestler.ID);
         BaseMod.addCard(new PenetratingShot_Wrestler());
         UnlockTracker.unlockCard(PenetratingShot_Wrestler.ID);
         BaseMod.addCard(new UnearthlySkin_Wrestler());
@@ -455,24 +455,54 @@ public class Wrestler implements
     public void uncommonCards() {
         logger.info("Adding Uncommon cards...");
         // Attacks
+        BaseMod.addCard(new BearHug_Wrestler());
+        UnlockTracker.unlockCard(BearHug_Wrestler.ID);
+        BaseMod.addCard(new Catapult_Wrestler());
+        UnlockTracker.unlockCard(Catapult_Wrestler.ID);
+        BaseMod.addCard(new DragBehind_Wrestler());
+        UnlockTracker.unlockCard(DragBehind_Wrestler.ID);
         BaseMod.addCard(new EldritchShock_Wrestler());
         UnlockTracker.unlockCard(EldritchShock_Wrestler.ID);
+        BaseMod.addCard(new Go_Wrestler());
+        UnlockTracker.unlockCard(Go_Wrestler.ID);
         BaseMod.addCard(new HammerStrike_Wrestler());
         UnlockTracker.unlockCard(HammerStrike_Wrestler.ID);
+        BaseMod.addCard(new Lariat_Wrestler());
+        UnlockTracker.unlockCard(Lariat_Wrestler.ID);
+        BaseMod.addCard(new Pounce_Wrestler());
+        UnlockTracker.unlockCard(Pounce_Wrestler.ID);
+        BaseMod.addCard(new WeirdConduit_Wrestler());
+        UnlockTracker.unlockCard(WeirdConduit_Wrestler.ID);
         // Powers
+        BaseMod.addCard(new BodyShield_Wrestler());
+        UnlockTracker.unlockCard(BodyShield_Wrestler.ID);
         BaseMod.addCard(new ChillTouch_Wrestler());
         UnlockTracker.unlockCard(ChillTouch_Wrestler.ID);
+        BaseMod.addCard(new CraveNothing_Wrestler());
+        UnlockTracker.unlockCard(CraveNothing_Wrestler.ID);
+        BaseMod.addCard(new StickyFingers_Wrestler());
+        UnlockTracker.unlockCard(StickyFingers_Wrestler.ID);
+        BaseMod.addCard(new UnnervingLaughter_Wrestler());
+        UnlockTracker.unlockCard(UnnervingLaughter_Wrestler.ID);
         // Skills
         BaseMod.addCard(new Chokehold_Wrestler());
         UnlockTracker.unlockCard(Chokehold_Wrestler.ID);
+        BaseMod.addCard(new GetReady_Wrestler());
+        UnlockTracker.unlockCard(GetReady_Wrestler.ID);
+        BaseMod.addCard(new GetSet_Wrestler());
+        UnlockTracker.unlockCard(GetSet_Wrestler.ID);
+        BaseMod.addCard(new Whispers_Wrestler());
+        UnlockTracker.unlockCard(Whispers_Wrestler.ID);
     }
 
     public void rareCards() {
         logger.info("Adding Rare cards...");
         // Attacks
-        BaseMod.addCard(new Chokeslam_Wrestler());
-        UnlockTracker.unlockCard(Chokeslam_Wrestler.ID);
+        BaseMod.addCard(new FullBodyVice_Wrestler());
+        UnlockTracker.unlockCard(FullBodyVice_Wrestler.ID);
         // Powers
+        BaseMod.addCard(new Vanishing_Wrestler());
+        UnlockTracker.unlockCard(Vanishing_Wrestler.ID);
         BaseMod.addCard(new WearDown_Wrestler());
         UnlockTracker.unlockCard(WearDown_Wrestler.ID);
         // Skills

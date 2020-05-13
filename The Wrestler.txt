@@ -31,14 +31,16 @@ Cycles:
 	1 cost uncommon "(Innate.) ___. Exhaust."
 
 
-Madness Idea:
-At the start of the enemy turn, they lose HP equal to half their madness and lose that much madness.
-
-
 Colors:
 BG:
+	111134
 	11114d
 Skin:
 	42520a
 	2f3b07
 	191f04
+Hair:
+	154A3B
+Outfit:
+	402C12
+	4A152C

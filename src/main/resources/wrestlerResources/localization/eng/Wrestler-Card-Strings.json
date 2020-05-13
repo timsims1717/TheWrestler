@@ -10,7 +10,7 @@
 
   "wrestler:Grab_Wrestler": {
     "NAME": "Grab",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Enemy loses !M! Strength this turn."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block."
   },
   "wrestler:Defend_Wrestler": {
     "NAME": "Defend",
@@ -96,32 +96,94 @@
 
 
 
+  "wrestler:BearHug_Wrestler": {
+    "NAME": "Bear Hug",
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, Gain !B! Block and Deal !D! damage."
+  },
+  "wrestler:Catapult_Wrestler": {
+    "NAME": "Catapult",
+    "DESCRIPTION": "Deal !D! damage to each wrestler:Grappled enemy once for each wrestler:Grappled enemy."
+  },
+  "wrestler:DragBehind_Wrestler": {
+    "NAME": "Drag Behind",
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage."
+  },
   "wrestler:EldritchShock_Wrestler": {
     "NAME": "Eldritch Shock",
     "DESCRIPTION": "wrestler:Devoid. NL Deal !D! damage to each wrestler:Grappled enemy."
   },
+  "wrestler:Go_Wrestler": {
+    "NAME": "Go",
+    "DESCRIPTION": "Innate. NL Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !M! extra damage. NL Exhaust."
+  },
   "wrestler:HammerStrike_Wrestler": {
     "NAME": "Hammer Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Draw 1 card."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength this turn. NL Draw 1 card."
+  },
+  "wrestler:Lariat_Wrestler": {
+    "NAME": "Lariat",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, NL gain [E] and NL draw 1 card."
+  },
+  "wrestler:Pounce_Wrestler": {
+    "NAME": "Pounce",
+    "DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy."
+  },
+  "wrestler:WeirdConduit_Wrestler": {
+    "NAME": "Weird Conduit",
+    "DESCRIPTION": "wrestler:Devoid. NL Deal !M! damage for each Void card in your exhaust pile.",
+    "EXTENDED_DESCRIPTION": [" NL (Deals !D! damage.)"]
   },
 
+  "wrestler:BodyShield_Wrestler": {
+    "NAME": "Body Shield",
+    "DESCRIPTION": "Whenever an enemy attacks, deal !M! damage to each wrestler:Grappled enemy."
+  },
   "wrestler:ChillTouch_Wrestler": {
     "NAME": "Chill Touch",
     "DESCRIPTION": "wrestler:Devoid. NL Whenever you apply wrestler:Grapple, apply !M! wrestler:Horror."
+  },
+  "wrestler:CraveNothing_Wrestler": {
+    "NAME": "Crave Nothing",
+    "DESCRIPTION": "Whenever a Void card exhausts, heal !M! HP."
+  },
+  "wrestler:StickyFingers_Wrestler": {
+    "NAME": "Sticky Fingers",
+    "DESCRIPTION": "Whenever an enemy attacks, Apply !M! wrestler:Grapple."
+  },
+  "wrestler:UnnervingLaughter_Wrestler": {
+    "NAME": "Unnerving Laughter",
+    "DESCRIPTION": "Ethereal. wrestler:Devoid. At the start of your turn, apply !M! wrestler:Horror to a random enemy."
   },
 
   "wrestler:Chokehold_Wrestler": {
     "NAME": "Chokehold",
     "DESCRIPTION": "The enemy loses HP equal to !M! times their wrestler:Grapple."
   },
-
-
-
-  "wrestler:Chokeslam_Wrestler": {
-    "NAME": "Chokeslam",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. NL Deal !M! damage to each wrestler:Grappled enemy. NL Remove all wrestler:Grapple."
+  "wrestler:GetReady_Wrestler": {
+    "NAME": "Get Ready",
+    "DESCRIPTION": "Innate. NL Gain !M! Strength and !M! Dexterity. NL Exhaust."
+  },
+  "wrestler:GetSet_Wrestler": {
+    "NAME": "Get Set",
+    "DESCRIPTION": "Innate. NL Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL Exhaust."
+  },
+  "wrestler:Whispers_Wrestler": {
+    "NAME": "Whispers",
+    "DESCRIPTION": "Apply !M! wrestler:Horror to ALL enemies."
   },
 
+
+
+  "wrestler:FullBodyVice_Wrestler": {
+    "NAME": "Full Body Vice",
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. They lose !M! strength this turn."
+  },
+
+  "wrestler:Vanishing_Wrestler": {
+    "NAME": "Vanishing",
+    "DESCRIPTION": "wrestler:Devoid. NL Whenever a Void card exhausts, gain !M! Dexterity.",
+    "UPGRADE_DESCRIPTION": "Innate. NL wrestler:Devoid. NL Whenever a Void card exhausts, gain !M! Dexterity."
+  },
   "wrestler:WearDown_Wrestler": {
     "NAME": "Wear Down",
     "DESCRIPTION": "At the end of your turn, wrestler:Grappled enemies lose !M! % of their current HP.",
@@ -130,7 +192,7 @@
 
   "wrestler:Voidlight_Wrestler": {
     "NAME": "Voidlight",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain [E][E]. NL Draw !M! cards. Exhaust.",
-    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Gain [E][E][E]. NL Draw !M! cards. Exhaust."
+    "DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E]. NL Draw !M! cards. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E] [E]. NL Draw !M! cards. NL Exhaust."
   }
 }

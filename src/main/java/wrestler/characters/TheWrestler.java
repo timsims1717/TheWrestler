@@ -22,7 +22,10 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wrestler.Wrestler;
-import wrestler.cards.*;
+import wrestler.cards.indigo.Defend_Wrestler;
+import wrestler.cards.indigo.Grab_Wrestler;
+import wrestler.cards.indigo.HipThrow_Wrestler;
+import wrestler.cards.indigo.Strike_Wrestler;
 import wrestler.relics.StartingRelic;
 
 import java.util.ArrayList;
