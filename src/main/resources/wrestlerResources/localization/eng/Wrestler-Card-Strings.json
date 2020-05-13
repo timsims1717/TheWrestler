@@ -156,7 +156,7 @@
   },
   "wrestler:UnnervingLaughter_Wrestler": {
     "NAME": "Unnerving Laughter",
-    "DESCRIPTION": "Ethereal. wrestler:Devoid. At the start of your turn, apply !M! wrestler:Horror to a random enemy."
+    "DESCRIPTION": "Ethereal. NL wrestler:Devoid. NL At the start of your turn, apply !M! wrestler:Horror to a random enemy."
   },
 
   "wrestler:AgilityTraining_Wrestler": {
@@ -207,7 +207,7 @@
   },
   "wrestler:Petition_Wrestler": {
     "NAME": "Petition",
-    "DESCRIPTION": "wrestler:Devoid. NL Shuffle !M! random boons into your draw pile. NL Exhaust."
+    "DESCRIPTION": "wrestler:Devoid. NL Shuffle !M! random wrestler:Boons into your draw pile. NL Exhaust."
   },
   "wrestler:Scramble_Wrestler": {
     "NAME": "Scramble",

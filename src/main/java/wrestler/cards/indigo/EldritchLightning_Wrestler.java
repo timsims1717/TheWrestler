@@ -4,10 +4,13 @@ import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.red.BloodForBlood;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
@@ -35,13 +38,18 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 3;
+    private static final int REDUCE = 1;
 
-    private static final int DAMAGE = 7;
+    private static final int DAMAGE = 5;
     private static final int UPGRADE_DMG = 2;
     private static final int COUNT = 3;
 
     public EldritchLightning_Wrestler() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this(COST);
+    }
+
+    public EldritchLightning_Wrestler(int cost) {
+        super(ID, IMG, cost, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = COUNT;
         BaseMod.subscribe(this);
@@ -69,7 +77,11 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     @Override
     public void receivePostExhaust(AbstractCard abstractCard) {
         if (abstractCard.cardID.equals(VoidCard.ID)) {
-            updateCost(-1);
+            addToBot(new ReduceCostAction(this.uuid, REDUCE));
         }
+    }
+
+    public AbstractCard makeCopy() {
+        return new EldritchLightning_Wrestler(cost);
     }
 }
