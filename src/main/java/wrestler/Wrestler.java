@@ -20,6 +20,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wrestler.cards.indigo.*;
+import wrestler.cards.special.IntangibleBoon_Wrestler;
+import wrestler.cards.special.PlatedArmorBoon_Wrestler;
 import wrestler.characters.TheWrestler;
 import wrestler.potions.PlaceholderPotion;
 import wrestler.relics.StartingRelic;
@@ -200,7 +202,6 @@ public class Wrestler implements
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         
         logger.info("Done creating the color");
-        
         
         logger.info("Adding mod settings");
         // This loads the mod settings.
@@ -394,6 +395,7 @@ public class Wrestler implements
         commonCards();
         uncommonCards();
         rareCards();
+        specialCards();
         
         logger.info("Done adding cards.");
     }
@@ -487,10 +489,16 @@ public class Wrestler implements
         BaseMod.addCard(new UnnervingLaughter_Wrestler());
         UnlockTracker.unlockCard(UnnervingLaughter_Wrestler.ID);
         // Skills
+        BaseMod.addCard(new AgilityTraining_Wrestler());
+        UnlockTracker.unlockCard(AgilityTraining_Wrestler.ID);
         BaseMod.addCard(new Chokehold_Wrestler());
         UnlockTracker.unlockCard(Chokehold_Wrestler.ID);
         BaseMod.addCard(new CircleBehind_Wrestler());
         UnlockTracker.unlockCard(CircleBehind_Wrestler.ID);
+        BaseMod.addCard(new CrossTraining_Wrestler());
+        UnlockTracker.unlockCard(CrossTraining_Wrestler.ID);
+        BaseMod.addCard(new EldritchWhims_Wrestler());
+        UnlockTracker.unlockCard(EldritchWhims_Wrestler.ID);
         BaseMod.addCard(new GetReady_Wrestler());
         UnlockTracker.unlockCard(GetReady_Wrestler.ID);
         BaseMod.addCard(new GetSet_Wrestler());
@@ -503,6 +511,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(MindRead_Wrestler.ID);
         BaseMod.addCard(new OutOfReach_Wrestler());
         UnlockTracker.unlockCard(OutOfReach_Wrestler.ID);
+        BaseMod.addCard(new Petition_Wrestler());
+        UnlockTracker.unlockCard(Petition_Wrestler.ID);
         BaseMod.addCard(new Scramble_Wrestler());
         UnlockTracker.unlockCard(Scramble_Wrestler.ID);
         BaseMod.addCard(new UnearthlyVisions_Wrestler());
@@ -511,6 +521,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(VitalityDrain_Wrestler.ID);
         BaseMod.addCard(new VoidCage_Wrestler());
         UnlockTracker.unlockCard(VoidCage_Wrestler.ID);
+        BaseMod.addCard(new WeightTraining_Wrestler());
+        UnlockTracker.unlockCard(WeightTraining_Wrestler.ID);
         BaseMod.addCard(new Whispers_Wrestler());
         UnlockTracker.unlockCard(Whispers_Wrestler.ID);
     }
@@ -528,7 +540,14 @@ public class Wrestler implements
         // Skills
         BaseMod.addCard(new Voidlight_Wrestler());
         UnlockTracker.unlockCard(Voidlight_Wrestler.ID);
+    }
 
+    public void specialCards() {
+        logger.info("Adding Special cards...");
+        BaseMod.addCard(new IntangibleBoon_Wrestler());
+        UnlockTracker.unlockCard(IntangibleBoon_Wrestler.ID);
+        BaseMod.addCard(new PlatedArmorBoon_Wrestler());
+        UnlockTracker.unlockCard(PlatedArmorBoon_Wrestler.ID);
     }
     
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things

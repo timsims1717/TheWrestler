@@ -159,6 +159,10 @@
     "DESCRIPTION": "Ethereal. wrestler:Devoid. At the start of your turn, apply !M! wrestler:Horror to a random enemy."
   },
 
+  "wrestler:AgilityTraining_Wrestler": {
+    "NAME": "Agility Training",
+    "DESCRIPTION": "Gain !M! Dexterity. NL Exhaust. NL Can be upgraded any number of times."
+  },
   "wrestler:Chokehold_Wrestler": {
     "NAME": "Chokehold",
     "DESCRIPTION": "The enemy loses HP equal to !M! times their wrestler:Grapple."
@@ -166,6 +170,16 @@
   "wrestler:CircleBehind_Wrestler": {
     "NAME": "Circle Behind",
     "DESCRIPTION": "If the enemy is wrestler:Grappled, gain !B! Block."
+  },
+  "wrestler:CrossTraining_Wrestler": {
+    "NAME": "Cross Training",
+    "DESCRIPTION": "Choose one of three skills of any color to add to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose one of three skills of any color to add to your hand. NL (It costs 0 this turn). NL Exhaust."
+  },
+  "wrestler:EldritchWhims_Wrestler": {
+    "NAME": "Eldritch Whims",
+    "DESCRIPTION": "Add a random wrestler:Boon to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add a random wrestler:Boon to your hand."
   },
   "wrestler:GetReady_Wrestler": {
     "NAME": "Get Ready",
@@ -191,6 +205,10 @@
     "NAME": "Out of Reach",
     "DESCRIPTION": "Gain !B! Block for all wrestler:Grapple on ALL enemies. NL Remove all wrestler:Grapple from ALL enemies."
   },
+  "wrestler:Petition_Wrestler": {
+    "NAME": "Petition",
+    "DESCRIPTION": "wrestler:Devoid. NL Shuffle !M! random boons into your draw pile. NL Exhaust."
+  },
   "wrestler:Scramble_Wrestler": {
     "NAME": "Scramble",
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! Dexterity. NL Draw 1 card."
@@ -208,6 +226,10 @@
   "wrestler:VoidCage_Wrestler": {
     "NAME": "Void Cage",
     "DESCRIPTION": "wrestler:Devoid. NL Gain !B! Block."
+  },
+  "wrestler:WeightTraining_Wrestler": {
+    "NAME": "Weight Training",
+    "DESCRIPTION": "Gain !M! Strength. NL Exhaust. NL Can be upgraded any number of times."
   },
   "wrestler:Whispers_Wrestler": {
     "NAME": "Whispers",
@@ -236,5 +258,16 @@
     "NAME": "Voidlight",
     "DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E]. NL Draw !M! cards. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E] [E]. NL Draw !M! cards. NL Exhaust."
+  },
+
+
+
+  "wrestler:IntangibleBoon_Wrestler": {
+    "NAME": "Intangible Boon",
+    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Intangible. NL Exhaust."
+  },
+  "wrestler:PlatedArmorBoon_Wrestler": {
+    "NAME": "Plated Armor Boon",
+    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Plated Armor. NL Exhaust."
   }
 }

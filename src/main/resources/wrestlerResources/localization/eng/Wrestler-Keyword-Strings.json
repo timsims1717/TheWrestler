@@ -36,5 +36,12 @@
       "horrified"
     ],
     "DESCRIPTION": "#bHorrified creatures lose HP if #bHorror was applied recently. Otherwise they lose half their #bHorror."
+  },
+  {
+    "NAMES": [
+      "boon",
+      "boons"
+    ],
+    "DESCRIPTION": "#bBoons are #bDevoid cards that give a strong buff and #bExhaust."
   }
 ]

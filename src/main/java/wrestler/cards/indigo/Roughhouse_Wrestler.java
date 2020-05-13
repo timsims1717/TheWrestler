@@ -40,13 +40,14 @@ public class Roughhouse_Wrestler extends AbstractWrestlerCard {
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = COUNT;
         wantsTargetGrapple = true;
+        isMultiDamage = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            this.addToBot(new DamageAllGrappledEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            this.addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
     }
 

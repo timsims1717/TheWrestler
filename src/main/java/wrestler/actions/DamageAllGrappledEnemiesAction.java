@@ -50,7 +50,7 @@ public class DamageAllGrappledEnemiesAction extends AbstractGameAction {
             boolean playedMusic = false;
             n = AbstractDungeon.getCurrRoom().monsters.monsters.size();
             if (this.utilizeBaseDamage) {
-                this.damage = DamageInfo.createDamageMatrix(this.baseDamage);
+                this.damage = DamageInfo.createDamageMatrix(baseDamage);
             }
 
             for (int i = 0; i < n; ++i) {

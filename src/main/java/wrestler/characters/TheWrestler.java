@@ -58,6 +58,8 @@ public class TheWrestler extends CustomPlayer {
         public static AbstractCard.CardColor COLOR_INDIGO;
         @SpireEnum(name = "WRESTLER_INDIGO") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
+        @SpireEnum(name = "WRESTLER_BOON")
+        public static AbstractCard.CardRarity BOON;
     }
 
     // =============== CHARACTER ENUMERATORS  =================
