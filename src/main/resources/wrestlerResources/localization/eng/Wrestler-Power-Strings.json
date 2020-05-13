@@ -18,7 +18,7 @@
     },
     "wrestler:ChillTouchPower": {
         "NAME": "Chill Touch",
-        "DESCRIPTIONS": ["Whenever you apply #bGrapple, that enemy loses #b", " strength this turn."]
+        "DESCRIPTIONS": ["Whenever you apply #bGrapple, apply #b", " #bHorror."]
     },
     "wrestler:CloseQuartersPower": {
         "NAME": "Close Quarters",
