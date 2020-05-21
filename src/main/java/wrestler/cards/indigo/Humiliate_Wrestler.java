@@ -18,7 +18,7 @@ public class Humiliate_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Humiliate_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -29,7 +29,7 @@ public class Humiliate_Wrestler extends AbstractWrestlerCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 0;

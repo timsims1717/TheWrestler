@@ -13,7 +13,7 @@ public class Defend_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Defend_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    public static final String IMG = makeCardPath("Defend_Wrestler.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 

@@ -66,8 +66,8 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
 
     @Override
     public void upgrade() {
-        upgradeMagicNumber(UPGRADE_DEXTERITY + timesUpgraded);
         timesUpgraded++;
+        upgradeMagicNumber(UPGRADE_DEXTERITY);
         upgraded = true;
         name = NAME + "+" + timesUpgraded;
         initializeTitle();

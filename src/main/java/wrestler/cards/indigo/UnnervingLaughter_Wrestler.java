@@ -29,8 +29,8 @@ public class UnnervingLaughter_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int HORROR = 2;
-    private static final int UPGRADE_HORROR = 1;
+    private static final int HORROR = 3;
+    private static final int UPGRADE_HORROR = 5;
 
     // /STAT DECLARATION/
 
@@ -43,7 +43,6 @@ public class UnnervingLaughter_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        devoid();
         addToBot(new ApplyPowerAction(p, p, new UnnervingLaughterPower(p, p, magicNumber), magicNumber));
     }
 

@@ -30,7 +30,7 @@ public class GrowingDread_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 2;
-    private static final int HORROR = 12;
+    private static final int HORROR = 8;
     private static final int UPGRADE_HORROR = 4;
     private static final int INCREASE = 4;
 

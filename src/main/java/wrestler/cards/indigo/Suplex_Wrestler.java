@@ -33,8 +33,8 @@ public class Suplex_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 2;
 
-    private static final int DAMAGE = 18;
-    private static final int UPGRADE_DAMAGE = 8;
+    private static final int DAMAGE = 17;
+    private static final int UPGRADE_DAMAGE = 5;
 
     // /STAT DECLARATION/
 

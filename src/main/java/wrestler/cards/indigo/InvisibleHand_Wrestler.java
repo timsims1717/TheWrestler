@@ -33,8 +33,8 @@ public class InvisibleHand_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_DMG = 2;
+    private static final int DAMAGE = 3;
+    private static final int UPGRADE_DMG = 1;
     private static final int BLOCK = 3;
     private static final int UPGRADE_BLOCK = 1;
 

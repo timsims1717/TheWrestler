@@ -33,10 +33,9 @@ public class Lariat_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_DMG = 3;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_DMG = 4;
     private static final int ENERGY_GAIN = 1;
-    private static final int DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -54,7 +53,6 @@ public class Lariat_Wrestler extends AbstractWrestlerCard {
 
         if (isTargetGrappled(m)) {
             addToBot(new GainEnergyAction(ENERGY_GAIN));
-            addToBot(new DrawCardAction(DRAW));
         }
     }
 

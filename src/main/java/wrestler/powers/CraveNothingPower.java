@@ -19,10 +19,14 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.actions.DamageAllGrappledEnemiesAction;
 import wrestler.util.TextureLoader;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import static wrestler.Wrestler.makePowerPath;
 
-public class CraveNothingPower extends AbstractPower implements CloneablePowerInterface, PostExhaustSubscriber {
+public class CraveNothingPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
+    private ArrayList<UUID> cardUUIDs = new ArrayList<>();
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(CraveNothingPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -47,11 +51,10 @@ public class CraveNothingPower extends AbstractPower implements CloneablePowerIn
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
-        BaseMod.subscribe(this);
     }
 
     @Override
-    public void receivePostExhaust(AbstractCard abstractCard) {
+    public void onExhaust(AbstractCard abstractCard) {
         if (abstractCard.cardID.equals(VoidCard.ID)) {
             flash();
             owner.heal(amount, false);

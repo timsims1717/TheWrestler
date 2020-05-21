@@ -22,7 +22,7 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
@@ -30,7 +30,7 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int BLOCK = 11;
-    private static final int UPGRADE_BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 3;
 
     // /STAT DECLARATION/
 

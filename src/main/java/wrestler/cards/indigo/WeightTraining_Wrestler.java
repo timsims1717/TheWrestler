@@ -48,7 +48,7 @@ public class WeightTraining_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = STRENGTH;
         exhaust = true;
-        this.timesUpgraded = upgrades;
+        timesUpgraded = upgrades;
     }
 
     // Actions the card should do.
@@ -64,8 +64,8 @@ public class WeightTraining_Wrestler extends AbstractWrestlerCard {
 
     @Override
     public void upgrade() {
-        upgradeMagicNumber(UPGRADE_STRENGTH + timesUpgraded);
         timesUpgraded++;
+        upgradeMagicNumber(UPGRADE_STRENGTH);
         upgraded = true;
         name = NAME + "+" + timesUpgraded;
         initializeTitle();

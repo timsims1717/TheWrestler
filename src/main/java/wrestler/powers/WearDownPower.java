@@ -57,14 +57,18 @@ public class WearDownPower extends AbstractPower implements CloneablePowerInterf
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead() || amount < 1) {
             return;
         }
-        flash();
+        boolean first = true;
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
 
         while (var1.hasNext()) {
             AbstractMonster m = (AbstractMonster) var1.next();
             if (!m.isDeadOrEscaped() && m.hasPower(GrapplePower.POWER_ID)) {
+                if (first) {
+                    flash();
+                    first = false;
+                }
                 int hp = m.currentHealth;
-                addToBot(new LoseHPAction(m, m, (int)Math.floor(perc * hp), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                addToBot(new LoseHPAction(m, owner, (int)Math.ceil(perc * hp), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }
         }
     }

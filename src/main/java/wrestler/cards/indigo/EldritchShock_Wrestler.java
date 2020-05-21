@@ -31,7 +31,7 @@ public class EldritchShock_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 11;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_DMG = 4;
 
     public EldritchShock_Wrestler() {

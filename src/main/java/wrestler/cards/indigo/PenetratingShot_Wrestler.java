@@ -32,7 +32,7 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 0;
 
     private static final int GRAPPLE = 3;
-    private static final int UPGRADE_GRP = 1;
+    private static final int UPGRADE_GRP = 2;
     private static final int VULN = 1;
     private static final int UPGRADE_VUKN = 1;
 

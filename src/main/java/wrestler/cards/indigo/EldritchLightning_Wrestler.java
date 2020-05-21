@@ -1,6 +1,7 @@
 package wrestler.cards.indigo;
 
 import basemod.BaseMod;
+import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,13 +13,18 @@ import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.UUID;
 
 import static wrestler.Wrestler.makeCardPath;
 
 
-public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements PostExhaustSubscriber {
+public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements PostExhaustSubscriber, PostBattleSubscriber {
 
     // TEXT DECLARATION
 
@@ -31,6 +37,7 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
 
 
     // STAT DECLARATION
+    private ArrayList<UUID> cardUUIDs = new ArrayList<>();
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -38,7 +45,6 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 3;
-    private static final int REDUCE = 1;
 
     private static final int DAMAGE = 5;
     private static final int UPGRADE_DMG = 2;
@@ -75,9 +81,15 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     }
 
     @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        cost = COST;
+    }
+
+    @Override
     public void receivePostExhaust(AbstractCard abstractCard) {
-        if (abstractCard.cardID.equals(VoidCard.ID)) {
-            addToBot(new ReduceCostAction(this.uuid, REDUCE));
+        if (abstractCard.cardID.equals(VoidCard.ID) && !cardUUIDs.contains(abstractCard.uuid)) {
+            cardUUIDs.add(abstractCard.uuid);
+            modifyCostForCombat(-1);
         }
     }
 

@@ -29,7 +29,7 @@ public class PlatedArmorBoon_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int PLATED = 6;
+    private static final int PLATED = 4;
     private static final int UPGRADE_PLATED = 2;
 
     // /STAT DECLARATION/

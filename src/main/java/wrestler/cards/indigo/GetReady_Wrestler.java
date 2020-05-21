@@ -15,7 +15,7 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(GetReady_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -26,7 +26,7 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
@@ -40,7 +40,6 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = STR_DEX_UP;
         isInnate = true;
-        exhaust = true;
     }
 
 

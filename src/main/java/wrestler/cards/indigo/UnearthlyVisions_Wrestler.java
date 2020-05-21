@@ -15,6 +15,7 @@ import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.GrapplePower;
 import wrestler.powers.HorrorPower;
+import wrestler.powers.UnearthlyVisionsPower;
 
 import java.util.Iterator;
 
@@ -26,11 +27,8 @@ public class UnearthlyVisions_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(UnearthlyVisions_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -38,8 +36,8 @@ public class UnearthlyVisions_Wrestler extends AbstractWrestlerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
@@ -50,53 +48,13 @@ public class UnearthlyVisions_Wrestler extends AbstractWrestlerCard {
     public UnearthlyVisions_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = HORROR;
-        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster mon = (AbstractMonster) var1.next();
-            addToBot(new ApplyPowerAction(mon, p, new HorrorPower(mon, p, damage, false), damage));
-        }
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        int count = 0;
-        Iterator var1 = AbstractDungeon.player.exhaustPile.group.iterator();
-        while (var1.hasNext()) {
-            AbstractCard c = (AbstractCard) var1.next();
-            if (c.cardID.equals(VoidCard.ID)) {
-                count++;
-            }
-        }
-        if (count > 0) {
-            damage = baseDamage = count * baseMagicNumber;
-            rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-            initializeDescription();
-        }
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        if (baseDamage > 0) {
-            rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-        }
-
-        initializeDescription();
-    }
-
-    @Override
-    public void onMoveToDiscard() {
-        rawDescription = DESCRIPTION;
-        initializeDescription();
+        addToBot(new ApplyPowerAction(p, p, new UnearthlyVisionsPower(p, p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.

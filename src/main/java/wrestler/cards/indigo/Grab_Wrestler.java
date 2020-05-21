@@ -49,7 +49,6 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-
         addToBot(new GainBlockAction(p, p, block));
     }
 

@@ -28,9 +28,33 @@
         "NAME": "Crave Nothing",
         "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]
     },
+    "wrestler:EldritchFormPower": {
+        "NAME": "Eldritch Form",
+        "DESCRIPTIONS": ["The first time you draw a Void card on your turn, gain ", "[E]", "."]
+    },
+    "wrestler:FavoredPower": {
+        "NAME": "Favored",
+        "DESCRIPTIONS": ["At the start of your turn, shuffle #b", " #bBoons into your hand."]
+    },
+    "wrestler:IronGripPower": {
+        "NAME": "Iron Grip",
+        "DESCRIPTIONS": ["#bGrapple is affected by #Strength and #Dexterity."]
+    },
+    "wrestler:PossessedPower": {
+        "NAME": "Possessed",
+        "DESCRIPTIONS": ["At the end of your turn, gain #b", " #bHorror."]
+    },
     "wrestler:StickyFingersPower": {
         "NAME": "Sticky Fingers",
         "DESCRIPTIONS": ["Whenever you are attacked, apply #b", " #bgrapple."]
+    },
+    "wrestler:TormentPower": {
+        "NAME": "Torment",
+        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #bWeak and #b", " #bVulnerable to each enemy with at least 1 #bHorror."]
+    },
+    "wrestler:UnearthlyVisionsPower": {
+        "NAME": "Unearthly Visions",
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, apply #b", " #bhorror to each enemy."]
     },
     "wrestler:UnnervingLaughterPower": {
         "NAME": "Unnerving Laughter",

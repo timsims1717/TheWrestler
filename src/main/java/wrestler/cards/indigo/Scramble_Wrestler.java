@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import wrestler.actions.DrawPileToDiscardAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
@@ -37,23 +38,22 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 3;
-    private static final int DEXTERITY = 1;
-    private static final int DRAW = 1;
+    private static final int DISCARD = 1;
+    private static final int UPGRADE_DISCARD = 1;
 
     public Scramble_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = DEXTERITY;
+        magicNumber = baseMagicNumber = DISCARD;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
-        addToBot(new DrawCardAction(DRAW));
+        addToBot(new DrawPileToDiscardAction(magicNumber, false));
     }
 
     // Upgraded stats.
@@ -62,6 +62,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_DISCARD);
             initializeDescription();
         }
     }

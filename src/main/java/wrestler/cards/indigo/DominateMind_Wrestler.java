@@ -3,18 +3,18 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.LoseHPFromGrappleAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.GrapplePower;
+import wrestler.powers.HorrorPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class FiremanLift_Wrestler extends AbstractWrestlerCard {
+
+public class DominateMind_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(FiremanLift_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(DominateMind_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -24,38 +24,33 @@ public class FiremanLift_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 4;
+    private static final int HORROR = 40;
+    private static final int UPGRADE_HORROR = 10;
 
-    private static final int GRAPPLE = 3;
-    private static final int UPGRADE_GRAPPLE = 2;
-
-    // /STAT DECLARATION/
-
-    public FiremanLift_Wrestler() {
+    public DominateMind_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
+        magicNumber = baseMagicNumber = HORROR;
     }
-
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-        addToBot(new LoseHPFromGrappleAction(this, null, 1));
+        devoid();
+        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, magicNumber, false), magicNumber));
     }
-
 
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeGrappleNumber(UPGRADE_GRAPPLE);
+            upgradeMagicNumber(UPGRADE_HORROR);
             initializeDescription();
         }
     }

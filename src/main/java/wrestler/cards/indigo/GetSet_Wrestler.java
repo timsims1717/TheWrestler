@@ -33,8 +33,8 @@ public class GetSet_Wrestler extends AbstractWrestlerCard {
 
     private static final int GRAPPLE = 1;
     private static final int UPGRADE_GRAPPLE = 1;
-    private static final int BLOCK = 9;
-    private static final int UPGRAGE_BLOCK = 5;
+    private static final int BLOCK = 8;
+    private static final int UPGRAGE_BLOCK = 3;
 
     // /STAT DECLARATION/
 

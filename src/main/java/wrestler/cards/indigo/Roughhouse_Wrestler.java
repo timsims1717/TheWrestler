@@ -1,6 +1,7 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.actions.DamageAllGrappledEnemiesAction;
@@ -32,14 +33,13 @@ public class Roughhouse_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int DAMAGE = 2;
-    private static final int COUNT = 4;
+    private static final int COUNT = 3;
     private static final int UPGRADE_COUNT = 1;
 
     public Roughhouse_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = COUNT;
-        wantsTargetGrapple = true;
         isMultiDamage = true;
     }
 
@@ -47,7 +47,7 @@ public class Roughhouse_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            this.addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
     }
 

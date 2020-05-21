@@ -7,9 +7,6 @@ Grapple
 Themes:
 Wide Grapple vs Deep Grapple
 Weak & str down (Psychic) vs Vuln & dex up (Wrestle)
-Exhausting Cards:
-	Returning exhausted cards to hand
-	Returning random exhausted cards to hand
 Status Cards:
 	Void
 Void being a good thing (in certain situations)
@@ -23,15 +20,22 @@ Keywords:
 	Boon: Type of Skill card that can be created into your hand or deck
 		0 power
 		Devoid
-		Next turn benefit
+		Exhaust
 Buffs/Debuffs:
 	Grapple: Duration debuff on enemies (no benefit by itself)
+	Horror: If applied this turn, they lose that much HP. Otherwise, they lose half their Horror.
 Cycles:
 	0 cost uncommon "if the enemy is grappled, ___"
 	1 cost uncommon "(Innate.) ___. Exhaust."
 
 Thoughts:
 Not sure if there is enough variation. May need one more mechanic or theme.
+
+More Modify Memory type cards! Maybe two or three more?
+Maybe more! What could be a keyword?
+Card that allows you to exhaust cards in your draw pile.
+Costumes, either relics or cards.
+Maybe create a new status/temp card instead of Devoid? Maybe a card that when drawn, reduces the cost of a card to 0 and forces it to exhaust after play?
 
 
 Colors:
@@ -46,4 +50,7 @@ Hair:
 	154A3B
 Outfit:
 	402C12
+
 	4A152C
+	3b1123
+	260b16

@@ -29,17 +29,14 @@ public class Go_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_DAMAGE = 4;
-    private static final int GRAPPLE_DMG = 6;
-    private static final int UPGRADE_GRAPPLE_DAMAGE = 4;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_DAMAGE = 3;
 
     // /STAT DECLARATION/
 
     public Go_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = GRAPPLE_DMG;
         wantsTargetGrapple = true;
         isInnate = true;
         exhaust = true;
@@ -52,19 +49,8 @@ public class Go_Wrestler extends AbstractWrestlerCard {
         applyPowers();
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         if (isTargetGrappled(m)) {
-            addToBot(new DamageAction(m, new DamageInfo(p, magicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
-    }
-
-    @Override
-    public void applyPowers() {
-        int temp = baseDamage;
-        baseDamage = baseMagicNumber;
-        super.applyPowers();
-        magicNumber = damage;
-        isMagicNumberModified = isDamageModified;
-        baseDamage = temp;
-        super.applyPowers();
     }
 
     // Upgraded stats.
@@ -73,7 +59,6 @@ public class Go_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
-            upgradeMagicNumber(UPGRADE_GRAPPLE_DAMAGE);
             initializeDescription();
         }
     }

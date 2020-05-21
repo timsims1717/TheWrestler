@@ -32,9 +32,7 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int DAMAGE = 5;
-    private static final int UPGRADE_DMG = 1;
-    private static final int GRP_DMG = 6;
-    private static final int UPGRADE_GRP_DMG = 2;
+    private static final int UPGRADE_DMG = 2;
     private static final int GRAPPLE = 1;
     private static final int UPGRADE_GRAPPLE = 1;
 
@@ -43,7 +41,6 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
     public HalfNelson_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = GRP_DMG;
         grapple = baseGrapple = GRAPPLE;
         wantsTargetGrapple = true;
     }
@@ -56,21 +53,10 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 
         if (isTargetGrappled(m)) {
-            addToBot(new DamageAction(m, new DamageInfo(p, magicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
 
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-    }
-
-    @Override
-    public void applyPowers() {
-        int temp = baseDamage;
-        baseDamage = baseMagicNumber;
-        super.applyPowers();
-        magicNumber = damage;
-        isMagicNumberModified = isDamageModified;
-        baseDamage = temp;
-        super.applyPowers();
     }
 
     // Upgraded stats.
@@ -79,7 +65,6 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
-            upgradeMagicNumber(UPGRADE_GRP_DMG);
             upgradeGrappleNumber(UPGRADE_GRAPPLE);
             initializeDescription();
         }
