@@ -31,11 +31,8 @@ Cycles:
 Thoughts:
 Not sure if there is enough variation. May need one more mechanic or theme.
 
-More Modify Memory type cards! Maybe two or three more?
-Maybe more! What could be a keyword?
-Card that allows you to exhaust cards in your draw pile.
-Costumes, either relics or cards.
-Maybe create a new status/temp card instead of Devoid? Maybe a card that when drawn, reduces the cost of a card to 0 and forces it to exhaust after play?
+More Modify Memory type cards!
+Costume relics
 
 
 Colors:

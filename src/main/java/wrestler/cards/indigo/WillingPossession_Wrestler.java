@@ -34,7 +34,7 @@ public class WillingPossession_Wrestler extends AbstractWrestlerCard {
 
     private static final int STR_DEX_UP = 7;
     private static final int UPGRADE_STR_DEX_UP = 3;
-    private static final int HORROR = 5;
+    private static final int HORROR = 2;
 
     // /STAT DECLARATION/
 

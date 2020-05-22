@@ -420,14 +420,14 @@ public class Wrestler implements
     public void commonCards() {
         logger.info("Adding Common cards...");
         // Attacks
+        BaseMod.addCard(new CheapShot_Wrestler());
+        UnlockTracker.unlockCard(CheapShot_Wrestler.ID);
         BaseMod.addCard(new ElbowCut_Wrestler());
         UnlockTracker.unlockCard(ElbowCut_Wrestler.ID);
         BaseMod.addCard(new EldritchLightning_Wrestler());
         UnlockTracker.unlockCard(EldritchLightning_Wrestler.ID);
         BaseMod.addCard(new HalfNelson_Wrestler());
         UnlockTracker.unlockCard(HalfNelson_Wrestler.ID);
-        BaseMod.addCard(new HammerStrike_Wrestler());
-        UnlockTracker.unlockCard(HammerStrike_Wrestler.ID);
         BaseMod.addCard(new InvisibleHand_Wrestler());
         UnlockTracker.unlockCard(InvisibleHand_Wrestler.ID);
         BaseMod.addCard(new Jab_Wrestler());
@@ -453,8 +453,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(PenetratingShot_Wrestler.ID);
         BaseMod.addCard(new Scramble_Wrestler());
         UnlockTracker.unlockCard(Scramble_Wrestler.ID);
-        BaseMod.addCard(new UnearthlySkin_Wrestler());
-        UnlockTracker.unlockCard(UnearthlySkin_Wrestler.ID);
+        BaseMod.addCard(new Sidestep_Wrestler());
+        UnlockTracker.unlockCard(Sidestep_Wrestler.ID);
     }
 
     public void uncommonCards() {
@@ -464,12 +464,14 @@ public class Wrestler implements
         UnlockTracker.unlockCard(BearHug_Wrestler.ID);
         BaseMod.addCard(new Catapult_Wrestler());
         UnlockTracker.unlockCard(Catapult_Wrestler.ID);
-        BaseMod.addCard(new DragBehind_Wrestler());
-        UnlockTracker.unlockCard(DragBehind_Wrestler.ID);
+//        BaseMod.addCard(new DragBehind_Wrestler());
+//        UnlockTracker.unlockCard(DragBehind_Wrestler.ID);
         BaseMod.addCard(new EldritchShock_Wrestler());
         UnlockTracker.unlockCard(EldritchShock_Wrestler.ID);
         BaseMod.addCard(new Go_Wrestler());
         UnlockTracker.unlockCard(Go_Wrestler.ID);
+        BaseMod.addCard(new HammerStrike_Wrestler());
+        UnlockTracker.unlockCard(HammerStrike_Wrestler.ID);
         BaseMod.addCard(new Lariat_Wrestler());
         UnlockTracker.unlockCard(Lariat_Wrestler.ID);
         BaseMod.addCard(new Pounce_Wrestler());
@@ -524,6 +526,10 @@ public class Wrestler implements
         UnlockTracker.unlockCard(OutOfReach_Wrestler.ID);
         BaseMod.addCard(new Petition_Wrestler());
         UnlockTracker.unlockCard(Petition_Wrestler.ID);
+        BaseMod.addCard(new SecretOfTheDeep_Wrestler());
+        UnlockTracker.unlockCard(SecretOfTheDeep_Wrestler.ID);
+        BaseMod.addCard(new UnearthlySkin_Wrestler());
+        UnlockTracker.unlockCard(UnearthlySkin_Wrestler.ID);
         BaseMod.addCard(new UnearthlyVisions_Wrestler());
         UnlockTracker.unlockCard(UnearthlyVisions_Wrestler.ID);
         BaseMod.addCard(new VitalityDrain_Wrestler());

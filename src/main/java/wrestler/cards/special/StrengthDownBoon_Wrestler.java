@@ -24,7 +24,7 @@ public class StrengthDownBoon_Wrestler extends AbstractWrestlerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = CardColor.COLORLESS;
 
@@ -46,7 +46,6 @@ public class StrengthDownBoon_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
         addToBot(new ApplyPowerToRandomEnemyAction(p, new StrengthPower(m, -magicNumber), -magicNumber));
     }
 

@@ -15,7 +15,7 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Grab_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    public static final String IMG = makeCardPath("Grab_Wrestler.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -32,9 +32,9 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 0;
 
     private static final int GRAPPLE = 2;
-    private static final int UPGRADE_GRP = 1;
+    private static final int UPGRADE_GRP = 2;
     private static final int BLOCK = 2;
-    private static final int UPGRADE_BLOCK = 1;
+    private static final int UPGRADE_BLOCK = 2;
 
     // /STAT DECLARATION/
 

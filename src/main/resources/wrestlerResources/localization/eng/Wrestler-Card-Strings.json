@@ -19,6 +19,10 @@
 
 
 
+  "wrestler:CheapShot_Wrestler": {
+    "NAME": "Cheap Shot",
+    "DESCRIPTION": "Deal !D! damage. NL The enemy gains !M! Strength."
+  },
   "wrestler:ElbowCut_Wrestler": {
     "NAME": "Elbow Cut",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, draw a card."
@@ -52,10 +56,6 @@
     "NAME": "Mind Spike",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! wrestler:Horror."
   },
-  "wrestler:PsychedelicIllusion_Wrestler": {
-    "NAME": "Psychedelic Illusion",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! Dexterity this turn."
-  },
   "wrestler:Roughhouse_Wrestler": {
     "NAME": "Roughhouse",
     "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
@@ -67,8 +67,8 @@
 
   "wrestler:CarefulApproach_Wrestler": {
     "NAME": "Careful Approach",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. Draw 1 card.",
-    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple to ALL enemies. Draw 1 card."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple to ALL enemies. NL Draw !M! cards."
   },
   "wrestler:CharmingWords_Wrestler": {
     "NAME": "Charming Words",
@@ -87,9 +87,10 @@
     "DESCRIPTION": "Gain !B! Block. NL Move !M! card from your draw pile to your discard pile.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Move !M! cards from your draw pile to your discard pile."
   },
-  "wrestler:UnearthlySkin_Wrestler": {
-    "NAME": "Unearthly Skin",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Strength this turn."
+  "wrestler:Sidestep_Wrestler": {
+    "NAME": "Sidestep",
+    "DESCRIPTION": "Draw !M! card. Gain !M! Dexterity this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. Gain !M! Dexterity this turn."
   },
 
 
@@ -121,6 +122,10 @@
   "wrestler:Pounce_Wrestler": {
     "NAME": "Pounce",
     "DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy."
+  },
+  "wrestler:PsychedelicIllusion_Wrestler": {
+    "NAME": "Psychedelic Illusion",
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Gain !M! Dexterity this turn."
   },
   "wrestler:WeirdConduit_Wrestler": {
     "NAME": "Weird Conduit",
@@ -227,6 +232,14 @@
     "NAME": "Petition",
     "DESCRIPTION": "Shuffle !M! random wrestler:Boons into your draw pile. NL Exhaust."
   },
+  "wrestler:SecretOfTheDeep_Wrestler": {
+    "NAME": "Secret of the Deep",
+    "DESCRIPTION": "Apply !M! Horror."
+  },
+  "wrestler:UnearthlySkin_Wrestler": {
+    "NAME": "Unearthly Skin",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Strength this turn."
+  },
   "wrestler:VitalityDrain_Wrestler": {
     "NAME": "Vitality Drain",
     "DESCRIPTION": "Enemy loses !M! Strength for each Void card in your exhaust pile. NL Exhaust.",
@@ -271,8 +284,8 @@
   },
   "wrestler:Favored_Wrestler": {
     "NAME": "Favored",
-    "DESCRIPTION": "wrestler:Devoid. NL Ethereal. NL At the start of your turn, shuffle X wrestler:Boons into your hand.",
-    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL At the start of your turn, shuffle X Boons into your hand."
+    "DESCRIPTION": "wrestler:Devoid. NL Ethereal. NL At the start of your turn, add X wrestler:Boons to your hand.",
+    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL At the start of your turn, add X Boons to your hand."
   },
   "wrestler:Torment_Wrestler": {
     "NAME": "Torment",
@@ -324,36 +337,36 @@
 
   "wrestler:IntangibleBoon_Wrestler": {
     "NAME": "Intangible Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Intangible. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Intangible. NL Exhaust."
   },
   "wrestler:PlatedArmorBoon_Wrestler": {
     "NAME": "Plated Armor Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Plated Armor. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Plated Armor. NL Exhaust."
   },
   "wrestler:DrawZeroCostBoon_Wrestler": {
     "NAME": "Draw Zero Cost Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Draw !M! cards. They cost 0 this turn. NL Exhaust."
+    "DESCRIPTION": "Draw !M! cards. They cost 0 this turn. NL Exhaust."
   },
   "wrestler:AttackUpRareBoon_Wrestler": {
     "NAME": "Attack Up Rare Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Your next attack deals !M! additional damage. NL Exhaust."
+    "DESCRIPTION": "Your next attack deals !M! additional damage. NL Exhaust."
   },
   "wrestler:StrengthDownBoon_Wrestler": {
     "NAME": "Strength Down Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL A random enemy loses !M! Strength. NL Exhaust."
+    "DESCRIPTION": "A random enemy loses !M! Strength. NL Exhaust."
   },
 
   "wrestler:HorrorBoon_Wrestler": {
     "NAME": "Horror Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Apply !M! to ALL enemies. NL Exhaust."
   },
   "wrestler:StrengthUpBoon_Wrestler": {
     "NAME": "Strength Up Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Strength. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Strength. NL Exhaust."
   },
   "wrestler:DexterityUpBoon_Wrestler": {
     "NAME": "Dexterity Up Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain !M! Dexterity. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Dexterity. NL Exhaust."
   },
   "wrestler:AttackUpUncommonBoon_Wrestler": {
     "NAME": "Attack Up Uncommon Boon",
@@ -361,28 +374,28 @@
   },
   "wrestler:DrawBoon_Wrestler": {
     "NAME": "Draw Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Draw !M! cards. NL Exhaust."
+    "DESCRIPTION": "Draw !M! cards. NL Exhaust."
   },
 
   "wrestler:AttackUpCommonBoon_Wrestler": {
     "NAME": "Attack Up Common Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Your next attack deals !M! additional damage. NL Exhaust."
+    "DESCRIPTION": "Your next attack deals !M! additional damage. NL Exhaust."
   },
   "wrestler:GrappleBoon_Wrestler": {
     "NAME": "Grapple Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Apply !wrestler:Grapple! to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Apply !wrestler:Grapple! to ALL enemies. NL Exhaust."
   },
   "wrestler:EnergyBoon_Wrestler": {
     "NAME": "Energy Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain [E]. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E]. NL Exhaust."
+    "DESCRIPTION": "Gain [E]. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Exhaust."
   },
   "wrestler:BlockBoon_Wrestler": {
     "NAME": "Block Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Gain !B! Block. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL Exhaust."
   },
   "wrestler:DebuffBoon_Wrestler": {
     "NAME": "Debuff Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! Weak and !M! Vulnerable to a random enemy. NL Exhaust."
+    "DESCRIPTION": "Apply !M! Weak and !M! Vulnerable to a random enemy. NL Exhaust."
   }
 }

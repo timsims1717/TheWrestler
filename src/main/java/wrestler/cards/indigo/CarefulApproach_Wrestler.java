@@ -39,12 +39,14 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
 
     private static final int GRAPPLE = 1;
     private static final int DRAW = 1;
+    private static final int UPGRADE_DRAW = 1;
 
     // /STAT DECLARATION/
 
     public CarefulApproach_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         grapple = baseGrapple = GRAPPLE;
+        magicNumber = baseMagicNumber = DRAW;
     }
 
 
@@ -61,7 +63,7 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
                 addToBot(new ApplyPowerAction(mon, p, new GrapplePower(mon, p, grapple), grapple));
             }
         }
-        addToBot(new DrawCardAction(DRAW));
+        addToBot(new DrawCardAction(magicNumber));
     }
 
 
@@ -71,6 +73,7 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             target = CardTarget.ALL_ENEMY;
+            upgradeMagicNumber(UPGRADE_DRAW);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

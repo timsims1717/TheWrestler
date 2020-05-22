@@ -50,7 +50,6 @@ public class EnergyBoon_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
         addToBot(new GainEnergyAction(ENERGY));
     }
 

@@ -51,7 +51,6 @@ public class DebuffBoon_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while (var1.hasNext()) {
             AbstractMonster mon = (AbstractMonster) var1.next();

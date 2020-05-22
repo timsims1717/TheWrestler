@@ -45,7 +45,6 @@ public class DrawBoon_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
         addToBot(new DrawCardAction(magicNumber));
     }
 
