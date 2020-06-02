@@ -3,11 +3,8 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.PossessedPower;
 import wrestler.powers.TormentPower;
 
 import static wrestler.Wrestler.makeCardPath;
@@ -32,22 +29,21 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int DEBUFF = 1;
+    private static final int HORROR = 2;
+    private static final int UPGRADE_HORROR = 1;
 
     // /STAT DECLARATION/
 
     public Torment_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DEBUFF;
+        horror = baseHorror = HORROR;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
-        addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, DEBUFF), DEBUFF));
+        addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, horror), horror));
     }
 
 
@@ -56,7 +52,7 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeHorrorNumber(UPGRADE_HORROR);
             initializeDescription();
         }
     }

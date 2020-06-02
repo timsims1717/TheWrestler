@@ -6,7 +6,7 @@
     <groupId>wrestler</groupId>
     <artifactId>Wrestler</artifactId>
     <name>The Wrestler</name>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <description>A Wrestler from a far city, banished for using mind altering moves.</description>
 
     <properties>

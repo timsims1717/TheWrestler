@@ -25,9 +25,6 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(VitalityDrain_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -39,55 +36,21 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int COST = 1;
 
-    private static final int STR_DOWN = 1;
+    private static final int STR_DOWN = 2;
+    private static final int UPGRADE_STR_DOWN = 1;
 
     public VitalityDrain_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = STR_DOWN;
-        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -damage), -damage));
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        int count = 0;
-        Iterator var1 = AbstractDungeon.player.exhaustPile.group.iterator();
-        while (var1.hasNext()) {
-            AbstractCard c = (AbstractCard) var1.next();
-            if (c.cardID.equals(VoidCard.ID)) {
-                count++;
-            }
-        }
-        if (count > 0) {
-            damage = baseDamage = count * baseMagicNumber;
-            rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-            initializeDescription();
-        }
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        if (baseDamage > 0) {
-            rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-        }
-
-        initializeDescription();
-    }
-
-    @Override
-    public void onMoveToDiscard() {
-        rawDescription = DESCRIPTION;
-        initializeDescription();
+        devoid();
+        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber), -magicNumber));
     }
 
     // Upgraded stats.
@@ -95,7 +58,7 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_STR_DOWN);
             initializeDescription();
         }
     }

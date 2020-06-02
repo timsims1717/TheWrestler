@@ -50,7 +50,7 @@ public class EldritchWhims_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCard c = new BoonCreator().returnRandomBoon().makeCopy();
+        AbstractCard c = BoonCreator.returnRandomBoon().makeCopy();
         addToBot(new MakeTempCardInHandAction(c));
     }
 

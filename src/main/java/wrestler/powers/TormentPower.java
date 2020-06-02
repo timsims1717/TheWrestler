@@ -49,26 +49,8 @@ public class TormentPower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
-    public void atStartOfTurn() {
-        boolean first = true;
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
-            if (!m.isDeadOrEscaped() && m.hasPower(HorrorPower.POWER_ID)) {
-                if (first) {
-                    flash();
-                    first = false;
-                }
-                addToBot(new ApplyPowerAction(m, owner, new WeakPower(m, amount, false), amount));
-                addToBot(new ApplyPowerAction(m, owner, new VulnerablePower(m, amount, false), amount));
-            }
-        }
-    }
-
-    @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

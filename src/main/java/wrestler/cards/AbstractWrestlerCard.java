@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import wrestler.powers.GrapplePower;
+import wrestler.powers.TormentPower;
 
 import java.util.Iterator;
 
@@ -27,6 +28,11 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public boolean requiresTargetGrapple;
     public boolean wantsTargetGrapple;
     final static public String NotGrappledMessage = "That enemy is not Grappled.";
+
+    public int horror;
+    public int baseHorror;
+    public boolean upgradedHorror;
+    public boolean isHorrorModified;
 
     public AbstractWrestlerCard(final String id,
                                 final String img,
@@ -44,6 +50,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         isBlockModified = false;
         isMagicNumberModified = false;
         isGrappleModified = false;
+        isHorrorModified = false;
         requiresTargetGrapple = false;
         wantsTargetGrapple = false;
     }
@@ -54,12 +61,22 @@ public abstract class AbstractWrestlerCard extends CustomCard {
             grapple = baseGrapple;
             isGrappleModified = true;
         }
+        if (upgradedHorror) {
+            horror = baseHorror;
+            isHorrorModified = true;
+        }
     }
 
     public void upgradeGrappleNumber(int amount) {
         baseGrapple += amount;
         grapple = baseGrapple;
         upgradedGrapple = true;
+    }
+
+    public void upgradeHorrorNumber(int amount) {
+        baseHorror += amount;
+        horror = baseHorror;
+        upgradedHorror = true;
     }
 
     @Override
@@ -106,6 +123,28 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         }
     }
 
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        if (AbstractDungeon.player.hasPower(TormentPower.POWER_ID)) {
+            int amount = AbstractDungeon.player.getPower(TormentPower.POWER_ID).amount;
+            isHorrorModified = false;
+            float tmp = (float)baseHorror;
+
+            tmp += amount;
+
+            if (baseHorror != MathUtils.floor(tmp)) {
+                isHorrorModified = true;
+            }
+
+            if (tmp < 0.0F) {
+                tmp = 0.0F;
+            }
+
+            horror = MathUtils.floor(tmp);
+        }
+    }
+
     public boolean isTargetGrappled(AbstractMonster m) {
         return m != null && !m.isDeadOrEscaped() && m.hasPower(GrapplePower.POWER_ID);
     }
@@ -115,7 +154,11 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, value), value));
     }
 
+    public void devoid(int amount) {
+        addToTop(new MakeTempCardInDrawPileAction(new VoidCard(), amount, true, true));
+    }
+
     public void devoid() {
-        addToTop(new MakeTempCardInDrawPileAction(new VoidCard(), 1, true, true));
+        devoid(1);
     }
 }

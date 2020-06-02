@@ -216,7 +216,7 @@ public class TheWrestler extends CustomPlayer {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return Wrestler.DEFAULT_GRAY;
+        return INDIGO_WRESTLER;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -253,14 +253,14 @@ public class TheWrestler extends CustomPlayer {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return Wrestler.DEFAULT_GRAY;
+        return INDIGO_WRESTLER;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return Wrestler.DEFAULT_GRAY;
+        return INDIGO_WRESTLER;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

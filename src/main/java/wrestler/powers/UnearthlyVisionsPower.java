@@ -1,13 +1,9 @@
 package wrestler.powers;
 
-import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
-import basemod.interfaces.PostExhaustSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -16,12 +12,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 import wrestler.util.TextureLoader;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.UUID;
 
 import static wrestler.Wrestler.makePowerPath;
 

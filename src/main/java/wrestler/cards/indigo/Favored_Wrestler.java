@@ -1,6 +1,5 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -8,7 +7,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.actions.FavoredAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.VanishingPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -43,7 +41,6 @@ public class Favored_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        devoid();
         addToBot(new FavoredAction(p, freeToPlayOnce, energyOnUse));
     }
 

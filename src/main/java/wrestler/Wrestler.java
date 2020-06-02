@@ -28,6 +28,7 @@ import wrestler.relics.StartingRelic;
 import wrestler.util.IDCheckDontTouchPls;
 import wrestler.util.TextureLoader;
 import wrestler.variables.Grapple;
+import wrestler.variables.Horror;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -84,13 +85,12 @@ public class Wrestler implements
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Wrestler";
     private static final String AUTHOR = "Tim Sims";
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String DESCRIPTION = "A Wrestler from a far city, banished for using mind altering moves.";
     
     // =============== INPUT TEXTURE LOCATION =================
     
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
     public static final Color INDIGO_WRESTLER = CardHelper.getColor(17.0f, 17.0f, 52.0f);
     
     // Potion Colors in RGB
@@ -106,17 +106,17 @@ public class Wrestler implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
   
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "wrestlerResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "wrestlerResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "wrestlerResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_WRESTLER_INDIGO = "wrestlerResources/images/512/bg_attack_wrestler_512.png";
+    private static final String SKILL_WRESTLER_INDIGO = "wrestlerResources/images/512/bg_skill_wrestler_512.png";
+    private static final String POWER_WRESTLER_INDIGO = "wrestlerResources/images/512/bg_power_wrestler_512.png";
     
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "wrestlerResources/images/512/card_default_gray_orb.png";
+    private static final String ENERGY_ORB_WRESTLER_INDIGO = "wrestlerResources/images/512/card_wrestler_orb_512.png";
     private static final String CARD_ENERGY_ORB = "wrestlerResources/images/512/card_small_orb.png";
     
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "wrestlerResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "wrestlerResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "wrestlerResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "wrestlerResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_WRESTLER_INDIGO_PORTRAIT = "wrestlerResources/images/1024/bg_attack_wrestler.png";
+    private static final String SKILL_WRESTLER_INDIGO_PORTRAIT = "wrestlerResources/images/1024/bg_skill_wrestler.png";
+    private static final String POWER_WRESTLER_INDIGO_PORTRAIT = "wrestlerResources/images/1024/bg_power_wrestler.png";
+    private static final String ENERGY_ORB_WRESTLER_INDIGO_PORTRAIT = "wrestlerResources/images/1024/card_wrestler_orb.png";
     
     // Character assets
     private static final String WRESTLER_BUTTON = "wrestlerResources/images/charSelect/wrestlerButton.png";
@@ -185,22 +185,14 @@ public class Wrestler implements
         // Change their locations to reflect your actual ID rather than wrestler. They get loaded before getID is a thing.
         
         logger.info("Done subscribing");
-        
-//        logger.info("Creating the color " + TheWrestler.Enums.COLOR_GRAY.toString());
-//
-//        BaseMod.addColor(TheWrestler.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-//                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-//                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-//                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-//                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
 
         logger.info("Creating the color " + TheWrestler.Enums.COLOR_INDIGO.toString());
 
         BaseMod.addColor(TheWrestler.Enums.COLOR_INDIGO, INDIGO_WRESTLER, INDIGO_WRESTLER, INDIGO_WRESTLER,
                 INDIGO_WRESTLER, INDIGO_WRESTLER, INDIGO_WRESTLER, INDIGO_WRESTLER,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
-                ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
+                ATTACK_WRESTLER_INDIGO, SKILL_WRESTLER_INDIGO, POWER_WRESTLER_INDIGO, ENERGY_ORB_WRESTLER_INDIGO,
+                ATTACK_WRESTLER_INDIGO_PORTRAIT, SKILL_WRESTLER_INDIGO_PORTRAIT, POWER_WRESTLER_INDIGO_PORTRAIT,
+                ENERGY_ORB_WRESTLER_INDIGO_PORTRAIT, CARD_ENERGY_ORB);
         
         logger.info("Done creating the color");
         
@@ -391,6 +383,7 @@ public class Wrestler implements
         logger.info("Adding variables...");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new Grapple());
+        BaseMod.addDynamicVariable(new Horror());
 
         // Add the cards
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
@@ -424,8 +417,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(CheapShot_Wrestler.ID);
         BaseMod.addCard(new ElbowCut_Wrestler());
         UnlockTracker.unlockCard(ElbowCut_Wrestler.ID);
-        BaseMod.addCard(new EldritchLightning_Wrestler());
-        UnlockTracker.unlockCard(EldritchLightning_Wrestler.ID);
+        BaseMod.addCard(new VoidBlast_Wrestler());
+        UnlockTracker.unlockCard(VoidBlast_Wrestler.ID);
         BaseMod.addCard(new HalfNelson_Wrestler());
         UnlockTracker.unlockCard(HalfNelson_Wrestler.ID);
         BaseMod.addCard(new InvisibleHand_Wrestler());
@@ -466,8 +459,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Catapult_Wrestler.ID);
 //        BaseMod.addCard(new DragBehind_Wrestler());
 //        UnlockTracker.unlockCard(DragBehind_Wrestler.ID);
-        BaseMod.addCard(new EldritchShock_Wrestler());
-        UnlockTracker.unlockCard(EldritchShock_Wrestler.ID);
+        BaseMod.addCard(new ShockingGrasp_Wrestler());
+        UnlockTracker.unlockCard(ShockingGrasp_Wrestler.ID);
         BaseMod.addCard(new Go_Wrestler());
         UnlockTracker.unlockCard(Go_Wrestler.ID);
         BaseMod.addCard(new HammerStrike_Wrestler());
@@ -476,6 +469,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Lariat_Wrestler.ID);
         BaseMod.addCard(new Pounce_Wrestler());
         UnlockTracker.unlockCard(Pounce_Wrestler.ID);
+        BaseMod.addCard(new Twitch_Wrestler());
+        UnlockTracker.unlockCard(Twitch_Wrestler.ID);
 //        BaseMod.addCard(new WeirdConduit_Wrestler());
 //        UnlockTracker.unlockCard(WeirdConduit_Wrestler.ID);
         // Powers
@@ -520,8 +515,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(MindRead_Wrestler.ID);
         BaseMod.addCard(new ModifyMemory_Wrestler());
         UnlockTracker.unlockCard(ModifyMemory_Wrestler.ID);
-        BaseMod.addCard(new OutOfNothing_Wrestler());
-        UnlockTracker.unlockCard(OutOfNothing_Wrestler.ID);
         BaseMod.addCard(new OutOfReach_Wrestler());
         UnlockTracker.unlockCard(OutOfReach_Wrestler.ID);
         BaseMod.addCard(new Petition_Wrestler());
@@ -540,6 +533,12 @@ public class Wrestler implements
         UnlockTracker.unlockCard(WeightTraining_Wrestler.ID);
         BaseMod.addCard(new Whispers_Wrestler());
         UnlockTracker.unlockCard(Whispers_Wrestler.ID);
+        BaseMod.addCard(new Hallucination_Wrestler());
+        UnlockTracker.unlockCard(Hallucination_Wrestler.ID);
+        BaseMod.addCard(new Muddled_Wrestler());
+        UnlockTracker.unlockCard(Muddled_Wrestler.ID);
+        BaseMod.addCard(new VerbalTic_Wrestler());
+        UnlockTracker.unlockCard(VerbalTic_Wrestler.ID);
     }
 
     public void rareCards() {
@@ -575,6 +574,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Leverage_Wrestler.ID);
         BaseMod.addCard(new MindMeld_Wrestler());
         UnlockTracker.unlockCard(MindMeld_Wrestler.ID);
+        BaseMod.addCard(new OutOfNothing_Wrestler());
+        UnlockTracker.unlockCard(OutOfNothing_Wrestler.ID);
         BaseMod.addCard(new Submission_Wrestler());
         UnlockTracker.unlockCard(Submission_Wrestler.ID);
         BaseMod.addCard(new Voidlight_Wrestler());

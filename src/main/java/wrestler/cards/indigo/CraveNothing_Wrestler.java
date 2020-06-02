@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.ChillTouchPower;
 import wrestler.powers.CraveNothingPower;
 
 import static wrestler.Wrestler.makeCardPath;
@@ -40,6 +39,7 @@ public class CraveNothing_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        devoid();
         addToBot(new ApplyPowerAction(p, p, new CraveNothingPower(p, p, magicNumber), magicNumber));
     }
 

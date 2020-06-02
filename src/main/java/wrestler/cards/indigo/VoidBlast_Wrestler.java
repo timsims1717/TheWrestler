@@ -5,30 +5,26 @@ import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReduceCostAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.BloodForBlood;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.UUID;
 
 import static wrestler.Wrestler.makeCardPath;
 
 
-public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements PostExhaustSubscriber, PostBattleSubscriber {
+public class VoidBlast_Wrestler extends AbstractWrestlerCard implements PostExhaustSubscriber, PostBattleSubscriber {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(EldritchLightning_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(VoidBlast_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -46,15 +42,15 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
 
     private static final int COST = 3;
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 7;
     private static final int UPGRADE_DMG = 2;
     private static final int COUNT = 3;
 
-    public EldritchLightning_Wrestler() {
+    public VoidBlast_Wrestler() {
         this(COST);
     }
 
-    public EldritchLightning_Wrestler(int cost) {
+    public VoidBlast_Wrestler(int cost) {
         super(ID, IMG, cost, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = COUNT;
@@ -64,9 +60,9 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.devoid();
+        devoid();
         for (int i = 0; i < COUNT; i++) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
         }
     }
 
@@ -94,6 +90,6 @@ public class EldritchLightning_Wrestler extends AbstractWrestlerCard implements 
     }
 
     public AbstractCard makeCopy() {
-        return new EldritchLightning_Wrestler(cost);
+        return new VoidBlast_Wrestler(cost);
     }
 }

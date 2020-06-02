@@ -43,7 +43,7 @@ public class SacrificeAction extends AbstractGameAction {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.NONE));
             target.damage(info);
             if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && !target.hasPower("Minion")) {
-                theCard = new BoonCreator().returnRandomBoon().makeCopy();
+                theCard = BoonCreator.returnRandomBoon().makeCopy();
             }
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

@@ -7,7 +7,7 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class BoonCreator {
 
-    public AbstractCard returnRandomBoon() {
+    public static AbstractCard returnRandomBoon() {
         int perc = cardRandomRng.random(100);
         if (perc < 20) {
             return Wrestler.rareBoons.get(cardRandomRng.random(Wrestler.rareBoons.size() - 1)).makeStatEquivalentCopy();

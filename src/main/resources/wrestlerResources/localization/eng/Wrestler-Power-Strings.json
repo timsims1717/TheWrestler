@@ -26,11 +26,11 @@
     },
     "wrestler:CraveNothingPower": {
         "NAME": "Crave Nothing",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]
+        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, heal #b", " HP."]
     },
     "wrestler:EldritchFormPower": {
         "NAME": "Eldritch Form",
-        "DESCRIPTIONS": ["The first time you draw a Void card on your turn, gain ", "[E]", "."]
+        "DESCRIPTIONS": ["The first time you draw an Uncanny card on your turn, gain ", "[E]", "."]
     },
     "wrestler:FavoredPower": {
         "NAME": "Favored",
@@ -50,11 +50,11 @@
     },
     "wrestler:TormentPower": {
         "NAME": "Torment",
-        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #bWeak and #b", " #bVulnerable to each enemy with at least 1 #bHorror."]
+        "DESCRIPTIONS": ["Whenever you apply #bHorror, apply #b", " additional #bHorror."]
     },
     "wrestler:UnearthlyVisionsPower": {
         "NAME": "Unearthly Visions",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, apply #b", " #bhorror to each enemy."]
+        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, apply #b", " #bhorror to each enemy."]
     },
     "wrestler:UnnervingLaughterPower": {
         "NAME": "Unnerving Laughter",
@@ -62,7 +62,7 @@
     },
     "wrestler:VanishingPower": {
         "NAME": "Vanishing",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, gain #b", " #bDexterity."]
+        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, gain #b", " #bDexterity."]
     },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",

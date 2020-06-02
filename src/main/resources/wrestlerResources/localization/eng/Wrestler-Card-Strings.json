@@ -21,15 +21,12 @@
 
   "wrestler:CheapShot_Wrestler": {
     "NAME": "Cheap Shot",
-    "DESCRIPTION": "Deal !D! damage. NL The enemy gains !M! Strength."
+    "DESCRIPTION": "Deal !D! damage. NL ALL Cheap Shot cards deal !M! less damage this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Cheap Shot deals !M! less damage this combat."
   },
   "wrestler:ElbowCut_Wrestler": {
     "NAME": "Elbow Cut",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, draw a card."
-  },
-  "wrestler:EldritchLightning_Wrestler": {
-    "NAME": "Eldritch Lightning",
-    "DESCRIPTION": "wrestler:Devoid. NL Costs 1 less [E] NL for each time a Void card exhausts. NL Deal !D! damage !M! times."
   },
   "wrestler:HalfNelson_Wrestler": {
     "NAME": "Half Nelson",
@@ -37,8 +34,7 @@
   },
   "wrestler:HammerStrike_Wrestler": {
     "NAME": "Hammer Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Move !M! card from your draw pile to your discard pile.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Move !M! cards from your draw pile to your discard pile."
+    "DESCRIPTION": "Deal !D! damage. NL Move !M! card from your draw pile to your discard pile."
   },
   "wrestler:InvisibleHand_Wrestler": {
     "NAME": "Invisible Hand",
@@ -64,6 +60,10 @@
     "NAME": "Suplex",
     "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. Remove all wrestler:Grapple from that enemy."
   },
+  "wrestler:VoidBlast_Wrestler": {
+    "NAME": "Void Blast",
+    "DESCRIPTION": "wrestler:Devoid. NL Costs 1 less [E] NL for each time a Void card exhausts. NL Deal !D! damage !M! times."
+  },
 
   "wrestler:CarefulApproach_Wrestler": {
     "NAME": "Careful Approach",
@@ -76,7 +76,7 @@
   },
   "wrestler:DarkSuggestion_Wrestler": {
     "NAME": "Dark Suggestion",
-    "DESCRIPTION": "Apply !M! wrestler:Horror."
+    "DESCRIPTION": "Apply !wrestler:Horror! wrestler:Horror."
   },
   "wrestler:PenetratingShot_Wrestler": {
     "NAME": "Penetrating Shot",
@@ -107,9 +107,9 @@
     "NAME": "Drag Behind",
     "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage."
   },
-  "wrestler:EldritchShock_Wrestler": {
-    "NAME": "Eldritch Shock",
-    "DESCRIPTION": "wrestler:Devoid. NL Deal !D! damage to each wrestler:Grappled enemy."
+  "wrestler:ShockingGrasp_Wrestler": {
+    "NAME": "Shocking Grasp",
+    "DESCRIPTION": "Deal !D! damage to each wrestler:Grappled enemy."
   },
   "wrestler:Go_Wrestler": {
     "NAME": "Go",
@@ -126,6 +126,11 @@
   "wrestler:PsychedelicIllusion_Wrestler": {
     "NAME": "Psychedelic Illusion",
     "DESCRIPTION": "Deal !D! damage to a random enemy. NL Gain !M! Dexterity this turn."
+  },
+  "wrestler:Twitch_Wrestler": {
+    "NAME": "Twitch",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, deal !D! damage to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, deal !D! damage to a random enemy."
   },
   "wrestler:WeirdConduit_Wrestler": {
     "NAME": "Weird Conduit",
@@ -147,7 +152,7 @@
   },
   "wrestler:CraveNothing_Wrestler": {
     "NAME": "Crave Nothing",
-    "DESCRIPTION": "Whenever a Void card exhausts, heal !M! HP."
+    "DESCRIPTION": "Devoid. NL Whenever a Void card exhausts, heal !M! HP."
   },
   "wrestler:GetReady_Wrestler": {
     "NAME": "Get Ready",
@@ -189,7 +194,8 @@
   },
   "wrestler:EldritchInsight_Wrestler": {
     "NAME": "Eldritch Insight",
-    "DESCRIPTION": "wrestler:Devoid. NL Draw !M! cards."
+    "DESCRIPTION": "wrestler:Devoid. NL Draw !M! cards. Move 1 card from your draw pile to your discard pile.",
+    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Draw !M! cards. Move 2 cards from your draw pile to your discard pile."
   },
   "wrestler:EldritchWhims_Wrestler": {
     "NAME": "Eldritch Whims",
@@ -206,7 +212,12 @@
   },
   "wrestler:GrowingDread_Wrestler": {
     "NAME": "Growing Dread",
-    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! wrestler:Horror and increase the value of this card by 4."
+    "DESCRIPTION": "Apply !M! wrestler:Horror and increase the value of this card by 4."
+  },
+  "wrestler:Hallucination_Wrestler": {
+    "NAME": "Hallucination",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, add a random card of any color into your hand. That card gains Ethereal and Exhaust.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, add a random card of any color into your hand. That card gains Ethereal and Exhaust."
   },
   "wrestler:Humiliate_Wrestler": {
     "NAME": "Humiliate",
@@ -220,9 +231,10 @@
     "NAME": "Modify Memory",
     "DESCRIPTION": "Move up to !M! cards from your draw pile to your discard pile."
   },
-  "wrestler:OutOfNothing_Wrestler": {
-    "NAME": "Out of Nothing",
-    "DESCRIPTION": "wrestler:Devoid. NL Choose a card. Exhaust all Void cards in your draw pile and shuffle a copy of the chosen card for each card exhausted."
+  "wrestler:Muddled_Wrestler": {
+    "NAME": "Muddled",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, randomize the costs of all cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, randomize the costs of all cards in your hand."
   },
   "wrestler:OutOfReach_Wrestler": {
     "NAME": "Out of Reach",
@@ -239,6 +251,11 @@
   "wrestler:UnearthlySkin_Wrestler": {
     "NAME": "Unearthly Skin",
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! Strength this turn."
+  },
+  "wrestler:VerbalTic_Wrestler": {
+    "NAME": "VerbalTic",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, play the top card of your deck.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, play the top card of your deck."
   },
   "wrestler:VitalityDrain_Wrestler": {
     "NAME": "Vitality Drain",
@@ -270,7 +287,7 @@
   },
   "wrestler:MindEater_Wrestler": {
     "NAME": "Mind Eater",
-    "DESCRIPTION": "wrestler:Devoid. If the enemy is wrestler:Grappled, NL Deal !D! damage and apply !M! wrestler:Horror."
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, NL Deal !D! damage and apply !M! wrestler:Horror."
   },
   "wrestler:Sacrifice_Wrestler": {
     "NAME": "Sacrifice",
@@ -279,17 +296,17 @@
 
   "wrestler:EldritchForm_Wrestler": {
     "NAME": "Eldritch Form",
-    "DESCRIPTION": "wrestler:Devoid. NL The first time you draw a Void card on your turn, NL gain [E] [E] [E].",
-    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL The first time you draw a Void card on your turn, NL gain [E] [E] [E] [E]."
+    "DESCRIPTION": "wrestler:Devoid. NL Ethereal NL Whenever you draw a Void card, NL gain [E][E] and draw 2 cards.",
+    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Whenever you draw a Void card, NL gain [E][E] and draw 2 cards."
   },
   "wrestler:Favored_Wrestler": {
     "NAME": "Favored",
-    "DESCRIPTION": "wrestler:Devoid. NL Ethereal. NL At the start of your turn, add X wrestler:Boons to your hand.",
-    "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL At the start of your turn, add X Boons to your hand."
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, add X wrestler:Boons to your hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, add X wrestler:Boons to your hand."
   },
   "wrestler:Torment_Wrestler": {
     "NAME": "Torment",
-    "DESCRIPTION": "wrestler:Devoid. NL At the start of your turn, apply !M! Weak and !M! Vulnerable to each enemy with at least 1 wrestler:Horror."
+    "DESCRIPTION": "Whenever you apply wrestler:Horror, apply !wrestler:Horror! additional wrestler:Horror."
   },
   "wrestler:Vanishing_Wrestler": {
     "NAME": "Vanishing",
@@ -303,7 +320,7 @@
   },
   "wrestler:WillingPossession_Wrestler": {
     "NAME": "Willing Possession",
-    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity. Gain 5 wrestler:Horror at the end of each turn."
+    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity. Gain 2 wrestler:Horror at the end of each turn."
   },
 
   "wrestler:Crusher_Wrestler": {
@@ -313,7 +330,7 @@
   },
   "wrestler:DominateMind_Wrestler": {
     "NAME": "Dominate Mind",
-    "DESCRIPTION": "wrestler:Devoid. NL Apply !M! wrestler:Horror."
+    "DESCRIPTION": "Apply !M! wrestler:Horror."
   },
   "wrestler:Leverage_Wrestler": {
     "NAME": "Leverage",
@@ -322,6 +339,11 @@
   "wrestler:MindMeld_Wrestler": {
     "NAME": "Mind Meld",
     "DESCRIPTION": "If the enemy is wrestler:Grappled, gain Block equal to their attack and apply !M! Weak. NL Exhaust."
+  },
+  "wrestler:OutOfNothing_Wrestler": {
+    "NAME": "Out of Nothing",
+    "DESCRIPTION": "Choose a card. NL Shuffle X copies of that card into your draw pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose a card. NL Shuffle X+1 copies of that card into your draw pile. NL Exhaust."
   },
   "wrestler:Submission_Wrestler": {
     "NAME": "Submission",
@@ -370,7 +392,7 @@
   },
   "wrestler:AttackUpUncommonBoon_Wrestler": {
     "NAME": "Attack Up Uncommon Boon",
-    "DESCRIPTION": "wrestler:Devoid. NL Your next attack deals !M! additional damage. NL Exhaust."
+    "DESCRIPTION": "Your next attack deals !M! additional damage. NL Exhaust."
   },
   "wrestler:DrawBoon_Wrestler": {
     "NAME": "Draw Boon",

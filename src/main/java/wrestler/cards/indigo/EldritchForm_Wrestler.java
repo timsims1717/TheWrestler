@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.EldritchFormPower;
-import wrestler.powers.VanishingPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -32,14 +31,14 @@ public class EldritchForm_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 3;
-    private static final int ENERGY = 3;
-    private static final int UPGRADE_ENERGY = 1;
+    private static final int ENERGY_DRAW = 2;
 
     // /STAT DECLARATION/
 
     public EldritchForm_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = ENERGY;
+        magicNumber = baseMagicNumber = ENERGY_DRAW;
+        isEthereal = true;
     }
     
     // Actions the card should do.
@@ -54,7 +53,7 @@ public class EldritchForm_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_ENERGY);
+            isEthereal = false;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

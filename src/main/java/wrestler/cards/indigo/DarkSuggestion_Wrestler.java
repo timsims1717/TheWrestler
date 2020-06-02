@@ -35,13 +35,13 @@ public class DarkSuggestion_Wrestler extends AbstractWrestlerCard {
 
     public DarkSuggestion_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = HORROR;
+        horror = baseHorror = HORROR;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, magicNumber, false), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, horror, false), horror));
     }
 
     // Upgraded stats.
@@ -49,7 +49,7 @@ public class DarkSuggestion_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_HORROR);
+            upgradeHorrorNumber(UPGRADE_HORROR);
             initializeDescription();
         }
     }

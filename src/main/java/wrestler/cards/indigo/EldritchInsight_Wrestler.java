@@ -3,6 +3,7 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.DrawPileToDiscardAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
@@ -30,6 +31,8 @@ public class EldritchInsight_Wrestler extends AbstractWrestlerCard {
 
     private static final int DRAW = 2;
     private static final int UPGRADE_DRAW = 1;
+    private static final int DISCARD = 1;
+    private static final int UPGRADE_DISCARD = 2;
 
     // /STAT DECLARATION/
 
@@ -44,6 +47,7 @@ public class EldritchInsight_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
         addToBot(new DrawCardAction(DRAW));
+        addToBot(new DrawPileToDiscardAction(upgraded ? DISCARD : UPGRADE_DISCARD));
     }
 
 

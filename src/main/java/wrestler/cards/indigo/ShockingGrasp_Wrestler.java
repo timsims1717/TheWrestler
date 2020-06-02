@@ -10,11 +10,11 @@ import wrestler.characters.TheWrestler;
 import static wrestler.Wrestler.makeCardPath;
 
 
-public class EldritchShock_Wrestler extends AbstractWrestlerCard {
+public class ShockingGrasp_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(EldritchShock_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(ShockingGrasp_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -34,7 +34,7 @@ public class EldritchShock_Wrestler extends AbstractWrestlerCard {
     private static final int DAMAGE = 9;
     private static final int UPGRADE_DMG = 4;
 
-    public EldritchShock_Wrestler() {
+    public ShockingGrasp_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         wantsTargetGrapple = true;
@@ -43,8 +43,7 @@ public class EldritchShock_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.devoid();
-        this.addToBot(new DamageAllGrappledEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAllGrappledEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
     // Upgraded stats.

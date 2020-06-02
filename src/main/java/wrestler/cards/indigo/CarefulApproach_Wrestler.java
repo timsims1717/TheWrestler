@@ -37,7 +37,7 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int GRAPPLE = 1;
+    private static final int GRAPPLE = 2;
     private static final int DRAW = 1;
     private static final int UPGRADE_DRAW = 1;
 

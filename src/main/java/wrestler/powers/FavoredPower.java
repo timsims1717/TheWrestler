@@ -47,9 +47,8 @@ public class FavoredPower extends AbstractPower implements CloneablePowerInterfa
 
     @Override
     public void atStartOfTurn() {
-        BoonCreator booner = new BoonCreator();
         for (int i = 0; i < amount; i++) {
-            AbstractCard c = booner.returnRandomBoon();
+            AbstractCard c = BoonCreator.returnRandomBoon();
             addToBot(new MakeTempCardInHandAction(c));
         }
     }

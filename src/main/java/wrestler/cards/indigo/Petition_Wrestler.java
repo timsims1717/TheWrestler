@@ -51,7 +51,7 @@ public class Petition_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            AbstractCard c = new BoonCreator().returnRandomBoon();
+            AbstractCard c = BoonCreator.returnRandomBoon();
             addToBot(new MakeTempCardInDrawPileAction(c, 1, true, true));
         }
     }

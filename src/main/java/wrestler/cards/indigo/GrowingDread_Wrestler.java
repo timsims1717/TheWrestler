@@ -42,7 +42,6 @@ public class GrowingDread_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
         addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, magicNumber, false), magicNumber));
         baseMagicNumber += INCREASE;
         initializeDescription();
