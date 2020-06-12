@@ -48,9 +48,9 @@ public class BodyShieldPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner) {
             flash();
-            addToTop(new DamageAllGrappledEnemiesAction((AbstractPlayer) this.owner, this.amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToTop(new DamageAllGrappledEnemiesAction((AbstractPlayer) owner, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         return damageAmount;
     }

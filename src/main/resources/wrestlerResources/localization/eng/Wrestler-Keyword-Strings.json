@@ -4,7 +4,7 @@
       "grapple",
       "grappled"
     ],
-    "DESCRIPTION": "Each turn, #bGrapple is reduced by #b1."
+    "DESCRIPTION": "Each turn, Grapple is reduced by #b1."
   },
   {
     "NAMES": [
@@ -14,16 +14,27 @@
   },
   {
     "NAMES": [
-      "horror",
-      "horrified"
+      "compulsion",
+      "compelled"
     ],
-    "DESCRIPTION": "#bHorrified creatures lose HP if #bHorror was applied recently. Otherwise they lose half their #bHorror."
+    "DESCRIPTION": "Compelled creatures lose HP, give themselves #yDebuffs, and give the player #yBuffs depending on their #yIntent."
   },
   {
     "NAMES": [
-      "boon",
-      "boons"
+      "forget"
     ],
-    "DESCRIPTION": "#bBoons are cards that give a strong effect and #bExhaust."
+    "DESCRIPTION": "Move X cards from your draw pile to your discard pile."
+  },
+  {
+    "NAMES": [
+      "remember"
+    ],
+    "DESCRIPTION": "Shuffle X cards from your discard pile into your draw pile."
+  },
+  {
+    "NAMES": [
+      "combo"
+    ],
+    "DESCRIPTION": "Combo is lost when HP is lost from enemies and when a card without Combo is played. Build up your Combo for special benefits."
   }
 ]

@@ -20,7 +20,7 @@ import java.util.UUID;
 import static wrestler.Wrestler.makeCardPath;
 
 
-public class VoidBlast_Wrestler extends AbstractWrestlerCard implements PostExhaustSubscriber, PostBattleSubscriber {
+public class VoidBlast_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
@@ -33,37 +33,27 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard implements PostExha
 
 
     // STAT DECLARATION
-    private ArrayList<UUID> cardUUIDs = new ArrayList<>();
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 3;
+    private static final int COST = 1;
 
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_DMG = 2;
-    private static final int COUNT = 3;
+    private static final int DAMAGE = 13;
+    private static final int UPGRADE_DMG = 4;
 
     public VoidBlast_Wrestler() {
-        this(COST);
-    }
-
-    public VoidBlast_Wrestler(int cost) {
-        super(ID, IMG, cost, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = COUNT;
-        BaseMod.subscribe(this);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
-        for (int i = 0; i < COUNT; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
-        }
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
     }
 
     // Upgraded stats.
@@ -76,20 +66,7 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard implements PostExha
         }
     }
 
-    @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        cost = COST;
-    }
-
-    @Override
-    public void receivePostExhaust(AbstractCard abstractCard) {
-        if (abstractCard.cardID.equals(VoidCard.ID) && !cardUUIDs.contains(abstractCard.uuid)) {
-            cardUUIDs.add(abstractCard.uuid);
-            modifyCostForCombat(-1);
-        }
-    }
-
     public AbstractCard makeCopy() {
-        return new VoidBlast_Wrestler(cost);
+        return new VoidBlast_Wrestler();
     }
 }

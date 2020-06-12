@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -43,10 +44,6 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         this.description = DESCRIPTIONS[0];
-    }
-
-    public void triggerLoseHP(int multiplier) {
-        addToBot(new LoseHPAction(this.owner, (AbstractCreature)null, this.amount * multiplier, AbstractGameAction.AttackEffect.FIRE));
     }
 
     @Override

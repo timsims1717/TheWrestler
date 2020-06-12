@@ -1,12 +1,11 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.LoseHPMindAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.HorrorPower;
 
 import java.util.Iterator;
 
@@ -33,12 +32,12 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 0;
-    private static final int HORROR = 2;
-    private static final int UPGRADE_HORROR = 1;
+    private static final int LOSEHP = 3;
+    private static final int UPGRADE_LOSEHP = 2;
 
     public Whispers_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = HORROR;
+        loseHP = baseLoseHP = LOSEHP;
     }
 
     // Actions the card should do.
@@ -47,7 +46,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while (var1.hasNext()) {
             AbstractMonster mon = (AbstractMonster) var1.next();
-            addToBot(new ApplyPowerAction(mon, p, new HorrorPower(mon, p, magicNumber, false), magicNumber));
+            addToBot(new LoseHPMindAction(mon, p, loseHP));
         }
     }
 
@@ -56,7 +55,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_HORROR);
+            upgradeLoseHPNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

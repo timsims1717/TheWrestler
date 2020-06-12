@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import wrestler.deprecated.MindvicePower;
 import wrestler.util.TextureLoader;
 
 import java.util.Iterator;
@@ -55,7 +56,7 @@ public class UnearthlyVisionsPower extends AbstractPower implements CloneablePow
             while (var1.hasNext()) {
                 AbstractMonster m = (AbstractMonster) var1.next();
                 if (!m.isDeadOrEscaped()) {
-                    addToBot(new ApplyPowerAction(m, owner, new HorrorPower(m, owner, amount, false), amount));
+                    addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
                 }
             }
         }

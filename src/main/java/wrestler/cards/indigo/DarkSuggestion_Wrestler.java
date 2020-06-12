@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.HorrorPower;
+import wrestler.powers.CompelledPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -30,18 +30,18 @@ public class DarkSuggestion_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int HORROR = 7;
-    private static final int UPGRADE_HORROR = 2;
+    private static final int COMPULSION = 1;
+    private static final int UPGRADE_COMPULSION = 1;
 
     public DarkSuggestion_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        horror = baseHorror = HORROR;
+        magicNumber = baseMagicNumber = COMPULSION;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, horror, false), horror));
+        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.
@@ -49,7 +49,7 @@ public class DarkSuggestion_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeHorrorNumber(UPGRADE_HORROR);
+            upgradeMagicNumber(UPGRADE_COMPULSION);
             initializeDescription();
         }
     }

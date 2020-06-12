@@ -49,7 +49,7 @@ public class CraveNothingPower extends AbstractPower implements CloneablePowerIn
     public void onExhaust(AbstractCard abstractCard) {
         if (abstractCard.cardID.equals(VoidCard.ID)) {
             flash();
-            owner.heal(amount, false);
+            owner.heal(amount, true);
         }
     }
 

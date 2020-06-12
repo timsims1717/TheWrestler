@@ -26,7 +26,7 @@ public class CheapShotAction extends AbstractGameAction {
     public void update() {
         card.baseDamage -= amount;
         card.applyPowers();
-        if (upgraded) {
+        if (!upgraded) {
             Iterator var1 = AbstractDungeon.player.discardPile.group.iterator();
 
             AbstractCard c;

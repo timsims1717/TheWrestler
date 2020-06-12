@@ -2,9 +2,9 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.EldritchFormPower;
@@ -16,12 +16,12 @@ public class EldritchForm_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(EldritchForm_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
+
 
     // STAT DECLARATION
 
@@ -31,30 +31,34 @@ public class EldritchForm_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 3;
-    private static final int ENERGY_DRAW = 2;
+
+    private static final int STR_DEX_UP = 7;
+    private static final int UPGRADE_STR_DEX_UP = 3;
+    private static final int LOSEHP = 2;
 
     // /STAT DECLARATION/
 
     public EldritchForm_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = ENERGY_DRAW;
-        isEthereal = true;
-    }
-    
-    // Actions the card should do.
-    @Override
-    public void use(final AbstractPlayer p, final AbstractMonster m) {
-        devoid();
-        addToBot(new ApplyPowerAction(p, p, new EldritchFormPower(p, p, magicNumber), magicNumber));
+        magicNumber = baseMagicNumber = STR_DEX_UP;
     }
 
-    //Upgraded stats.
+
+    // Actions the card should do.
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new EldritchFormPower(p, p, LOSEHP), LOSEHP));
+    }
+
+
+    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            isEthereal = false;
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_STR_DEX_UP);
             initializeDescription();
         }
     }

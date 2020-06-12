@@ -29,21 +29,21 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int HORROR = 2;
-    private static final int UPGRADE_HORROR = 1;
+    private static final int LOSEHP = 2;
+    private static final int UPGRADE_LOSEHP = 1;
 
     // /STAT DECLARATION/
 
     public Torment_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        horror = baseHorror = HORROR;
+        magicNumber = baseMagicNumber = LOSEHP;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, horror), horror));
+        addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, magicNumber), magicNumber));
     }
 
 
@@ -52,7 +52,7 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeHorrorNumber(UPGRADE_HORROR);
+            upgradeMagicNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

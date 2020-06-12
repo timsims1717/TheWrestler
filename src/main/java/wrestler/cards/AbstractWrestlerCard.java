@@ -29,10 +29,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public boolean wantsTargetGrapple;
     final static public String NotGrappledMessage = "That enemy is not Grappled.";
 
-    public int horror;
-    public int baseHorror;
-    public boolean upgradedHorror;
-    public boolean isHorrorModified;
+    public int loseHP;
+    public int baseLoseHP;
+    public boolean upgradedLoseHP;
+    public boolean isLoseHPModified;
 
     public AbstractWrestlerCard(final String id,
                                 final String img,
@@ -50,7 +50,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         isBlockModified = false;
         isMagicNumberModified = false;
         isGrappleModified = false;
-        isHorrorModified = false;
+        isLoseHPModified = false;
         requiresTargetGrapple = false;
         wantsTargetGrapple = false;
     }
@@ -61,9 +61,9 @@ public abstract class AbstractWrestlerCard extends CustomCard {
             grapple = baseGrapple;
             isGrappleModified = true;
         }
-        if (upgradedHorror) {
-            horror = baseHorror;
-            isHorrorModified = true;
+        if (upgradedLoseHP) {
+            loseHP = baseLoseHP;
+            isLoseHPModified = true;
         }
     }
 
@@ -73,10 +73,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         upgradedGrapple = true;
     }
 
-    public void upgradeHorrorNumber(int amount) {
-        baseHorror += amount;
-        horror = baseHorror;
-        upgradedHorror = true;
+    public void upgradeLoseHPNumber(int amount) {
+        baseLoseHP += amount;
+        loseHP = baseLoseHP;
+        upgradedLoseHP = true;
     }
 
     @Override
@@ -128,20 +128,20 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         super.applyPowers();
         if (AbstractDungeon.player.hasPower(TormentPower.POWER_ID)) {
             int amount = AbstractDungeon.player.getPower(TormentPower.POWER_ID).amount;
-            isHorrorModified = false;
-            float tmp = (float)baseHorror;
+            isLoseHPModified = false;
+            float tmp = (float) baseLoseHP;
 
             tmp += amount;
 
-            if (baseHorror != MathUtils.floor(tmp)) {
-                isHorrorModified = true;
+            if (baseLoseHP != MathUtils.floor(tmp)) {
+                isLoseHPModified = true;
             }
 
             if (tmp < 0.0F) {
                 tmp = 0.0F;
             }
 
-            horror = MathUtils.floor(tmp);
+            loseHP = MathUtils.floor(tmp);
         }
     }
 

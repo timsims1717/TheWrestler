@@ -4,14 +4,13 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import wrestler.actions.LoseHPMindAction;
+import wrestler.deprecated.MindvicePower;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
@@ -46,9 +45,13 @@ public class ChillTouchPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && power.ID.equals(GrapplePower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(target, source, new HorrorPower(target, source, amount, false), amount));
-            flash();
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            if (power.ID.equals(GrapplePower.POWER_ID)) {
+                addToBot(new LoseHPMindAction(target, source, amount));
+                flash();
+            } else if (power.ID.equals(TormentPower.POWER_ID)) {
+                addToBot(new ApplyPowerAction(source, source, new ChillTouchPower(source, source, power.amount), power.amount));
+            }
         }
     }
 

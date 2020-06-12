@@ -1,18 +1,13 @@
 package wrestler.powers;
 
-import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
-import basemod.interfaces.PostExhaustSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import wrestler.actions.LoseHPMindAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
@@ -36,7 +31,7 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
         this.amount = amount;
         this.source = source;
 
-        type = PowerType.BUFF;
+        type = PowerType.DEBUFF;
         isTurnBased = false;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
@@ -46,21 +41,16 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void onCardDraw(AbstractCard card) {
-        if (card.cardID.equals(VoidCard.ID)) {
-            flash();
-            addToBot(new GainEnergyAction(amount));
-            addToBot(new DrawCardAction(amount));
-        }
+    public void atEndOfTurn(boolean isPlayer) {
+        flash();
+        addToBot(new LoseHPMindAction(owner, owner, amount));
+        amount += 2;
+        updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        StringBuilder s = new StringBuilder();
-        for (int i = 0; i < amount; i++) {
-            s.append(DESCRIPTIONS[1]);
-        }
-        description = DESCRIPTIONS[0] + s.toString() + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

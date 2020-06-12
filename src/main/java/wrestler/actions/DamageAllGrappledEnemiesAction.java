@@ -40,6 +40,7 @@ public class DamageAllGrappledEnemiesAction extends AbstractGameAction {
 
     public DamageAllGrappledEnemiesAction(AbstractPlayer player, int baseDamage, DamageInfo.DamageType type, AbstractGameAction.AttackEffect effect) {
         this(player, (int[])null, type, effect, false);
+        this.damageType = type;
         this.baseDamage = baseDamage;
         this.utilizeBaseDamage = true;
     }
@@ -50,7 +51,7 @@ public class DamageAllGrappledEnemiesAction extends AbstractGameAction {
             boolean playedMusic = false;
             n = AbstractDungeon.getCurrRoom().monsters.monsters.size();
             if (this.utilizeBaseDamage) {
-                this.damage = DamageInfo.createDamageMatrix(baseDamage);
+                this.damage = DamageInfo.createDamageMatrix(baseDamage, damageType == DamageInfo.DamageType.THORNS);
             }
 
             for (int i = 0; i < n; ++i) {

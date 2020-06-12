@@ -34,7 +34,7 @@ public class CharmingWords_Wrestler extends AbstractWrestlerCard {
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 3;
     private static final int WEAK = 1;
-    private static final int UPGRADE_WEAK = 2;
+    private static final int UPGRADE_WEAK = 1;
 
     // /STAT DECLARATION/
 

@@ -30,15 +30,6 @@ public class MakeRandomCardAction extends AbstractGameAction {
                 cardRarity = AbstractCard.CardRarity.RARE;
             }
             AbstractCard card = CardLibrary.getAnyColorCard(cardRarity).makeCopy();
-            if (!card.exhaust) {
-                card.exhaust = true;
-                card.rawDescription += " NL Exhaust.";
-            }
-            if (!card.isEthereal) {
-                card.isEthereal = true;
-                card.rawDescription = "Ethereal. NL " + card.rawDescription;
-            }
-            card.initializeDescription();
             this.addToBot(new MakeTempCardInHandAction(card));
 
             isDone = true;

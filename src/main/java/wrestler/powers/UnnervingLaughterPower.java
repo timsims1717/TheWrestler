@@ -12,9 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import wrestler.actions.LoseHPMindAction;
 import wrestler.util.TextureLoader;
-
-import java.util.Iterator;
 
 import static wrestler.Wrestler.makePowerPath;
 
@@ -48,10 +47,17 @@ public class UnnervingLaughterPower extends AbstractPower implements CloneablePo
     }
 
     @Override
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && power.ID.equals(TormentPower.POWER_ID)) {
+            addToBot(new ApplyPowerAction(source, source, new UnnervingLaughterPower(source, source, power.amount), power.amount));
+        }
+    }
+
+    @Override
     public void atStartOfTurn() {
         flash();
         AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-        addToBot(new ApplyPowerAction(target, owner, new HorrorPower(target, owner, amount, false), amount));
+        addToBot(new LoseHPMindAction(target, owner, amount));
     }
 
     @Override

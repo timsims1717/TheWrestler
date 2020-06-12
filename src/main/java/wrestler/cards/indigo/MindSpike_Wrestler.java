@@ -3,12 +3,14 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.LoseHPMindAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.HorrorPower;
+import wrestler.deprecated.MindvicePower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -34,22 +36,22 @@ public class MindSpike_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 4;
     private static final int UPGRADE_DMG = 2;
-    private static final int HORROR = 3;
-    private static final int UPGRADE_HORROR = 1;
+    private static final int LOSEHP = 4;
+    private static final int UPGRADE_LOSEHP = 2;
 
     public MindSpike_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = HORROR;
+        loseHP = baseLoseHP = LOSEHP;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, magicNumber, false), magicNumber));
+        addToBot(new LoseHPMindAction(m, p, loseHP));
     }
 
     // Upgraded stats.
@@ -58,7 +60,7 @@ public class MindSpike_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
-            upgradeMagicNumber(UPGRADE_HORROR);
+            upgradeLoseHPNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

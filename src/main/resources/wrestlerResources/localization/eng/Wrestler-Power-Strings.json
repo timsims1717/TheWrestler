@@ -3,69 +3,76 @@
         "NAME": "Grapple",
         "DESCRIPTIONS": ["Each turn, Grapple is reduced by 1."]
     },
-    "wrestler:HorrorPower": {
-        "NAME": "Horror",
+    "wrestler:CompelledPower": {
+        "NAME": "Compelled",
         "DESCRIPTIONS": [
-            "If Horror was applied since last turn, at the start of ",
-            "your", "its", " turn, loses #b", " HP. Otherwise, loses #b",
-            " Horror. (Horror #bhas ", "#bnot ", "been applied.)"
+            "At the end of the round, this creature will",
+            " lose #b", " HP for each time it attacked",
+            " gain #b", " #yWeak", " #yVulnerable",
+            " apply #b", " #yDexterity to you", " #yStrength to you",
+            " and will", ".",
+            "This creature cannot escape and will lose #b", " HP instead.",
+            "Compelled has no effect this turn."
         ]
     },
 
     "wrestler:BodyShieldPower": {
         "NAME": "Body Shield",
-        "DESCRIPTIONS": ["Whenever you are attacked, deal #b", " to each #bgrappled enemy."]
+        "DESCRIPTIONS": ["Whenever you are attacked, deal #b", " damage to each #yGrappled enemy."]
     },
     "wrestler:ChillTouchPower": {
         "NAME": "Chill Touch",
-        "DESCRIPTIONS": ["Whenever you apply #bGrapple, apply #b", " #bHorror."]
+        "DESCRIPTIONS": ["Whenever you apply #yGrapple, the enemy loses #b", " HP."]
     },
     "wrestler:CloseQuartersPower": {
         "NAME": "Close Quarters",
-        "DESCRIPTIONS": ["Your attacks deal #b", " additional damage to #bGrappled enemies."]
+        "DESCRIPTIONS": ["Your attacks deal #b", " additional damage to #yGrappled enemies."]
     },
     "wrestler:CraveNothingPower": {
         "NAME": "Crave Nothing",
-        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, heal #b", " HP."]
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]
     },
-    "wrestler:EldritchFormPower": {
-        "NAME": "Eldritch Form",
-        "DESCRIPTIONS": ["The first time you draw an Uncanny card on your turn, gain ", "[E]", "."]
-    },
-    "wrestler:FavoredPower": {
-        "NAME": "Favored",
-        "DESCRIPTIONS": ["At the start of your turn, shuffle #b", " #bBoons into your hand."]
+    "wrestler:WeirdConduitPower": {
+        "NAME": "Weird Conduit",
+        "DESCRIPTIONS": ["The first time you draw a Void card on your turn, gain ", "[E] ", " and draw #b", " card.", " cards."]
     },
     "wrestler:IronGripPower": {
         "NAME": "Iron Grip",
-        "DESCRIPTIONS": ["#bGrapple is affected by #Strength and #Dexterity."]
+        "DESCRIPTIONS": ["#bGrapple is affected by #yStrength and #yDexterity."]
     },
-    "wrestler:PossessedPower": {
-        "NAME": "Possessed",
-        "DESCRIPTIONS": ["At the end of your turn, gain #b", " #bHorror."]
+    "wrestler:EldritchFormPower": {
+        "NAME": "Eldritch Form",
+        "DESCRIPTIONS": ["At the end of your turn, lose #b", " HP and increase this number by #b2."]
     },
     "wrestler:StickyFingersPower": {
         "NAME": "Sticky Fingers",
-        "DESCRIPTIONS": ["Whenever you are attacked, apply #b", " #bgrapple."]
+        "DESCRIPTIONS": ["Whenever you are attacked, apply #b", " #yGrapple."]
     },
     "wrestler:TormentPower": {
         "NAME": "Torment",
-        "DESCRIPTIONS": ["Whenever you apply #bHorror, apply #b", " additional #bHorror."]
+        "DESCRIPTIONS": ["Whenever you cause an enemy to lose HP, they lose #b", " additional HP."]
     },
     "wrestler:UnearthlyVisionsPower": {
         "NAME": "Unearthly Visions",
-        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, apply #b", " #bhorror to each enemy."]
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, apply #b", " #yCompulsion to ALL enemy."]
     },
     "wrestler:UnnervingLaughterPower": {
         "NAME": "Unnerving Laughter",
-        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #bhorror to a random enemy."]
+        "DESCRIPTIONS": ["At the start of your turn, a random enemy loses #b", " HP."]
     },
     "wrestler:VanishingPower": {
         "NAME": "Vanishing",
-        "DESCRIPTIONS": ["Whenever an Uncanny card exhausts, gain #b", " #bDexterity."]
+        "DESCRIPTIONS": ["Whenever a Void card exhausts, gain #b", " #yDexterity."]
+    },
+    "wrestler:ManiaPower": {
+        "NAME": "Mania",
+        "DESCRIPTIONS": ["Next turn, lose #b", " #yEnergy."]
     },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",
-        "DESCRIPTIONS": ["At the end of your turn, #bGrappled enemies lose #b", "% of their current HP."]
+        "DESCRIPTIONS": [
+            "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP.",
+            "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP #b", " times."
+        ]
     }
 }

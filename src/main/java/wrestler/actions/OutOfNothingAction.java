@@ -27,6 +27,7 @@ public class OutOfNothingAction extends AbstractGameAction {
     };
 
     public OutOfNothingAction(AbstractPlayer p, boolean freeToPlayOnce, int energyOnUse, boolean upgraded) {
+        duration = Settings.ACTION_DUR_FAST;
         player = p;
         this.energyOnUse = energyOnUse;
         this.freeToPlayOnce = freeToPlayOnce;
@@ -48,9 +49,6 @@ public class OutOfNothingAction extends AbstractGameAction {
 
     public void update() {
         if (effect > 0) {
-            if (!freeToPlayOnce) {
-                player.energy.use(EnergyPanel.totalCount);
-            }
             if (duration == Settings.ACTION_DUR_FAST) {
                 if (player.hand.isEmpty() || player.drawPile.isEmpty()) {
                     isDone = true;
@@ -62,13 +60,16 @@ public class OutOfNothingAction extends AbstractGameAction {
             } else if (cardToDupe == null && !AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
                 cardToDupe = AbstractDungeon.handCardSelectScreen.selectedCards.getBottomCard();
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
-                this.tickDuration();
+                tickDuration();
             } else if (cardToDupe != null) {
                 addToBot(new MakeTempCardInDrawPileAction(cardToDupe.makeCopy(), effect, true, true));
-
+                player.hand.addToBottom(cardToDupe);
+                if (!freeToPlayOnce) {
+                    player.energy.use(EnergyPanel.totalCount);
+                }
                 isDone = true;
             }
-            this.tickDuration();
+            tickDuration();
         }
     }
 }

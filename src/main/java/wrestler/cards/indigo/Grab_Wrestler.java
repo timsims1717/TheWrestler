@@ -32,9 +32,9 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 0;
 
     private static final int GRAPPLE = 2;
-    private static final int UPGRADE_GRP = 2;
+    private static final int UPGRADE_GRP = 1;
     private static final int BLOCK = 2;
-    private static final int UPGRADE_BLOCK = 2;
+    private static final int UPGRADE_BLOCK = 1;
 
     // /STAT DECLARATION/
 

@@ -26,20 +26,20 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 2;
-    private static final int MAGIC = 2;
-    private static final int UPGRADE_MAGIC = 1;
+    private static final int LOSEHP = 2;
+    private static final int UPGRADE_LOSEHP = 1;
 
     // /STAT DECLARATION/
 
     public ChillTouch_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = MAGIC;
+        loseHP = baseLoseHP = LOSEHP;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ChillTouchPower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new ChillTouchPower(p, p, loseHP), loseHP));
     }
 
     //Upgraded stats.
@@ -47,7 +47,7 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeLoseHPNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

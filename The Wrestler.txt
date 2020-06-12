@@ -33,55 +33,10 @@ Not sure if there is enough variation. May need one more mechanic or theme.
 
 Costume relics
 
-Combo Ideas:
-	Combos are gained by using cards that share at least one of the following keywords:
-		Grapple (or is Grappled)
-		Block
-		Attack
-		Horror
-		Uncanny
-	Combos are carried over turn to turn as long as no attack damage was taken
-	Every 5, 15, etc, gain 1 temp Str (for example), every 10, 20, etc, gain 1 temp Dex
-	First time hitting numbers gives benefit:
-		3: gain 1 str
-		5: gain 1 dex
-		8: gain 1 energy
-		10: draw
-		repeat?
-	Relics that also build on comboing
-
-Alternatives to Void: Mental Instability!:
-	Muddled: randomizes the cost of one card in your hand when drawn
-	Mental Block: discards hand and draw new one
-	Hallucination: becomes a completely random card when drawn, that card is ethereal and exhausts once played
-	Twitch: Lose 1 Dexterity and gain 1 strength this turn when drawn
-	Expansion: Draw up to 10 cards when drawn
-	Verbal Tic: Play the top card of your deck and exhaust it
 
 
-Eldritch Entities:
-Uncommon: The Luchador
-	Grapple
-	Single Target Damage
-	Dex Up
-	Less draw
-Uncommon: The Awakened One
-	Multi Damage
-	Str Up
-	Devoid
-Rare: The Tentacular
-	Horror
-	Dex Up
-	Parasite
-Rare: The Block
-	Card Draw
-	Energy Up
-	Str/Dex Down
-
-Ritual
-Ritual Effect: Summon The Luchador.
-
-Ritual cards retain. When played, add a copy of the card into your draw pile. If there are ever three copies of the same Ritual card in your hand, exhaust them all and apply the effect.
+Change Voidblast -> Uncommon
+Make Devoid common 14/18 damage attack (random?)
 
 Colors:
 BG:

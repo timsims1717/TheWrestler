@@ -36,10 +36,10 @@ public class FullBodyVice_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 3;
+    private static final int COST = 1;
 
-    private static final int DAMAGE = 18;
-    private static final int UPGRADE_DMG = 6;
+    private static final int DAMAGE = 16;
+    private static final int UPGRADE_DMG = 4;
     private static final int STR_DOWN = 11;
     private static final int UPGRADE_STR_DOWN = 7;
 

@@ -2,7 +2,8 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.DrawPileToDiscardAction;
+import wrestler.actions.ForgetAction;
+import wrestler.actions.ModifyMemoryAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
@@ -40,7 +41,7 @@ public class ModifyMemory_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawPileToDiscardAction(magicNumber, false));
+        addToBot(new ModifyMemoryAction(magicNumber));
     }
 
     // Upgraded stats.

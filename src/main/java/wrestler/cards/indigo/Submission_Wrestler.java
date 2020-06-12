@@ -64,7 +64,6 @@ public class Submission_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeGrappleNumber(UPGRADE_GRP);
             upgradeMagicNumber(UPGRADE_SUBMIT);
             initializeDescription();
         }

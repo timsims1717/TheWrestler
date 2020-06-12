@@ -31,7 +31,7 @@ public class ElbowCut_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int DAMAGE = 9;
-    private static final int UPGRADE_DMG = 3;
+    private static final int UPGRADE_DMG = 4;
     private static final int DRAW = 1;
 
     // /STAT DECLARATION/

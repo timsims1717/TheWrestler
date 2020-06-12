@@ -32,19 +32,17 @@ public class WearDown_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 2;
-    private static final int PERC = 10;
 
     // /STAT DECLARATION/
 
     public WearDown_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = PERC;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WearDownPower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WearDownPower(p, 1), 1));
     }
 
     //Upgraded stats.

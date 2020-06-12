@@ -1,11 +1,15 @@
 package wrestler.cards.indigo;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.LoseHPMindAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.HorrorPower;
+import wrestler.deprecated.MindvicePower;
+import wrestler.powers.CompelledPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -30,18 +34,22 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 4;
-    private static final int HORROR = 40;
-    private static final int UPGRADE_HORROR = 10;
+    private static final int LOSEHP = 15;
+    private static final int UPGRADE_LOSEHP = 5;
+    private static final int COMPULSION = 5;
+    private static final int UPGRADE_COMPULSION = 2;
 
     public DominateMind_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = HORROR;
+        loseHP = baseLoseHP = LOSEHP;
+        magicNumber = baseMagicNumber = COMPULSION;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new HorrorPower(m, p, magicNumber, false), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
+        addToBot(new LoseHPMindAction(m, p, loseHP));
     }
 
     // Upgraded stats.
@@ -49,7 +57,8 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_HORROR);
+            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_COMPULSION);
             initializeDescription();
         }
     }
