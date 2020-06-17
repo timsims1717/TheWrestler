@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
+import wrestler.powers.CompelledPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -33,8 +33,7 @@ public class CharmingWords_Wrestler extends AbstractWrestlerCard {
 
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 3;
-    private static final int WEAK = 1;
-    private static final int UPGRADE_WEAK = 1;
+    private static final int COMPELLED = 1;
 
     // /STAT DECLARATION/
 
@@ -42,7 +41,7 @@ public class CharmingWords_Wrestler extends AbstractWrestlerCard {
     public CharmingWords_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = WEAK;
+        magicNumber = baseMagicNumber = COMPELLED;
     }
 
 
@@ -50,7 +49,8 @@ public class CharmingWords_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
 
@@ -60,7 +60,6 @@ public class CharmingWords_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            upgradeMagicNumber(UPGRADE_WEAK);
             initializeDescription();
         }
     }

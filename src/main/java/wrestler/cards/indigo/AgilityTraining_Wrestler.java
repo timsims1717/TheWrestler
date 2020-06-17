@@ -50,13 +50,14 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DEXTERITY;
         exhaust = true;
-        this.timesUpgraded = upgrades;
+        timesUpgraded = upgrades;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_DMG = 2;
     private static final int GRAPPLE = 1;
     private static final int UPGRADE_GRAPPLE = 1;
@@ -57,6 +57,7 @@ public class HalfNelson_Wrestler extends AbstractWrestlerCard {
         }
 
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        super.use(p,m);
     }
 
     // Upgraded stats.

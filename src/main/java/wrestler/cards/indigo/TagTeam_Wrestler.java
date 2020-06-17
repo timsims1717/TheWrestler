@@ -25,9 +25,6 @@ public class TagTeam_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(TagTeam_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String[] EXTEND_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -66,6 +63,7 @@ public class TagTeam_Wrestler extends AbstractWrestlerCard {
             addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, dex), dex));
             addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, dex), dex));
         }
+        super.use(p,m);
     }
 
     // Upgraded stats.

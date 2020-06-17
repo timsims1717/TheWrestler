@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.util.TextureLoader;
@@ -39,7 +40,19 @@ public class ManiaPower extends AbstractPower implements CloneablePowerInterface
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        updateDescription();
+    }
+
+    public void updateDescription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(DESCRIPTIONS[0]);
+
+        for (int i = 0; i < amount; i++) {
+            sb.append(DESCRIPTIONS[1]);
+        }
+
+        sb.append(DESCRIPTIONS[2]);
+        description = sb.toString();
     }
 
     public void onEnergyRecharge() {

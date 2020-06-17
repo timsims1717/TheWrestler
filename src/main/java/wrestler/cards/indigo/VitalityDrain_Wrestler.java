@@ -28,7 +28,7 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
 
     private static final int STR_DOWN = 2;
     private static final int UPGRADE_STR_DOWN = 1;

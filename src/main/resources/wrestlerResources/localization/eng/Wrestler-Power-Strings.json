@@ -34,7 +34,7 @@
     },
     "wrestler:WeirdConduitPower": {
         "NAME": "Weird Conduit",
-        "DESCRIPTIONS": ["The first time you draw a Void card on your turn, gain ", "[E] ", " and draw #b", " card.", " cards."]
+        "DESCRIPTIONS": ["Whenever you draw a Void card on your turn, gain ", "[E] ", " and draw #b", " card.", " cards."]
     },
     "wrestler:IronGripPower": {
         "NAME": "Iron Grip",
@@ -46,7 +46,7 @@
     },
     "wrestler:StickyFingersPower": {
         "NAME": "Sticky Fingers",
-        "DESCRIPTIONS": ["Whenever you are attacked, apply #b", " #yGrapple."]
+        "DESCRIPTIONS": ["Whenever you play a card this turn, apply #b", " #yGrapple to ", "a random enemy.", "ALL enemies."]
     },
     "wrestler:TormentPower": {
         "NAME": "Torment",
@@ -66,7 +66,7 @@
     },
     "wrestler:ManiaPower": {
         "NAME": "Mania",
-        "DESCRIPTIONS": ["Next turn, lose #b", " #yEnergy."]
+        "DESCRIPTIONS": ["Next turn, lose ", "[E] ", "."]
     },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",
@@ -74,5 +74,24 @@
             "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP.",
             "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP #b", " times."
         ]
+    },
+    "wrestler:ComboPower": {
+        "NAME": "Combo",
+        "DESCRIPTIONS": [
+            "Gain #b4 Block each turn.",
+            "Draw #b1 additional card.",
+            "Gain #b1 additional Energy.",
+            "Gain #b10 Gold at the end of the battle.",
+            "Heal #b7 HP at the end of the battle.",
+            "Gain #b25 Gold at the end of the battle.",
+            "Gain #b1 additional card at the end of the battle.",
+            "Gain #b50 Gold at the end of the battle.",
+            "Gain #b4 Max HP the end of the battle.",
+            "Gain #b100 Gold at the end of the battle."
+        ]
+    },
+    "wrestler:RelentlessPower": {
+        "NAME": "Relentless",
+        "DESCRIPTIONS": ["Playing non-Combo cards does not break your Combo."]
     }
 }

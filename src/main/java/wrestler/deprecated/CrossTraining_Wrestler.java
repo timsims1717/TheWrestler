@@ -1,18 +1,12 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.actions.CrossTrainingAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.GrapplePower;
-
-import java.util.Iterator;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -50,6 +44,7 @@ public class CrossTraining_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new CrossTrainingAction(upgraded));
+        super.use(p,m);
     }
 
 

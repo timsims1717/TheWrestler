@@ -53,6 +53,7 @@ public class IntoNothing_Wrestler extends AbstractWrestlerCard {
             addToBot(new VFXAction(new BiteEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale, Color.SCARLET.cpy()), 0.3F));
         }
         addToBot(new IntoNothingAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        super.use(p,m);
     }
 
 

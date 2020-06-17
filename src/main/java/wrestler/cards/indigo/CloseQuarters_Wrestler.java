@@ -26,7 +26,7 @@ public class CloseQuarters_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 2;
 
@@ -41,6 +41,7 @@ public class CloseQuarters_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new CloseQuartersPower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     //Upgraded stats.

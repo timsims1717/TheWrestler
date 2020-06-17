@@ -44,6 +44,7 @@ public class MindRead_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(magicNumber));
+        super.use(p,m);
     }
 
     // Upgraded stats.

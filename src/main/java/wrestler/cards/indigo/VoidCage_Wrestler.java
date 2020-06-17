@@ -46,6 +46,7 @@ public class VoidCage_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
         addToBot(new GainBlockAction(p, p, block));
+        super.use(p,m);
     }
 
 

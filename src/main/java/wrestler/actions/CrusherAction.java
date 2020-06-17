@@ -47,7 +47,7 @@ public class CrusherAction extends AbstractGameAction {
 
         if (effect > 0) {
             for (int i = 0; i < effect; i++) {
-                addToBot(new DamageAction(target, new DamageInfo(target, damage, DamageInfo.DamageType.NORMAL)));
+                addToBot(new DamageAction(target, new DamageInfo(target, damage, DamageInfo.DamageType.NORMAL), AttackEffect.SLASH_HORIZONTAL));
             }
             if (!freeToPlayOnce) {
                 player.energy.use(EnergyPanel.totalCount);

@@ -12,6 +12,7 @@ import wrestler.actions.LoseHPMindAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.deprecated.MindvicePower;
+import wrestler.powers.CompelledPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -23,8 +24,6 @@ public class ThoughtEater_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(ThoughtEater_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
 
     // /TEXT DECLARATION/
@@ -39,21 +38,27 @@ public class ThoughtEater_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
     private static final int LOSEHP = 3;
-    private static final int DRAW = 1;
+    private static final int UPGRADE_LOSEHP = 2;
+    private static final int COMPULSION = 1;
 
     public ThoughtEater_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         loseHP = baseLoseHP = LOSEHP;
-        magicNumber = baseMagicNumber = DRAW;
+        magicNumber = baseMagicNumber = COMPULSION;
+        isCombo = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPMindAction(m, p, loseHP));
-        if (upgraded) {
-            addToBot(new DrawCardAction(magicNumber));
-        }
+        addToBot(new DrawCardAction(magicNumber));
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.
@@ -61,7 +66,7 @@ public class ThoughtEater_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeLoseHPNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

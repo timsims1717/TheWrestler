@@ -53,6 +53,7 @@ public class EldritchInsight_Wrestler extends AbstractWrestlerCard {
         addToBot(new ForgetAction(magicNumber));
         addToBot(new RememberAction(magicNumber));
         addToBot(new DrawCardAction(magicNumber));
+        super.use(p,m);
     }
 
 

@@ -35,6 +35,6 @@
     "NAMES": [
       "combo"
     ],
-    "DESCRIPTION": "Combo is lost when HP is lost from enemies and when a card without Combo is played. Build up your Combo for special benefits."
+    "DESCRIPTION": "Build up your Combo for special benefits. NL Combo is lost when HP is lost from enemies or when a card without Combo is played."
   }
 ]

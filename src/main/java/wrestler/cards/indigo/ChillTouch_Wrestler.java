@@ -40,6 +40,7 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ChillTouchPower(p, p, loseHP), loseHP));
+        super.use(p,m);
     }
 
     //Upgraded stats.

@@ -31,7 +31,6 @@ public class IntoNothingAction extends AbstractGameAction {
     public IntoNothingAction(AbstractCreature target, DamageInfo info) {
         this.info = info;
         setValues(target, info);
-        actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_FAST;
         player = AbstractDungeon.player;
         actionType = ActionType.DAMAGE;
@@ -70,7 +69,7 @@ public class IntoNothingAction extends AbstractGameAction {
         if (duration == startDuration) {
             if (!player.masterDeck.isEmpty()) {
                 CardGroup temp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                Iterator var6 = player.masterDeck.group.iterator();
+                Iterator var6 = player.masterDeck.getPurgeableCards().group.iterator();
 
                 while(var6.hasNext()) {
                     AbstractCard c = (AbstractCard)var6.next();

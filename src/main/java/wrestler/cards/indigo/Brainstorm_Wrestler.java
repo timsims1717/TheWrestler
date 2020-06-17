@@ -50,6 +50,7 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new RememberAction(magicNumber));
         addToBot(new DrawCardAction(magicNumber));
+        super.use(p,m);
     }
 
 

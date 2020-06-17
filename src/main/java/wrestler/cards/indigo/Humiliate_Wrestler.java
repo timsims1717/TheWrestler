@@ -55,6 +55,7 @@ public class Humiliate_Wrestler extends AbstractWrestlerCard {
         if (isTargetGrappled(m)) {
             addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
         }
+        super.use(p,m);
     }
 
 

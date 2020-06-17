@@ -46,6 +46,7 @@ public class HammerStrike_Wrestler extends AbstractWrestlerCard {
         tags.add(CardTags.STRIKE);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = DISCARD;
+        isCombo = true;
     }
 
     // Actions the card should do.
@@ -53,6 +54,8 @@ public class HammerStrike_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ForgetAction(magicNumber, false));
+
+        super.use(p,m);
     }
 
     // Upgraded stats.

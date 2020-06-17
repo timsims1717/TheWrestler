@@ -33,11 +33,6 @@ Not sure if there is enough variation. May need one more mechanic or theme.
 
 Costume relics
 
-
-
-Change Voidblast -> Uncommon
-Make Devoid common 14/18 damage attack (random?)
-
 Colors:
 BG:
 	0c0c26

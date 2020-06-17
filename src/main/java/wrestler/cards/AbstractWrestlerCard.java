@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import wrestler.powers.ComboPower;
 import wrestler.powers.GrapplePower;
 import wrestler.powers.TormentPower;
 
@@ -33,6 +34,8 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public int baseLoseHP;
     public boolean upgradedLoseHP;
     public boolean isLoseHPModified;
+
+    public boolean isCombo;
 
     public AbstractWrestlerCard(final String id,
                                 final String img,
@@ -118,6 +121,11 @@ public abstract class AbstractWrestlerCard extends CustomCard {
                     break;
                 }
             }
+        } else if (isCombo) {
+            glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+            if (playerHasCombo()) {
+                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+            }
         } else {
             super.triggerOnGlowCheck();
         }
@@ -160,5 +168,26 @@ public abstract class AbstractWrestlerCard extends CustomCard {
 
     public void devoid() {
         devoid(1);
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        if (isCombo) {
+            if (playerHasCombo()) {
+                comboUse(p, m);
+            }
+            combo();
+        }
+    }
+
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {}
+
+    public boolean playerHasCombo() {
+        return AbstractDungeon.player.hasPower(ComboPower.POWER_ID);
+    }
+
+    public void combo() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new ApplyPowerAction(p, p, new ComboPower(p, p, 1), 1));
     }
 }

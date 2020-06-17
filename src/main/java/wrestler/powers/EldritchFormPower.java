@@ -42,6 +42,10 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
+        if (owner.hasPower(ComboPower.POWER_ID)) {
+            ComboPower combo = (ComboPower) owner.getPower(ComboPower.POWER_ID);
+            combo.protect = true;
+        }
         flash();
         addToBot(new LoseHPMindAction(owner, owner, amount));
         amount += 2;

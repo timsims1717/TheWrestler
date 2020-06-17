@@ -40,7 +40,7 @@ public class ElbowCut_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = DRAW;
-        wantsTargetGrapple = true;
+        isCombo = true;
     }
 
 
@@ -48,10 +48,12 @@ public class ElbowCut_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        super.use(p,m);
+    }
 
-        if (isTargetGrappled(m)) {
-            addToBot(new DrawCardAction(magicNumber));
-        }
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(magicNumber));
     }
 
     // Upgraded stats.

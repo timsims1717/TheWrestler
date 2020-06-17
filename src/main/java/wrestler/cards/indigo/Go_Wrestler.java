@@ -40,6 +40,7 @@ public class Go_Wrestler extends AbstractWrestlerCard {
         wantsTargetGrapple = true;
         isInnate = true;
         exhaust = true;
+        isCombo = true;
     }
 
 
@@ -51,6 +52,7 @@ public class Go_Wrestler extends AbstractWrestlerCard {
         if (isTargetGrappled(m)) {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
+        super.use(p,m);
     }
 
     // Upgraded stats.

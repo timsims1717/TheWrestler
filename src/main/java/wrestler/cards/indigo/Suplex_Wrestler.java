@@ -2,9 +2,12 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
@@ -19,6 +22,8 @@ public class Suplex_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(Suplex_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
 
     // /TEXT DECLARATION/
@@ -26,15 +31,15 @@ public class Suplex_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 2;
 
-    private static final int DAMAGE = 17;
-    private static final int UPGRADE_DAMAGE = 5;
+    private static final int DAMAGE = 16;
+    private static final int GAIN_ENERGY = 1;
 
     // /STAT DECLARATION/
 
@@ -42,7 +47,7 @@ public class Suplex_Wrestler extends AbstractWrestlerCard {
     public Suplex_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        requiresTargetGrapple = true;
+        isCombo = true;
     }
 
 
@@ -50,16 +55,22 @@ public class Suplex_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new RemoveSpecificPowerAction(m, p, GrapplePower.POWER_ID));
+        super.use(p,m);
     }
 
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        if (upgraded) {
+            addToBot(new GainEnergyAction(GAIN_ENERGY));
+        }
+    }
 
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

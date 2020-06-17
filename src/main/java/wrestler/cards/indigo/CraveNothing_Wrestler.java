@@ -41,6 +41,7 @@ public class CraveNothing_Wrestler extends AbstractWrestlerCard {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         devoid();
         addToBot(new ApplyPowerAction(p, p, new CraveNothingPower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     //Upgraded stats.

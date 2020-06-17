@@ -12,20 +12,26 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardSave;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wrestler.cards.indigo.*;
 import wrestler.characters.TheWrestler;
-import wrestler.cards.indigo.EldritchInsight_Wrestler;
-import wrestler.deprecated.StickyFingers_Wrestler;
+import wrestler.patches.ComboRewardsPatch;
 import wrestler.potions.PlaceholderPotion;
+import wrestler.powers.ComboPower;
 import wrestler.relics.StartingRelic;
+import wrestler.rewards.ComboCardReward;
+import wrestler.rewards.ComboGoldReward;
 import wrestler.util.IDCheckDontTouchPls;
 import wrestler.util.TextureLoader;
 import wrestler.variables.Grapple;
@@ -34,7 +40,6 @@ import wrestler.variables.LoseHP;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Properties;
 
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -72,6 +77,7 @@ public class Wrestler implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
+        PostBattleSubscriber,
         PostInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
@@ -327,6 +333,24 @@ public class Wrestler implements
         // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
 
         // =============== /EVENTS/ =================
+
+        // Registering Combo rewards
+        BaseMod.registerCustomReward(
+                ComboRewardsPatch.WRESTLER_COMBO_CARD,
+                (rewardSave) -> {
+                    return new wrestler.rewards.ComboCardReward();
+                },
+                (customReward) -> {
+                    return new RewardSave(customReward.type.toString(), null, 0, 0);
+                });
+        BaseMod.registerCustomReward(
+                ComboRewardsPatch.WRESTLER_COMBO_GOLD,
+                (rewardSave) -> {
+                    return new wrestler.rewards.ComboGoldReward(rewardSave.amount);
+                },
+                (customReward) -> {
+                    return new RewardSave(customReward.type.toString(), null, ((ComboGoldReward)customReward).goldAmt, 0);
+                });
         logger.info("Done loading badge Image and mod options");
     }
     
@@ -372,10 +396,6 @@ public class Wrestler implements
     
     // ================ ADD CARDS ===================
 
-    public static final ArrayList<AbstractCard> rareBoons = new ArrayList<>();
-    public static final ArrayList<AbstractCard> uncommonBoons = new ArrayList<>();
-    public static final ArrayList<AbstractCard> commonBoons = new ArrayList<>();
-    
     @Override
     public void receiveEditCards() {
         //Ignore this
@@ -418,8 +438,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(CharmingWords_Wrestler.ID);
         BaseMod.addCard(new CheapShot_Wrestler());
         UnlockTracker.unlockCard(CheapShot_Wrestler.ID);
-        BaseMod.addCard(new DarkSuggestion_Wrestler());
-        UnlockTracker.unlockCard(DarkSuggestion_Wrestler.ID);
+        BaseMod.addCard(new Delusion_Wrestler());
+        UnlockTracker.unlockCard(Delusion_Wrestler.ID);
         BaseMod.addCard(new ElbowCut_Wrestler());
         UnlockTracker.unlockCard(ElbowCut_Wrestler.ID);
         BaseMod.addCard(new HalfNelson_Wrestler());
@@ -444,12 +464,12 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Scramble_Wrestler.ID);
         BaseMod.addCard(new Sidestep_Wrestler());
         UnlockTracker.unlockCard(Sidestep_Wrestler.ID);
-        BaseMod.addCard(new Suplex_Wrestler());
-        UnlockTracker.unlockCard(Suplex_Wrestler.ID);
         BaseMod.addCard(new Twitch_Wrestler());
         UnlockTracker.unlockCard(Twitch_Wrestler.ID);
         BaseMod.addCard(new VoidBlast_Wrestler());
         UnlockTracker.unlockCard(VoidBlast_Wrestler.ID);
+        BaseMod.addCard(new WindUp_Wrestler());
+        UnlockTracker.unlockCard(WindUp_Wrestler.ID);
     }
 
     public void uncommonCards() {
@@ -474,10 +494,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(CloseQuarters_Wrestler.ID);
         BaseMod.addCard(new CraveNothing_Wrestler());
         UnlockTracker.unlockCard(CraveNothing_Wrestler.ID);
-        BaseMod.addCard(new CrossTraining_Wrestler());
-        UnlockTracker.unlockCard(CrossTraining_Wrestler.ID);
-        BaseMod.addCard(new Delusion_Wrestler());
-        UnlockTracker.unlockCard(Delusion_Wrestler.ID);
+        BaseMod.addCard(new DarkSuggestion_Wrestler());
+        UnlockTracker.unlockCard(DarkSuggestion_Wrestler.ID);
         BaseMod.addCard(new EldritchInsight_Wrestler());
         UnlockTracker.unlockCard(EldritchInsight_Wrestler.ID);
         BaseMod.addCard(new GetReady_Wrestler());
@@ -492,26 +510,30 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Humiliate_Wrestler.ID);
         BaseMod.addCard(new Lariat_Wrestler());
         UnlockTracker.unlockCard(Lariat_Wrestler.ID);
+        BaseMod.addCard(new LeapFrog_Wrestler());
+        UnlockTracker.unlockCard(LeapFrog_Wrestler.ID);
         BaseMod.addCard(new Migraine_Wrestler());
         UnlockTracker.unlockCard(Migraine_Wrestler.ID);
         BaseMod.addCard(new MindRead_Wrestler());
         UnlockTracker.unlockCard(MindRead_Wrestler.ID);
         BaseMod.addCard(new ModifyMemory_Wrestler());
         UnlockTracker.unlockCard(ModifyMemory_Wrestler.ID);
+        BaseMod.addCard(new MountainBomb_Wrestler());
+        UnlockTracker.unlockCard(MountainBomb_Wrestler.ID);
         BaseMod.addCard(new OutOfReach_Wrestler());
         UnlockTracker.unlockCard(OutOfReach_Wrestler.ID);
         BaseMod.addCard(new Outburst_Wrestler());
         UnlockTracker.unlockCard(Outburst_Wrestler.ID);
         BaseMod.addCard(new Pounce_Wrestler());
         UnlockTracker.unlockCard(Pounce_Wrestler.ID);
-        BaseMod.addCard(new PsychedelicIllusion_Wrestler());
-        UnlockTracker.unlockCard(PsychedelicIllusion_Wrestler.ID);
         BaseMod.addCard(new ShockingGrasp_Wrestler());
         UnlockTracker.unlockCard(ShockingGrasp_Wrestler.ID);
+        BaseMod.addCard(new StickyFingers_Wrestler());
+        UnlockTracker.unlockCard(StickyFingers_Wrestler.ID);
+        BaseMod.addCard(new Suplex_Wrestler());
+        UnlockTracker.unlockCard(Suplex_Wrestler.ID);
         BaseMod.addCard(new ThoughtEater_Wrestler());
         UnlockTracker.unlockCard(ThoughtEater_Wrestler.ID);
-        BaseMod.addCard(new UnearthlySkin_Wrestler());
-        UnlockTracker.unlockCard(UnearthlySkin_Wrestler.ID);
         BaseMod.addCard(new UncannyVisions_Wrestler());
         UnlockTracker.unlockCard(UncannyVisions_Wrestler.ID);
         BaseMod.addCard(new UnnervingLaughter_Wrestler());
@@ -522,8 +544,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(VoidCage_Wrestler.ID);
         BaseMod.addCard(new WeightTraining_Wrestler());
         UnlockTracker.unlockCard(WeightTraining_Wrestler.ID);
-        BaseMod.addCard(new Whispers_Wrestler());
-        UnlockTracker.unlockCard(Whispers_Wrestler.ID);
     }
 
     public void rareCards() {
@@ -548,6 +568,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(MindMeld_Wrestler.ID);
         BaseMod.addCard(new OutOfNothing_Wrestler());
         UnlockTracker.unlockCard(OutOfNothing_Wrestler.ID);
+        BaseMod.addCard(new Relentless_Wrestler());
+        UnlockTracker.unlockCard(Relentless_Wrestler.ID);
         BaseMod.addCard(new Submission_Wrestler());
         UnlockTracker.unlockCard(Submission_Wrestler.ID);
         BaseMod.addCard(new TagTeam_Wrestler());
@@ -639,5 +661,38 @@ public class Wrestler implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    // ================ /POST BATTLE/ ===================
+
+
+    @Override
+    public void receivePostBattle(AbstractRoom room) {
+        AbstractPlayer player = AbstractDungeon.player;
+        // Combo Rewards
+        if (player.hasPower(ComboPower.POWER_ID)) {
+            int amount = player.getPower(ComboPower.POWER_ID).amount;
+            if (amount >= ComboPower.THRESHOLD * ComboPower.GOLD1) {
+                ComboGoldReward.addComboGoldToRewards(ComboPower.GOLD1_AMOUNT);
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.HEAL) {
+                player.heal(ComboPower.HEAL_AMOUNT);
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.GOLD2) {
+                ComboGoldReward.addComboGoldToRewards(ComboPower.GOLD2_AMOUNT);
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.CARD) {
+                AbstractDungeon.getCurrRoom().rewards.add(0, new ComboCardReward());
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.GOLD3) {
+                ComboGoldReward.addComboGoldToRewards(ComboPower.GOLD3_AMOUNT);
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.MAX_HP) {
+                player.increaseMaxHp(ComboPower.MAX_HP_AMOUNT, false);
+            }
+            if (amount >= ComboPower.THRESHOLD * ComboPower.GOLD4) {
+                ComboGoldReward.addComboGoldToRewards(ComboPower.GOLD4_AMOUNT);
+            }
+        }
     }
 }

@@ -44,6 +44,7 @@ public class GetSet_Wrestler extends AbstractWrestlerCard {
         block = baseBlock = BLOCK;
         isInnate = true;
         exhaust = true;
+        isCombo = true;
     }
 
 
@@ -52,6 +53,7 @@ public class GetSet_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
         addToBot(new GainBlockAction(p, block));
+        super.use(p,m);
     }
 
 

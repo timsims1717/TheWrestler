@@ -36,7 +36,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int BLOCK = 8;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 2;
     private static final int DISCARD = 1;
     private static final int UPGRADE_DISCARD = 1;
 
@@ -44,6 +44,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DISCARD;
+        isCombo = true;
     }
 
     // Actions the card should do.
@@ -51,6 +52,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
         addToBot(new ForgetAction(magicNumber, false));
+        super.use(p,m);
     }
 
     // Upgraded stats.

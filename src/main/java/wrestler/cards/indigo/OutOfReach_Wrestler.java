@@ -64,6 +64,7 @@ public class OutOfReach_Wrestler extends AbstractWrestlerCard {
         if (grappleTotal > 0) {
             addToBot(new GainBlockAction(p, block * grappleTotal));
         }
+        super.use(p,m);
     }
 
 

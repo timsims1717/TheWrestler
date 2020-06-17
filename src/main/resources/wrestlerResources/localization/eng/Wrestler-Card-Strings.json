@@ -1,7 +1,8 @@
 {
   "wrestler:HipThrow_Wrestler": {
     "NAME": "Hip Throw",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage."
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. NL wrestler:Combo."
   },
   "wrestler:Strike_Wrestler": {
     "NAME": "Strike",
@@ -10,7 +11,8 @@
 
   "wrestler:Grab_Wrestler": {
     "NAME": "Grab",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL wrestler:Combo."
   },
   "wrestler:Defend_Wrestler": {
     "NAME": "Defend",
@@ -19,6 +21,15 @@
 
 
 
+  "wrestler:CarefulApproach_Wrestler": {
+    "NAME": "Careful Approach",
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Remember !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Remember !M! card. NL wrestler:Combo."
+  },
+  "wrestler:CharmingWords_Wrestler": {
+    "NAME": "Charming Words",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! wrestler:Compelled."
+  },
   "wrestler:CheapShot_Wrestler": {
     "NAME": "Cheap Shot",
     "DESCRIPTION": "Deal !D! damage. NL ALL Cheap Shot cards deal !M! less damage this combat.",
@@ -26,45 +37,72 @@
   },
   "wrestler:ElbowCut_Wrestler": {
     "NAME": "Elbow Cut",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, draw 1 card."
+    "DESCRIPTION": "Deal !D! damage. NL wrestler:Combo: Draw 1 card."
   },
   "wrestler:HalfNelson_Wrestler": {
     "NAME": "Half Nelson",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal an additional !D! damage. NL Apply !wrestler:Grapple! wrestler:Grapple."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage again. NL Apply !wrestler:Grapple! wrestler:Grapple."
   },
   "wrestler:HammerStrike_Wrestler": {
     "NAME": "Hammer Strike",
-    "DESCRIPTION": "Deal !D! damage. NL wrestler:Forget !M! card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL wrestler:Forget !M! cards."
+    "DESCRIPTION": "Deal !D! damage. NL wrestler:Forget !M! card. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL wrestler:Forget !M! cards. NL wrestler:Combo."
   },
   "wrestler:InvisibleHand_Wrestler": {
     "NAME": "Invisible Hand",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL wrestler:Combo."
   },
   "wrestler:Jab_Wrestler": {
     "NAME": "Jab",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage !M! more times."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage !M! more times.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage !M! more times. NL wrestler:Combo."
+  },
+  "wrestler:Mania_Wrestler": {
+    "NAME": "Mania",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, gain [E] . NL Next turn, lose [E] .",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, gain [E] [E] . NL Next turn, lose [E] ."
   },
   "wrestler:Melee_Wrestler": {
     "NAME": "Melee",
-    "DESCRIPTION": "Deal !D! damage to NL ALL enemies. NL Apply !wrestler:Grapple! wrestler:Grapple to NL ALL enemies."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple to NL ALL enemies. NL wrestler:Combo: Deal !D! damage to ALL enemies."
   },
   "wrestler:MindSpike_Wrestler": {
     "NAME": "Mind Spike",
     "DESCRIPTION": "Deal !D! damage. NL The enemy loses !wrestler:LoseHP! HP."
   },
+  "wrestler:PenetratingShot_Wrestler": {
+    "NAME": "Penetrating Shot",
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL wrestler:Combo: Apply !M! Vulnerable."
+  },
   "wrestler:Roughhouse_Wrestler": {
     "NAME": "Roughhouse",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
+  },
+  "wrestler:Scramble_Wrestler": {
+    "NAME": "Scramble",
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! card. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! cards. NL wrestler:Combo."
+  },
+  "wrestler:Sidestep_Wrestler": {
+    "NAME": "Sidestep",
+    "DESCRIPTION": "Gain !M! Dexterity this turn.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Dexterity this turn. NL wrestler:Combo: Gain !B! Block."
   },
   "wrestler:Suplex_Wrestler": {
     "NAME": "Suplex",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. Remove all wrestler:Grapple from that enemy."
+    "DESCRIPTION": "Deal !D! damage. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL wrestler:Combo: Gain [E] ."
   },
   "wrestler:Twitch_Wrestler": {
     "NAME": "Twitch",
     "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, deal !D! damage to a random enemy.",
     "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, deal !D! damage to a random enemy."
+  },
+  "wrestler:VerbalTic_Wrestler": {
+    "NAME": "Verbal Tic",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, play the top card of your deck.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, play the top card of your deck."
   },
   "wrestler:VoidBlastOld_Wrestler": {
     "NAME": "Void Blast Old",
@@ -72,92 +110,50 @@
   },
   "wrestler:VoidBlast_Wrestler": {
     "NAME": "Void Blast",
-    "DESCRIPTION": "wrestler:Devoid. NL Deal !D! damage."
+    "DESCRIPTION": "wrestler:Devoid. NL Deal !D! damage to a random enemy."
   },
-
-  "wrestler:CarefulApproach_Wrestler": {
-    "NAME": "Careful Approach",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple to ALL enemies. NL Draw !M! cards."
-  },
-  "wrestler:CharmingWords_Wrestler": {
-    "NAME": "Charming Words",
-    "DESCRIPTION": "Gain !B! Block. NL If the enemy is grappled, apply !M! Weak."
-  },
-  "wrestler:DarkSuggestion_Wrestler": {
-    "NAME": "Dark Suggestion",
-    "DESCRIPTION": "Apply !M! wrestler:Compulsion."
-  },
-  "wrestler:Mania_Wrestler": {
-    "NAME": "Mania",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, gain [E] . NL Next turn, lose [E] .",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, gain [E] . NL Next turn, lose [E] ."
-  },
-  "wrestler:PenetratingShot_Wrestler": {
-    "NAME": "Penetrating Shot",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. Apply !M! Vulnerable."
-  },
-  "wrestler:Scramble_Wrestler": {
-    "NAME": "Scramble",
-    "DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! cards."
-  },
-  "wrestler:Sidestep_Wrestler": {
-    "NAME": "Sidestep",
-    "DESCRIPTION": "Draw !M! card. NL Gain !M! Dexterity this turn.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Gain !M! Dexterity this turn."
-  },
-  "wrestler:VerbalTic_Wrestler": {
-    "NAME": "Verbal Tic",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, play the top card of your deck.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, play the top card of your deck."
+  "wrestler:WindUp_Wrestler": {
+    "NAME": "Wind Up",
+    "DESCRIPTION": "Your next attack deals !M! additional damage. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Your next attack deals !M! additional damage. NL wrestler:Combo: Gain [E] ."
   },
 
 
 
+  "wrestler:AgilityTraining_Wrestler": {
+    "NAME": "Agility Training",
+    "DESCRIPTION": "Gain !M! Dexterity. NL Exhaust. NL Can be upgraded any number of times."
+  },
+  "wrestler:ArmBar_Wrestler": {
+    "NAME": "Arm Bar",
+    "DESCRIPTION": "Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Gain !B! Block again."
+  },
   "wrestler:BearHug_Wrestler": {
     "NAME": "Bear Hug",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, gain !B! Block and Deal !D! damage."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Deal damage and gain Block equal to that enemy's wrestler:Grapple.",
+    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Deal damage and gain Block equal to that enemy's wrestler:Grapple. NL wrestler:Combo."
+  },
+  "wrestler:Brainstorm_Wrestler": {
+    "NAME": "Brainstorm",
+    "DESCRIPTION": "wrestler:Remember !M! cards. Draw !M! cards."
   },
   "wrestler:Catapult_Wrestler": {
     "NAME": "Catapult",
-    "DESCRIPTION": "Deal !D! damage to each wrestler:Grappled enemy once for each wrestler:Grappled enemy."
+    "DESCRIPTION": "Deal !D! damage to each wrestler:Grappled enemy once for each wrestler:Grappled enemy. NL wrestler:Combo."
   },
-  "wrestler:Chokehold_Wrestler": {
-    "NAME": "Chokehold",
-    "DESCRIPTION": "Deal damage equal to the enemy's wrestler:Grapple !M! times.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (Deals !D! damage !M! times)."
-    ]
-  },
-  "wrestler:Go_Wrestler": {
-    "NAME": "Go",
-    "DESCRIPTION": "Innate. NL Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! additional damage. NL Exhaust."
-  },
-  "wrestler:Humiliate_Wrestler": {
-    "NAME": "Humiliate",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, apply !M! Vulnerable."
-  },
-  "wrestler:Lariat_Wrestler": {
-    "NAME": "Lariat",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, NL gain [E]."
-  },
-  "wrestler:Pounce_Wrestler": {
-    "NAME": "Pounce",
-    "DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy."
-  },
-  "wrestler:PsychedelicIllusion_Wrestler": {
-    "NAME": "Psychedelic Illusion",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Gain !M! Dexterity this turn."
-  },
-  "wrestler:ShockingGrasp_Wrestler": {
-    "NAME": "Shocking Grasp",
-    "DESCRIPTION": "Deal !D! damage to ALL wrestler:Grappled enemies."
-  },
-
   "wrestler:ChillTouch_Wrestler": {
     "NAME": "Chill Touch",
     "DESCRIPTION": "Whenever you apply wrestler:Grapple, the enemy loses !wrestler:LoseHP! HP."
+  },
+  "wrestler:Chokehold_Wrestler": {
+    "NAME": "Chokehold",
+    "DESCRIPTION": "Deal damage equal to the enemy's wrestler:Grapple !M! times."
+  },
+  "wrestler:CircleBehind_Wrestler": {
+    "NAME": "Circle Behind",
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Draw !M! cards."
   },
   "wrestler:CloseQuarters_Wrestler": {
     "NAME": "Close Quarters",
@@ -167,43 +163,14 @@
     "NAME": "Crave Nothing",
     "DESCRIPTION": "Devoid. NL Whenever a Void card exhausts, heal !M! HP."
   },
-  "wrestler:GetReady_Wrestler": {
-    "NAME": "Get Ready",
-    "DESCRIPTION": "Innate. NL Gain !M! Strength and !M! Dexterity."
-  },
-  "wrestler:StickyFingers_Wrestler": {
-    "NAME": "Sticky Fingers",
-    "DESCRIPTION": "Whenever an enemy attacks, apply !M! wrestler:Grapple."
-  },
-  "wrestler:UncannyVisions_Wrestler": {
-    "NAME": "Uncanny Visions",
-    "DESCRIPTION": "wrestler:Devoid. NL Whenever a Void card exhausts, apply !M! wrestler:Compulsion to ALL enemies."
-  },
-  "wrestler:UnnervingLaughter_Wrestler": {
-    "NAME": "Unnerving Laughter",
-    "DESCRIPTION": "Ethereal. NL At the start of your turn, a random enemy loses !wrestler:LoseHP! HP."
-  },
-
-  "wrestler:AgilityTraining_Wrestler": {
-    "NAME": "Agility Training",
-    "DESCRIPTION": "Gain !M! Dexterity. NL Exhaust. NL Can be upgraded any number of times."
-  },
-  "wrestler:ArmBar_Wrestler": {
-    "NAME": "Arm Bar",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, gain !B! Block."
-  },
-  "wrestler:Brainstorm_Wrestler": {
-    "NAME": "Brainstorm",
-    "DESCRIPTION": "wrestler:Remember !M! cards. Draw !M! cards."
-  },
-  "wrestler:CircleBehind_Wrestler": {
-    "NAME": "Circle Behind",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, gain !B! Block."
-  },
   "wrestler:CrossTraining_Wrestler": {
     "NAME": "Cross Training",
     "DESCRIPTION": "Choose one of three skills of any color to add to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Choose one of three skills of any color to add to your hand. NL (It costs 0 this turn). NL Exhaust."
+  },
+  "wrestler:DarkSuggestion_Wrestler": {
+    "NAME": "Dark Suggestion",
+    "DESCRIPTION": "Apply !M! wrestler:Compelled."
   },
   "wrestler:Delusion_Wrestler": {
     "NAME": "Delusion",
@@ -215,14 +182,35 @@
     "DESCRIPTION": "wrestler:Devoid. NL wrestler:Forget !M! card. NL wrestler:Remember !M! card. NL Draw !M! card.",
     "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL wrestler:Forget !M! cards. NL wrestler:Remember !M! cards. NL Draw !M! cards."
   },
+  "wrestler:GetReady_Wrestler": {
+    "NAME": "Get Ready",
+    "DESCRIPTION": "Innate. NL wrestler:Forget !M! cards. NL Draw !M! cards. NL wrestler:Combo. NL Exhaust."
+  },
   "wrestler:GetSet_Wrestler": {
     "NAME": "Get Set",
-    "DESCRIPTION": "Innate. NL Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL wrestler:Combo. NL Exhaust."
+  },
+  "wrestler:Go_Wrestler": {
+    "NAME": "Go",
+    "DESCRIPTION": "Innate. NL Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage again. NL wrestler:Combo. NL Exhaust."
   },
   "wrestler:Horror_Wrestler": {
     "NAME": "Horror",
     "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, apply !M! Weak and !M! Vulnerable to ALL enemies.",
     "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, apply !M! Weak and !M! Vulnerable to ALL enemies."
+  },
+  "wrestler:Humiliate_Wrestler": {
+    "NAME": "Humiliate",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, apply !M! Vulnerable."
+  },
+  "wrestler:Lariat_Wrestler": {
+    "NAME": "Lariat",
+    "DESCRIPTION": "Deal !D! damage. NL wrestler:Combo: Gain [E] and draw 1 card."
+  },
+  "wrestler:LeapFrog_Wrestler": {
+    "NAME": "Leap Frog",
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Gain [E] ."
   },
   "wrestler:Migraine_Wrestler": {
     "NAME": "Migraine",
@@ -236,6 +224,11 @@
     "NAME": "Modify Memory",
     "DESCRIPTION": "wrestler:Forget up to !M! cards. wrestler:Remember that many cards."
   },
+  "wrestler:MountainBomb_Wrestler": {
+    "NAME": "Mountain Bomb",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL wrestler:Combo: Deal !D! damage again."
+  },
   "wrestler:OutOfReach_Wrestler": {
     "NAME": "Out of Reach",
     "DESCRIPTION": "Gain !B! Block for all wrestler:Grapple on ALL enemies. NL Remove all wrestler:Grapple from ALL enemies."
@@ -245,14 +238,31 @@
     "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, the next attack you play deals !M! additional damage.",
     "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, the next attack you play deals !M! additional damage."
   },
+  "wrestler:Pounce_Wrestler": {
+    "NAME": "Pounce",
+    "DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy. NL wrestler:Combo."
+  },
+  "wrestler:ShockingGrasp_Wrestler": {
+    "NAME": "Shocking Grasp",
+    "DESCRIPTION": "Deal !D! damage !M! times to ALL wrestler:Grappled enemies."
+  },
+  "wrestler:StickyFingers_Wrestler": {
+    "NAME": "Sticky Fingers",
+    "DESCRIPTION": "Whenever you play a card this turn, apply !M! wrestler:Grapple to a random enemy. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Whenever you play a card this turn, apply !M! wrestler:Grapple to ALL enemies. NL wrestler:Combo."
+  },
   "wrestler:ThoughtEater_Wrestler": {
     "NAME": "Thought Eater",
-    "DESCRIPTION": "The enemy loses !wrestler:LoseHP! HP.",
-    "UPGRADE_DESCRIPTION": "The enemy loses !wrestler:LoseHP! HP. Draw !M! card."
+    "DESCRIPTION": "The enemy loses !wrestler:LoseHP! HP. NL wrestler:Combo: Apply !M! wrestler:Compelled"
   },
-  "wrestler:UnearthlySkin_Wrestler": {
-    "NAME": "Unearthly Skin",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Strength this turn."
+  "wrestler:UncannyVisions_Wrestler": {
+    "NAME": "Uncanny Visions",
+    "DESCRIPTION": "wrestler:Devoid. NL Whenever a Void card exhausts, apply !M! wrestler:Compelled to ALL enemies."
+  },
+  "wrestler:UnnervingLaughter_Wrestler": {
+    "NAME": "Unnerving Laughter",
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, a random enemy loses !wrestler:LoseHP! HP."
   },
   "wrestler:VitalityDrain_Wrestler": {
     "NAME": "Vitality Drain",
@@ -266,21 +276,30 @@
     "NAME": "Weight Training",
     "DESCRIPTION": "Gain !M! Strength. NL Exhaust. NL Can be upgraded any number of times."
   },
-  "wrestler:Whispers_Wrestler": {
-    "NAME": "Whispers",
-    "DESCRIPTION": "ALL enemies lose !wrestler:LoseHP! HP."
+
+
+
+  "wrestler:BodyShield_Wrestler": {
+    "NAME": "Body Shield",
+    "DESCRIPTION": "Whenever an enemy attacks, deal !M! damage to each wrestler:Grappled enemy."
   },
-
-
-
   "wrestler:Crusher_Wrestler": {
     "NAME": "Crusher",
     "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Deal damage equal to the enemy's wrestler:Grapple X times.",
-    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Deal damage equal to the enemy's wrestler:Grapple X+1 times.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (Deals !D! damage X times).",
-      " NL (Deals !D! damage X+1 times)."
-    ]
+    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Deal damage equal to the enemy's wrestler:Grapple X+1 times."
+  },
+  "wrestler:Disorientation_Wrestler": {
+    "NAME": "Disorientation",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, randomize the costs of all cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, randomize the costs of all cards in your hand."
+  },
+  "wrestler:DominateMind_Wrestler": {
+    "NAME": "Dominate Mind",
+    "DESCRIPTION": "Apply !M! wrestler:Compelled. NL The enemy loses !wrestler:LoseHP! HP."
+  },
+  "wrestler:EldritchForm_Wrestler": {
+    "NAME": "Eldritch Form",
+    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity. NL Lose 2 HP at the end of each turn and increase this number by 2."
   },
   "wrestler:FullBodyVice_Wrestler": {
     "NAME": "Full Body Vice",
@@ -293,38 +312,6 @@
   "wrestler:IntoNothing_Wrestler": {
     "NAME": "Into Nothing",
     "DESCRIPTION": "Deal !D! damage. NL If Fatal, remove a card from your deck. NL Exhaust."
-  },
-
-  "wrestler:BodyShield_Wrestler": {
-    "NAME": "Body Shield",
-    "DESCRIPTION": "Whenever an enemy attacks, deal !M! damage to each wrestler:Grappled enemy."
-  },
-  "wrestler:EldritchForm_Wrestler": {
-    "NAME": "Eldritch Form",
-    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity. NL Lose 2 HP at the end of each turn and increase this number by 2."
-  },
-  "wrestler:Torment_Wrestler": {
-    "NAME": "Torment",
-    "DESCRIPTION": "Whenever you cause an enemy to lose HP, they lose !M! additional HP."
-  },
-  "wrestler:WearDown_Wrestler": {
-    "NAME": "Wear Down",
-    "DESCRIPTION": "At the end of your turn, deal damage to each enemy equal to 10% of their current HP.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, deal damage to each enemy equal to 10% of their current HP."
-  },
-  "wrestler:WeirdConduit_Wrestler": {
-    "NAME": "WeirdConduit",
-    "DESCRIPTION": "wrestler:Devoid. NL The first time you NL draw a Void card NL on your turn, NL gain [E] [E] and NL draw !M! cards."
-  },
-
-  "wrestler:Disorientation_Wrestler": {
-    "NAME": "Disorientation",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL When you draw this card, randomize the costs of all cards in your hand.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card, randomize the costs of all cards in your hand."
-  },
-  "wrestler:DominateMind_Wrestler": {
-    "NAME": "Dominate Mind",
-    "DESCRIPTION": "Apply !M! wrestler:Compulsion. NL The enemy loses !wrestler:LoseHP! HP."
   },
   "wrestler:Leverage_Wrestler": {
     "NAME": "Leverage",
@@ -339,6 +326,10 @@
     "DESCRIPTION": "Choose a card. NL Shuffle X copies of NL that card into your NL draw pile. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Choose a card. NL Shuffle X+1 copies of NL that card into your NL draw pile. NL Exhaust."
   },
+  "wrestler:Relentless_Wrestler": {
+    "NAME": "Relentless",
+    "DESCRIPTION": "Playing non wrestler:Combo cards does not break your wrestler:Combo."
+  },
   "wrestler:Submission_Wrestler": {
     "NAME": "Submission",
     "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL If the enemy's wrestler:Grapple is !M! or more, set that enemy's HP to 0."
@@ -347,9 +338,22 @@
     "NAME": "Tag Team",
     "DESCRIPTION": "Double your energy. Draw a card for each card in your hand. Double your Strength and Dexterity this turn. NL Exhaust."
   },
+  "wrestler:Torment_Wrestler": {
+    "NAME": "Torment",
+    "DESCRIPTION": "Whenever you cause an enemy to lose HP, they lose !M! additional HP."
+  },
   "wrestler:Voidlight_Wrestler": {
     "NAME": "Voidlight",
     "DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E]. NL Draw !M! cards. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "wrestler:Devoid. NL Gain [E] [E] [E]. NL Draw !M! cards. NL Exhaust."
+  },
+  "wrestler:WearDown_Wrestler": {
+    "NAME": "Wear Down",
+    "DESCRIPTION": "At the end of your turn, deal damage to each enemy equal to 10% of their current HP.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, deal damage to each enemy equal to 10% of their current HP."
+  },
+  "wrestler:WeirdConduit_Wrestler": {
+    "NAME": "WeirdConduit",
+    "DESCRIPTION": "wrestler:Devoid. NL Whenever you NL draw a Void card NL on your turn, NL gain [E] [E] and NL draw !M! card."
   }
 }

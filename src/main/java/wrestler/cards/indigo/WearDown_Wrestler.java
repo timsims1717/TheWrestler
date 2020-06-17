@@ -43,6 +43,7 @@ public class WearDown_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new WearDownPower(p, 1), 1));
+        super.use(p,m);
     }
 
     //Upgraded stats.

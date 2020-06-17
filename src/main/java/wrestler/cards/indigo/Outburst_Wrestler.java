@@ -28,7 +28,8 @@ public class Outburst_Wrestler extends AbstractTriggerOnDrawnCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int VIGOR = 8;
+    private static final int VIGOR = 4;
+    private static final int UPGRADE_VIGOR = 2;
 
     public Outburst_Wrestler() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
@@ -39,5 +40,13 @@ public class Outburst_Wrestler extends AbstractTriggerOnDrawnCard {
     public void triggerWhenDrawn() {
         AbstractPlayer p = AbstractDungeon.player;
         addToTop(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber), magicNumber));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeMagicNumber(UPGRADE_VIGOR);
+        }
+        super.upgrade();
     }
 }

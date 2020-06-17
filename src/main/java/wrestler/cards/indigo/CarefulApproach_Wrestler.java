@@ -1,17 +1,13 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.RememberAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.GrapplePower;
-
-import java.util.Iterator;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -31,39 +27,31 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 0;
 
-    private static final int GRAPPLE = 2;
-    private static final int DRAW = 1;
-    private static final int UPGRADE_DRAW = 1;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 3;
+    private static final int REMEMBER = 1;
 
     // /STAT DECLARATION/
 
     public CarefulApproach_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
-        magicNumber = baseMagicNumber = DRAW;
+        block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = REMEMBER;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded) {
-            addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-        } else {
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-            while (var1.hasNext()) {
-                AbstractMonster mon = (AbstractMonster) var1.next();
-                addToBot(new ApplyPowerAction(mon, p, new GrapplePower(mon, p, grapple), grapple));
-            }
-        }
-        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new GainBlockAction(p, block));
+        addToBot(new RememberAction(magicNumber));
+        super.use(p,m);
     }
 
 
@@ -72,8 +60,8 @@ public class CarefulApproach_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            target = CardTarget.ALL_ENEMY;
-            upgradeMagicNumber(UPGRADE_DRAW);
+            upgradeBlock(UPGRADE_BLOCK);
+            isCombo = true;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

@@ -7,17 +7,16 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.VanishingPower;
+import wrestler.powers.StickyFingersPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class Vanishing_Wrestler extends AbstractWrestlerCard {
+public class StickyFingers_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(Vanishing_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");
-
+    public static final String ID = wrestler.Wrestler.makeID(StickyFingers_Wrestler.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
@@ -25,26 +24,27 @@ public class Vanishing_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int DEX_GAIN = 2;
+    private static final int GRAPPLE = 1;
 
     // /STAT DECLARATION/
 
-    public Vanishing_Wrestler() {
+    public StickyFingers_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DEX_GAIN;
+        magicNumber = baseMagicNumber = GRAPPLE;
+        isCombo = true;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        devoid();
-        addToBot(new ApplyPowerAction(p, p, new VanishingPower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new StickyFingersPower(p, magicNumber, upgraded), magicNumber));
+        super.use(p,m);
     }
 
     //Upgraded stats.
@@ -52,7 +52,6 @@ public class Vanishing_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            isInnate = true;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

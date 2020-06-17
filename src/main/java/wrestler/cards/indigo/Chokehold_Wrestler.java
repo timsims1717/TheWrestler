@@ -1,5 +1,6 @@
 package wrestler.cards.indigo;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,8 +21,6 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -53,15 +52,9 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(m, damage, DamageInfo.DamageType.NORMAL)));
+            addToBot(new DamageAction(m, new DamageInfo(m, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-        initializeDescription();
+        super.use(p,m);
     }
 
     @Override
@@ -72,15 +65,6 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
             damage = baseDamage = 0;
         }
         super.calculateCardDamage(mo);
-        rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
-
-        initializeDescription();
-    }
-
-    @Override
-    public void onMoveToDiscard() {
-        rawDescription = DESCRIPTION;
-        initializeDescription();
     }
 
     // Upgraded stats.

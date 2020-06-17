@@ -35,7 +35,7 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 4;
     private static final int LOSEHP = 15;
-    private static final int UPGRADE_LOSEHP = 5;
+    private static final int UPGRADE_LOSEHP = 6;
     private static final int COMPULSION = 5;
     private static final int UPGRADE_COMPULSION = 2;
 
@@ -50,6 +50,7 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
         addToBot(new LoseHPMindAction(m, p, loseHP));
+        super.use(p,m);
     }
 
     // Upgraded stats.

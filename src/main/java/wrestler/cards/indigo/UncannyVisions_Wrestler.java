@@ -43,6 +43,7 @@ public class UncannyVisions_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
         addToBot(new ApplyPowerAction(p, p, new UnearthlyVisionsPower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     // Upgraded stats.

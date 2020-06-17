@@ -56,6 +56,7 @@ public class Submission_Wrestler extends AbstractWrestlerCard {
             addToBot(new WaitAction(0.8F));
             addToBot(new SubmissionAction(m, magicNumber));
         }
+        super.use(p,m);
     }
 
 

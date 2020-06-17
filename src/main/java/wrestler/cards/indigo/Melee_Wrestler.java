@@ -36,28 +36,34 @@ public class Melee_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_DMG = 3;
-    private static final int GRAPPLE = 1;
+    private static final int GRAPPLE = 3;
     private static final int UPGRADE_GRAPPLE = 1;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_DMG = 3;
 
     public Melee_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = DAMAGE;
         grapple = baseGrapple = GRAPPLE;
+        damage = baseDamage = DAMAGE;
+        isCombo = true;
         isMultiDamage = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
 
         while (var1.hasNext()) {
             AbstractMonster mon = (AbstractMonster) var1.next();
             addToBot(new ApplyPowerAction(mon, p, new GrapplePower(mon, p, grapple), grapple));
         }
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
     // Upgraded stats.

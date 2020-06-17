@@ -55,6 +55,7 @@ public class WeightTraining_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     @Override

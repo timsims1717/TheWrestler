@@ -1,7 +1,6 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -10,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.GrapplePower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -33,16 +31,16 @@ public class Lariat_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_DMG = 4;
-    private static final int ENERGY_GAIN = 1;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_DMG = 3;
+    private static final int ENERGY_CARD = 1;
 
     // /STAT DECLARATION/
 
     public Lariat_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        wantsTargetGrapple = true;
+        isCombo = true;
     }
 
 
@@ -51,9 +49,13 @@ public class Lariat_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 
-        if (isTargetGrappled(m)) {
-            addToBot(new GainEnergyAction(ENERGY_GAIN));
-        }
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainEnergyAction(ENERGY_CARD));
+        addToBot(new DrawCardAction(ENERGY_CARD));
     }
 
     // Upgraded stats.

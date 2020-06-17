@@ -31,19 +31,25 @@ public class ShockingGrasp_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_DMG = 4;
+    private static final int DAMAGE = 3;
+    private static final int COUNT = 3;
+    private static final int UPGRADE_COUNT = 1;
 
     public ShockingGrasp_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = COUNT;
+        isMultiDamage = true;
         wantsTargetGrapple = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAllGrappledEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        for (int i = 0; i < magicNumber; i++) {
+            addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        }
+        super.use(p,m);
     }
 
     // Upgraded stats.
@@ -51,7 +57,7 @@ public class ShockingGrasp_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DMG);
+            upgradeMagicNumber(UPGRADE_COUNT);
             initializeDescription();
         }
     }

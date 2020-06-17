@@ -37,6 +37,7 @@ public class Leverage_Wrestler extends AbstractWrestlerCard {
     public Leverage_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
+        isCombo = true;
     }
 
 
@@ -47,6 +48,7 @@ public class Leverage_Wrestler extends AbstractWrestlerCard {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, block), block));
         addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, block), block));
         p.loseBlock();
+        super.use(p,m);
     }
 
 

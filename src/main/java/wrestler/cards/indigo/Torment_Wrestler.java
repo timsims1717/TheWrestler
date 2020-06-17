@@ -44,6 +44,7 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
 

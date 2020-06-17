@@ -45,7 +45,7 @@ public class Voidlight_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
         energyNumber = ENERGY;
-        this.exhaust = true;
+        exhaust = true;
     }
 
 
@@ -53,8 +53,9 @@ public class Voidlight_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
-        this.addToBot(new GainEnergyAction(energyNumber));
-        this.addToBot(new DrawCardAction(magicNumber));
+        addToBot(new GainEnergyAction(energyNumber));
+        addToBot(new DrawCardAction(magicNumber));
+        super.use(p,m);
     }
 
 

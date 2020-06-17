@@ -53,13 +53,7 @@ public class Crusher_Wrestler extends AbstractWrestlerCard {
         calculateCardDamage(m);
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
         addToBot(new CrusherAction(m, p, damage, freeToPlayOnce, energyOnUse, upgraded));
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[upgraded ? 1 : 0];
-        initializeDescription();
+        super.use(p,m);
     }
 
     @Override
@@ -70,15 +64,6 @@ public class Crusher_Wrestler extends AbstractWrestlerCard {
             damage = baseDamage = grapple;
         }
         super.calculateCardDamage(mo);
-        rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[upgraded ? 1 : 0];
-
-        initializeDescription();
-    }
-
-    @Override
-    public void onMoveToDiscard() {
-        rawDescription = DESCRIPTION;
-        initializeDescription();
     }
 
     // Upgraded stats.

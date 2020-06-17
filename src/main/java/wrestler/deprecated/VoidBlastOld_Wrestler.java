@@ -1,4 +1,4 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostBattleSubscriber;

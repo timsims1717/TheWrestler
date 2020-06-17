@@ -40,6 +40,7 @@ public class BodyShield_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new BodyShieldPower(p, p, magicNumber), magicNumber));
+        super.use(p,m);
     }
 
     //Upgraded stats.

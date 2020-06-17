@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
@@ -19,6 +21,8 @@ public class InvisibleHand_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(InvisibleHand_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
 
     // /TEXT DECLARATION/
@@ -50,6 +54,7 @@ public class InvisibleHand_Wrestler extends AbstractWrestlerCard {
         addToBot(new GainBlockAction(p, p, block));
 
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        super.use(p,m);
     }
 
     // Upgraded stats.
@@ -59,6 +64,8 @@ public class InvisibleHand_Wrestler extends AbstractWrestlerCard {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
             upgradeBlock(UPGRADE_BLOCK);
+            isCombo = true;
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

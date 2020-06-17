@@ -33,7 +33,7 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
 
     private static final int GRAPPLE = 3;
     private static final int UPGRADE_GRP = 2;
-    private static final int VULN = 1;
+    private static final int VULN = 2;
     private static final int UPGRADE_VUKN = 1;
 
     // /STAT DECLARATION/
@@ -42,6 +42,7 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         grapple = baseGrapple = GRAPPLE;
         magicNumber = baseMagicNumber = VULN;
+        isCombo = true;
     }
 
 
@@ -49,9 +50,13 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+        super.use(p,m);
     }
 
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+    }
 
     // Upgraded stats.
     @Override

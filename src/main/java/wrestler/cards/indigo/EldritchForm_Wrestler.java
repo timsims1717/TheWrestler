@@ -50,6 +50,7 @@ public class EldritchForm_Wrestler extends AbstractWrestlerCard {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new EldritchFormPower(p, p, LOSEHP), LOSEHP));
+        super.use(p,m);
     }
 
 

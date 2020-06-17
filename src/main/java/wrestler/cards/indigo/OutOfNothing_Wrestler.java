@@ -42,6 +42,7 @@ public class OutOfNothing_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new OutOfNothingAction(p, freeToPlayOnce, energyOnUse, upgraded));
+        super.use(p,m);
     }
 
 

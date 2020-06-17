@@ -24,7 +24,8 @@ public class Twitch_Wrestler extends AbstractTriggerOnDrawnCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int DAMAGE = 10;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_DAMAGE = 2;
 
     public Twitch_Wrestler() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
@@ -34,5 +35,13 @@ public class Twitch_Wrestler extends AbstractTriggerOnDrawnCard {
     @Override
     public void triggerWhenDrawn() {
         addToBot(new DamageRandomEnemyAction(new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeDamage(UPGRADE_DAMAGE);
+        }
+        super.upgrade();
     }
 }

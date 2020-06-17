@@ -52,6 +52,7 @@ public class MindMeld_Wrestler extends AbstractWrestlerCard {
         int attack = m.getIntentDmg();
         addToBot(new GainBlockAction(p, attack));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+        super.use(p,m);
     }
 
 

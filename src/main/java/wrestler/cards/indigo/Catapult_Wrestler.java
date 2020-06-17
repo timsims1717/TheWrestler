@@ -40,6 +40,8 @@ public class Catapult_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         wantsTargetGrapple = true;
+        isMultiDamage = true;
+        isCombo = true;
     }
 
 
@@ -56,8 +58,9 @@ public class Catapult_Wrestler extends AbstractWrestlerCard {
         }
 
         for (int i = 0; i < total; i++) {
-            addToBot(new DamageAllGrappledEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
+        super.use(p,m);
     }
 
     // Upgraded stats.

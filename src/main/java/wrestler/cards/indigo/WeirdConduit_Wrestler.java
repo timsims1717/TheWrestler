@@ -2,8 +2,6 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
@@ -27,22 +25,23 @@ public class WeirdConduit_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
-    private static final int ENERGY_DRAW = 2;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
+    private static final int ENERGY = 2;
+    private static final int DRAW = 1;
 
     // /STAT DECLARATION/
 
     public WeirdConduit_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = ENERGY_DRAW;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         devoid();
-        addToBot(new ApplyPowerAction(p, p, new WeirdConduitPower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WeirdConduitPower(p, ENERGY, DRAW), ENERGY));
+        super.use(p,m);
     }
 
     //Upgraded stats.

@@ -2,6 +2,7 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -34,23 +35,30 @@ public class Sidestep_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int DRAW_DEX = 1;
-    private static final int UPGRADE_DRAW_DEX = 1;
+    private static final int DEX = 2;
+    private static final int UPGRADE_DEX = 1;
+    private static final int BLOCK = 5;
 
     // /STAT DECLARATION/
 
     public Sidestep_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DRAW_DEX;
+        magicNumber = baseMagicNumber = DEX;
+        block = baseBlock = BLOCK;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(magicNumber));
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainBlockAction(p, block));
     }
 
     // Upgraded stats.
@@ -58,7 +66,8 @@ public class Sidestep_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_DRAW_DEX);
+            upgradeMagicNumber(UPGRADE_DEX);
+            isCombo = true;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

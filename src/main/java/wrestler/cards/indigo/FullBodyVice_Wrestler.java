@@ -48,12 +48,18 @@ public class FullBodyVice_Wrestler extends AbstractWrestlerCard {
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = STR_DOWN;
         requiresTargetGrapple = true;
+        isCombo = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
         tempStrDown(p, m, magicNumber);
     }
 

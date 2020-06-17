@@ -6,8 +6,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.PounceAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.GrapplePower;
@@ -23,6 +26,8 @@ public class Pounce_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(Pounce_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
 
     // /TEXT DECLARATION/
@@ -46,25 +51,13 @@ public class Pounce_Wrestler extends AbstractWrestlerCard {
     public Pounce_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        requiresTargetGrapple = true;
     }
 
 
-    // todo: What if the attack kills the creature?
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-
-        int grappleMove = 0;
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-        while (var1.hasNext()) {
-            AbstractMonster mon = (AbstractMonster) var1.next();
-            if (isTargetGrappled(mon) && !mon.id.equals(m.id)) {
-                grappleMove += mon.getPower(GrapplePower.POWER_ID).amount;
-                addToBot(new RemoveSpecificPowerAction(mon, p, GrapplePower.POWER_ID));
-            }
-        }
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grappleMove), grappleMove));
+        addToBot(new PounceAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        super.use(p,m);
     }
 
 
@@ -74,6 +67,8 @@ public class Pounce_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
+            isCombo = true;
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

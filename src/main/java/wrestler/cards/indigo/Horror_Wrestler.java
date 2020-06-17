@@ -33,7 +33,8 @@ public class Horror_Wrestler extends AbstractTriggerOnDrawnCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int DEBUFF = 2;
+    private static final int DEBUFF = 1;
+    private static final int UPGRADE_DEBUFF = 1;
 
     public Horror_Wrestler() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
@@ -48,7 +49,21 @@ public class Horror_Wrestler extends AbstractTriggerOnDrawnCard {
         while (var1.hasNext()) {
             AbstractMonster mon = (AbstractMonster) var1.next();
             addToBot(new ApplyPowerAction(mon, p, new WeakPower(mon, magicNumber, false), magicNumber));
+        }
+
+        var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+
+        while (var1.hasNext()) {
+            AbstractMonster mon = (AbstractMonster) var1.next();
             addToBot(new ApplyPowerAction(mon, p, new VulnerablePower(mon, magicNumber, false), magicNumber));
         }
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            upgradeMagicNumber(UPGRADE_DEBUFF);
+        }
+        super.upgrade();
     }
 }

@@ -10,11 +10,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 
 public class MakeRandomCardAction extends AbstractGameAction {
-    private AbstractPlayer p;
 
     public MakeRandomCardAction() {
         actionType = ActionType.CARD_MANIPULATION;
-        p = AbstractDungeon.player;
         duration = Settings.ACTION_DUR_FAST;
     }
 
@@ -30,7 +28,7 @@ public class MakeRandomCardAction extends AbstractGameAction {
                 cardRarity = AbstractCard.CardRarity.RARE;
             }
             AbstractCard card = CardLibrary.getAnyColorCard(cardRarity).makeCopy();
-            this.addToBot(new MakeTempCardInHandAction(card));
+            addToBot(new MakeTempCardInHandAction(card));
 
             isDone = true;
         } else {

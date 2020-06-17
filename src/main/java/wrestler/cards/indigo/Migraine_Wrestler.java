@@ -50,6 +50,7 @@ public class Migraine_Wrestler extends AbstractWrestlerCard {
         loseHP += INCREASE;
         isLoseHPModified = true;
         initializeDescription();
+        super.use(p,m);
     }
 
     // Upgraded stats.

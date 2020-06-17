@@ -44,7 +44,8 @@ public class Defend_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
+        addToBot(new GainBlockAction(p, p, block));
+        super.use(p,m);
     }
 
 

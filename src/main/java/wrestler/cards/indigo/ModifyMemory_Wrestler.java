@@ -42,6 +42,7 @@ public class ModifyMemory_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ModifyMemoryAction(magicNumber));
+        super.use(p,m);
     }
 
     // Upgraded stats.

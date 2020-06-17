@@ -32,16 +32,16 @@ public class Mania_Wrestler extends AbstractTriggerOnDrawnCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int ENERGY = 1;
+    private static final int UPGRADE_ENERGY = 2;
 
     public Mania_Wrestler() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = ENERGY;
     }
 
     @Override
     public void triggerWhenDrawn() {
         AbstractPlayer p = AbstractDungeon.player;
-        addToTop(new GainEnergyAction(magicNumber));
-        addToTop(new ApplyPowerAction(p, p, new ManiaPower(p, magicNumber), magicNumber));
+        addToTop(new GainEnergyAction(upgraded ? UPGRADE_ENERGY : ENERGY));
+        addToTop(new ApplyPowerAction(p, p, new ManiaPower(p, ENERGY), ENERGY));
     }
 }
