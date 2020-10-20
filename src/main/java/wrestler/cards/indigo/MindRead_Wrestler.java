@@ -29,7 +29,7 @@ public class MindRead_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int DRAW = 3;
-    private static final int UPGRADE_DRAW = 2;
+    private static final int UPGRADE_DRAW = 1;
 
     // /STAT DECLARATION/
 

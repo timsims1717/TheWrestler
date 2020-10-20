@@ -34,14 +34,14 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int COUNT = 3;
-    private static final int UPGRADE_COUNT = 1;
+    private static final int TIMES = 3;
+    private static final int UPGRADE_TIMES = 1;
 
     // /STAT DECLARATION/
 
     public Chokehold_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = COUNT;
+        magicNumber = baseMagicNumber = TIMES;
         damage = baseDamage = 0;
         requiresTargetGrapple = true;
     }
@@ -52,7 +52,7 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(m, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAction(m, new DamageInfo(m, damage * magicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         super.use(p,m);
     }
@@ -72,7 +72,7 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_COUNT);
+            upgradeMagicNumber(UPGRADE_TIMES);
             initializeDescription();
         }
     }

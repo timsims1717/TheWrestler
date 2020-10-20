@@ -14,7 +14,7 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(ChillTouch_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String IMG = makeCardPath("ChillTouch_Wrestler.png");
 
     // /TEXT DECLARATION/
 
@@ -26,8 +26,8 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 2;
-    private static final int LOSEHP = 2;
-    private static final int UPGRADE_LOSEHP = 1;
+    private static final int LOSEHP = 4;
+    private static final int UPGRADE_LOSEHP = 2;
 
     // /STAT DECLARATION/
 

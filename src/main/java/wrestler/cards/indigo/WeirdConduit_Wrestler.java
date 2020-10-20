@@ -34,13 +34,14 @@ public class WeirdConduit_Wrestler extends AbstractWrestlerCard {
 
     public WeirdConduit_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseMagicNumber = DRAW;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         devoid();
-        addToBot(new ApplyPowerAction(p, p, new WeirdConduitPower(p, ENERGY, DRAW), ENERGY));
+        addToBot(new ApplyPowerAction(p, p, new WeirdConduitPower(p, ENERGY, magicNumber), ENERGY));
         super.use(p,m);
     }
 

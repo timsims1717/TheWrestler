@@ -21,8 +21,6 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(CircleBehind_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -33,10 +31,11 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
-    private static final int BLOCK = 9;
-    private static final int DRAW = 2;
+    private static final int BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 2;
+    private static final int DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -57,9 +56,7 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
 
     @Override
     public void comboUse(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded) {
-            addToBot(new DrawCardAction(magicNumber));
-        }
+        addToBot(new DrawCardAction(magicNumber));
     }
 
     // Upgraded stats.
@@ -67,7 +64,7 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBlock(UPGRADE_BLOCK);
             initializeDescription();
         }
     }

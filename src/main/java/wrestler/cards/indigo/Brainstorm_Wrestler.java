@@ -34,6 +34,7 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
+    private static final int CARD_DRAW = 1;
     private static final int CARD_MOVE = 2;
     private static final int UPGRADE_CARD_MOVE = 1;
 
@@ -49,7 +50,7 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new RememberAction(magicNumber));
-        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new DrawCardAction(CARD_DRAW));
         super.use(p,m);
     }
 

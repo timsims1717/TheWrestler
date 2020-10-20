@@ -1,5 +1,6 @@
 package wrestler.cards.indigo;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -37,13 +38,13 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
 
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int DISCARD = 1;
-    private static final int UPGRADE_DISCARD = 1;
+    private static final int DRAW = 1;
+    private static final int UPGRADE_DRAW = 1;
 
     public Scramble_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = DISCARD;
+        magicNumber = baseMagicNumber = DRAW;
         isCombo = true;
     }
 
@@ -51,7 +52,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        addToBot(new ForgetAction(magicNumber, false));
+        addToBot(new DrawCardAction(magicNumber, false));
         super.use(p,m);
     }
 
@@ -61,7 +62,7 @@ public class Scramble_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            upgradeMagicNumber(UPGRADE_DISCARD);
+            upgradeMagicNumber(UPGRADE_DRAW);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

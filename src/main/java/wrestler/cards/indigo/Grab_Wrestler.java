@@ -19,9 +19,6 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(Grab_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Grab_Wrestler.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-
 
     // /TEXT DECLARATION/
 
@@ -46,6 +43,7 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         grapple = baseGrapple = GRAPPLE;
         block = baseBlock = BLOCK;
+        isCombo = true;
     }
 
 
@@ -65,8 +63,6 @@ public class Grab_Wrestler extends AbstractWrestlerCard {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
             upgradeGrappleNumber(UPGRADE_GRP);
-            isCombo = true;
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -39,7 +39,7 @@ public class CheapShot_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 0;
 
     private static final int DAMAGE = 8;
-    private static final int DAMAGE_DOWN = 2;
+    private static final int DAMAGE_DOWN = 1;
 
     // /STAT DECLARATION/
 

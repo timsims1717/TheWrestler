@@ -1,22 +1,22 @@
 {
   "wrestler:HipThrow_Wrestler": {
     "NAME": "Hip Throw",
-    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. NL wrestler:Combo."
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal !D! damage. NL wrestler:Combo."
   },
   "wrestler:Strike_Wrestler": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL wrestler:Combo."
   },
 
   "wrestler:Grab_Wrestler": {
     "NAME": "Grab",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL wrestler:Combo."
+    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block. NL wrestler:Combo."
   },
   "wrestler:Defend_Wrestler": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo."
   },
 
 
@@ -81,8 +81,8 @@
   },
   "wrestler:Scramble_Wrestler": {
     "NAME": "Scramble",
-    "DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! card. NL wrestler:Combo.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Forget !M! cards. NL wrestler:Combo."
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card. NL wrestler:Combo.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards. NL wrestler:Combo."
   },
   "wrestler:Sidestep_Wrestler": {
     "NAME": "Sidestep",
@@ -136,7 +136,7 @@
   },
   "wrestler:Brainstorm_Wrestler": {
     "NAME": "Brainstorm",
-    "DESCRIPTION": "wrestler:Remember !M! cards. Draw !M! cards."
+    "DESCRIPTION": "wrestler:Remember !M! cards. Draw 1 card."
   },
   "wrestler:Catapult_Wrestler": {
     "NAME": "Catapult",
@@ -148,12 +148,11 @@
   },
   "wrestler:Chokehold_Wrestler": {
     "NAME": "Chokehold",
-    "DESCRIPTION": "Deal damage equal to the enemy's wrestler:Grapple !M! times."
+    "DESCRIPTION": "Deal damage equal to !M! times the enemy's wrestler:Grapple."
   },
   "wrestler:CircleBehind_Wrestler": {
     "NAME": "Circle Behind",
-    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Draw !M! cards."
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Draw !M! card."
   },
   "wrestler:CloseQuarters_Wrestler": {
     "NAME": "Close Quarters",
@@ -209,8 +208,7 @@
   },
   "wrestler:LeapFrog_Wrestler": {
     "NAME": "Leap Frog",
-    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Gain [E] ."
+    "DESCRIPTION": "Gain !B! Block. NL wrestler:Combo: Gain [E] ."
   },
   "wrestler:Migraine_Wrestler": {
     "NAME": "Migraine",
@@ -254,7 +252,7 @@
   },
   "wrestler:ThoughtEater_Wrestler": {
     "NAME": "Thought Eater",
-    "DESCRIPTION": "The enemy loses !wrestler:LoseHP! HP. NL wrestler:Combo: Apply !M! wrestler:Compelled"
+    "DESCRIPTION": "The enemy loses !wrestler:LoseHP! HP. NL wrestler:Combo: Apply !M! wrestler:Compelled."
   },
   "wrestler:UncannyVisions_Wrestler": {
     "NAME": "Uncanny Visions",
@@ -266,7 +264,7 @@
   },
   "wrestler:VitalityDrain_Wrestler": {
     "NAME": "Vitality Drain",
-    "DESCRIPTION": "wrestler:Devoid. NL Enemy loses !M! Strength."
+    "DESCRIPTION": "Enemy loses !M! Strength this turn."
   },
   "wrestler:VoidCage_Wrestler": {
     "NAME": "Void Cage",
@@ -353,7 +351,7 @@
     "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, deal damage to each enemy equal to 10% of their current HP."
   },
   "wrestler:WeirdConduit_Wrestler": {
-    "NAME": "WeirdConduit",
+    "NAME": "Weird Conduit",
     "DESCRIPTION": "wrestler:Devoid. NL Whenever you NL draw a Void card NL on your turn, NL gain [E] [E] and NL draw !M! card."
   }
 }

@@ -28,10 +28,10 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 0;
 
-    private static final int STR_DOWN = 2;
-    private static final int UPGRADE_STR_DOWN = 1;
+    private static final int STR_DOWN = 4;
+    private static final int UPGRADE_STR_DOWN = 2;
 
     public VitalityDrain_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -41,8 +41,7 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
-        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber), -magicNumber));
+        tempStrDown(p, m, magicNumber);
     }
 
     // Upgraded stats.
