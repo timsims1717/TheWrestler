@@ -36,10 +36,11 @@ public class ThoughtEater_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 0;
-    private static final int LOSEHP = 3;
-    private static final int UPGRADE_LOSEHP = 2;
-    private static final int COMPULSION = 1;
+    private static final int COST = 2;
+    private static final int LOSEHP = 12;
+    private static final int UPGRADE_LOSEHP = 3;
+    private static final int COMPULSION = 3;
+    private static final int UPGRADE_COMPULSION = 1;
 
     public ThoughtEater_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -67,6 +68,7 @@ public class ThoughtEater_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_COMPULSION);
             initializeDescription();
         }
     }

@@ -20,14 +20,14 @@ public class BodyShield_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
     private static final int DAMAGE = 3;
-    private static final int UPGRADE_DAMAGE = 2;
+    private static final int UPGRADE_DAMAGE = 1;
 
     // /STAT DECLARATION/
 

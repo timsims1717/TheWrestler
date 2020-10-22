@@ -1,6 +1,7 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -30,12 +31,16 @@ public class StickyFingers_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
+
+    private static final int BLOCK = 7;
+    private static final int UPGRADE_BLOCK = 3;
     private static final int GRAPPLE = 1;
 
     // /STAT DECLARATION/
 
     public StickyFingers_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = GRAPPLE;
         isCombo = true;
     }
@@ -43,6 +48,7 @@ public class StickyFingers_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        addToBot(new GainBlockAction(p, block));
         addToBot(new ApplyPowerAction(p, p, new StickyFingersPower(p, magicNumber, upgraded), magicNumber));
         super.use(p,m);
     }
@@ -52,6 +58,7 @@ public class StickyFingers_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeBlock(UPGRADE_BLOCK);
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

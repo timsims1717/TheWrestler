@@ -1,4 +1,4 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import wrestler.actions.MakeRandomCardAction;
 import wrestler.cards.AbstractTriggerOnDrawnCard;

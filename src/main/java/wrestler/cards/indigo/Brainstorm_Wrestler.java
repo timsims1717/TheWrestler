@@ -17,8 +17,8 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Brainstorm_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    public static final String IMG = makeCardPath("Skill.png");
+
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
@@ -35,6 +35,7 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
     private static final int COST = 1;
 
     private static final int CARD_DRAW = 1;
+    private static final int UPGRADE_CARD_DRAW = 2;
     private static final int CARD_MOVE = 2;
     private static final int UPGRADE_CARD_MOVE = 1;
 
@@ -50,7 +51,7 @@ public class Brainstorm_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new RememberAction(magicNumber));
-        addToBot(new DrawCardAction(CARD_DRAW));
+        addToBot(new DrawCardAction(upgraded ? UPGRADE_CARD_DRAW : CARD_DRAW));
         super.use(p,m);
     }
 

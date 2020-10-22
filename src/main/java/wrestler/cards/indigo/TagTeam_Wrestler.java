@@ -36,8 +36,8 @@ public class TagTeam_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
+    private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
 
     // /STAT DECLARATION/
 

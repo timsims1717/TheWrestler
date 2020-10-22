@@ -22,8 +22,7 @@ import static wrestler.Wrestler.makePowerPath;
 
 public class CompelledPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
-    private int hpLossAmount = 0;
-    private int numAttacks = 0;
+    private int hpLossAmount;
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(CompelledPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -39,7 +38,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
 
         this.owner = owner;
         this.amount = amount;
-        hpLossAmount = amount * 3;
+        hpLossAmount = amount * 4;
         this.source = source;
 
         type = PowerType.DEBUFF;
@@ -61,13 +60,16 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        hpLossAmount = amount * 3;
+        hpLossAmount = amount * 4;
         updateDescription();
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        numAttacks += 1;
+        super.onAttack(info, damageAmount, target);
+        if (info.type.equals(DamageInfo.DamageType.NORMAL)) {
+            attack();
+        }
     }
 
     @Override
@@ -75,32 +77,20 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
         if (owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster) owner;
             switch (m.intent) {
-                case ATTACK:
-                    attack();
-                    break;
                 case ATTACK_BUFF:
-                    attack();
-                    buff();
-                    break;
-                case ATTACK_DEBUFF:
-                    attack();
-                    debuff();
-                    break;
-                case ATTACK_DEFEND:
-                    attack();
-                    block();
-                    break;
                 case BUFF:
                     buff();
                     break;
+                case ATTACK_DEBUFF:
                 case DEBUFF:
                     debuff();
                     break;
-                case STRONG_DEBUFF:
-                    strDebuff();
-                    break;
+                case ATTACK_DEFEND:
                 case DEFEND:
                     block();
+                    break;
+                case STRONG_DEBUFF:
+                    strDebuff();
                     break;
                 case DEFEND_DEBUFF:
                     block();
@@ -120,10 +110,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     }
 
     private void attack() {
-        for (int i = 0; i < numAttacks; i++) {
-            addToBot(new LoseHPAction(owner, owner, hpLossAmount, AbstractGameAction.AttackEffect.FIRE));
-        }
-        numAttacks = 0;
+        addToBot(new LoseHPAction(owner, owner, hpLossAmount, AbstractGameAction.AttackEffect.FIRE));
     }
 
     private void buff() {

@@ -1,4 +1,4 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -6,10 +6,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import wrestler.actions.MakeRandomCardAction;
 import wrestler.cards.AbstractTriggerOnDrawnCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.GrapplePower;
 
 import java.util.Iterator;
 

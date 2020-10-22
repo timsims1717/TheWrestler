@@ -1,19 +1,19 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.UnnervingLaughterPower;
+import wrestler.powers.CraveNothingPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class UnnervingLaughter_Wrestler extends AbstractWrestlerCard {
+public class CraveNothing_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(UnnervingLaughter_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(CraveNothing_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
@@ -26,21 +26,21 @@ public class UnnervingLaughter_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int LOSEHP = 5;
-    private static final int UPGRADE_LOSEHP = 2;
+    private static final int MAGIC = 3;
+    private static final int UPGRADE_MAGIC = 1;
 
     // /STAT DECLARATION/
 
-    public UnnervingLaughter_Wrestler() {
+    public CraveNothing_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
-        isEthereal = true;
+        magicNumber = baseMagicNumber = MAGIC;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new UnnervingLaughterPower(p, p, loseHP), loseHP));
+        devoid();
+        addToBot(new ApplyPowerAction(p, p, new CraveNothingPower(p, p, magicNumber), magicNumber));
         super.use(p,m);
     }
 
@@ -49,7 +49,7 @@ public class UnnervingLaughter_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

@@ -32,7 +32,7 @@ public class Migraine_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int LOSEHP = 8;
     private static final int UPGRADE_LOSEHP = 4;
     private static final int INCREASE = 4;

@@ -26,7 +26,8 @@ import wrestler.cards.indigo.Defend_Wrestler;
 import wrestler.cards.indigo.Grab_Wrestler;
 import wrestler.cards.indigo.HipThrow_Wrestler;
 import wrestler.cards.indigo.Strike_Wrestler;
-import wrestler.relics.StartingRelic;
+import wrestler.relics.MultiGrappleRelic;
+import wrestler.relics.VoidMaskRelic;
 
 import java.util.ArrayList;
 
@@ -41,25 +42,14 @@ public class TheWrestler extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(Wrestler.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
-    // These are enums for your Characters color (both general color and for the card library) as well as
-    // an enum for the name of the player class - IRONCLAD, THE_SILENT, DEFECT, YOUR_CLASS ...
-    // These are all necessary for creating a character. If you want to find out where and how exactly they are used
-    // in the basegame (for fun and education) Ctrl+click on the PlayerClass, CardColor and/or LibraryType below and go down the
-    // Ctrl+click rabbit hole
 
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass WRESTLER;
-//        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-//        public static AbstractCard.CardColor COLOR_GRAY;
-//        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
-//        public static CardLibrary.LibraryType LIBRARY_COLOR_T;
         @SpireEnum(name = "WRESTLER_INDIGO") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_INDIGO;
         @SpireEnum(name = "WRESTLER_INDIGO") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
-        @SpireEnum(name = "WRESTLER_BOON")
-        public static AbstractCard.CardRarity BOON;
     }
 
     // =============== CHARACTER ENUMERATORS  =================
@@ -178,11 +168,7 @@ public class TheWrestler extends CustomPlayer {
     // Starting Relics	
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-
-        retVal.add(StartingRelic.ID);
-
-        UnlockTracker.markRelicAsSeen(StartingRelic.ID);
-
+        retVal.add(VoidMaskRelic.ID);
         return retVal;
     }
 
@@ -204,7 +190,7 @@ public class TheWrestler extends CustomPlayer {
     // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
-        return 0;
+        return 5;
     }
 
     // Should return the card color enum to be associated with your character.
@@ -269,8 +255,8 @@ public class TheWrestler extends CustomPlayer {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT,
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY};
     }
 

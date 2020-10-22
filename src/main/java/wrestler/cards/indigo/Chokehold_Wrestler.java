@@ -51,9 +51,7 @@ public class Chokehold_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         calculateCardDamage(m);
-        for (int i = 0; i < magicNumber; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(m, damage * magicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        }
+        addToBot(new DamageAction(m, new DamageInfo(m, damage * magicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         super.use(p,m);
     }
 

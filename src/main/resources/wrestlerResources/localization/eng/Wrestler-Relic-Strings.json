@@ -1,31 +1,16 @@
 {
-  "wrestler:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
-    "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
-    ]
-  },
-  "wrestler:PlaceholderRelic2": {
-    "NAME": "Placeholder Relic 2",
-    "FLAVOR": "You feel stronger.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
-    ]
-  },
-  "wrestler:DefaultClickableRelic": {
-    "NAME": "Right-Clicky Relic",
-    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
-    "DESCRIPTIONS": [
-      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
-      "YOU ARE MINE!"
-    ]
-  },
-  "wrestler:StartingRelic": {
-    "NAME": "WrestlerStartingRelic",
+  "wrestler:MultiGrappleRelic": {
+    "NAME": "MultiGrappleRelic",
     "FLAVOR": "What is this?",
     "DESCRIPTIONS": [
       "At the start of combat, Apply 1 Grapple to each enemy."
+    ]
+  },
+  "wrestler:VoidMaskRelic": {
+    "NAME": "Void Mask",
+    "FLAVOR": "The secret to the Wrestler's unusual techniques.",
+    "DESCRIPTIONS": [
+      "At the start of combat, discard 1 card from your draw pile."
     ]
   }
 }

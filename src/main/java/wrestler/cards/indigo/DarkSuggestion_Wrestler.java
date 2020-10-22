@@ -15,9 +15,7 @@ public class DarkSuggestion_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(DarkSuggestion_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("DarkSuggestion_Wrestler.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-
+    public static final String IMG = makeCardPath("DarkSuggestion_Wrestler.png");
 
     // /TEXT DECLARATION/
 

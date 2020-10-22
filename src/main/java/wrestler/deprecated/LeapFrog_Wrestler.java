@@ -1,53 +1,57 @@
 package wrestler.deprecated;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.LoseHPMindAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
-import java.util.Iterator;
-
 import static wrestler.Wrestler.makeCardPath;
 
-
-public class Whispers_Wrestler extends AbstractWrestlerCard {
+public class LeapFrog_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(Whispers_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(LeapFrog_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
-
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
+    private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 0;
-    private static final int LOSEHP = 3;
-    private static final int UPGRADE_LOSEHP = 2;
+    private static final int COST = 1;
 
-    public Whispers_Wrestler() {
+    private static final int BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 2;
+    private static final int ENERGY = 1;
+
+    // /STAT DECLARATION/
+
+    public LeapFrog_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = ENERGY;
+        isCombo = true;
     }
+
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-        while (var1.hasNext()) {
-            AbstractMonster mon = (AbstractMonster) var1.next();
-            addToBot(new LoseHPMindAction(mon, p, loseHP));
-        }
+        addToBot(new GainBlockAction(p, block));
+        super.use(p,m);
+    }
+
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainEnergyAction(magicNumber));
     }
 
     // Upgraded stats.
@@ -55,7 +59,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradeBlock(UPGRADE_BLOCK);
             initializeDescription();
         }
     }

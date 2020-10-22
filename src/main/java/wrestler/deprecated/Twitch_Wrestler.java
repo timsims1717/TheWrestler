@@ -1,4 +1,4 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;

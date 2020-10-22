@@ -3,33 +3,31 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import wrestler.actions.ForgetAction;
 import wrestler.actions.LoseHPMindAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
 
-public class UnnervingLaughterPower extends AbstractPower implements CloneablePowerInterface {
+public class AmnesiaPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(UnnervingLaughterPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(AmnesiaPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
-    private double perc;
 
-    public UnnervingLaughterPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public AmnesiaPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -47,17 +45,9 @@ public class UnnervingLaughterPower extends AbstractPower implements CloneablePo
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && power.ID.equals(TormentPower.POWER_ID)) {
-            addToBot(new ApplyPowerAction(source, source, new UnnervingLaughterPower(source, source, power.amount), power.amount));
-        }
-    }
-
-    @Override
     public void atStartOfTurn() {
         flash();
-        AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-        addToBot(new LoseHPMindAction(target, owner, amount));
+        addToBot(new ForgetAction(amount, true));
     }
 
     @Override
@@ -67,6 +57,6 @@ public class UnnervingLaughterPower extends AbstractPower implements CloneablePo
 
     @Override
     public AbstractPower makeCopy() {
-        return new UnnervingLaughterPower(owner, source, amount);
+        return new AmnesiaPower(owner, source, amount);
     }
 }

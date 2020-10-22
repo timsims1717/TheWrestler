@@ -13,22 +13,21 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.actions.LoseHPMindAction;
 import wrestler.util.TextureLoader;
 
-import java.util.Iterator;
-
 import static wrestler.Wrestler.makePowerPath;
 
-public class EldritchFormPower extends AbstractPower implements CloneablePowerInterface {
+public class UncannyLaughterPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(EldritchFormPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(UncannyLaughterPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private double perc;
 
-    public EldritchFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public UncannyLaughterPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -39,25 +38,24 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
         type = PowerType.BUFF;
         isTurnBased = false;
 
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        updateDescription();
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        flash();
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
-            if (!m.isDeadOrEscaped()) {
-                addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
-            }
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && power.ID.equals(TormentPower.POWER_ID)) {
+            addToBot(new ApplyPowerAction(source, source, new UncannyLaughterPower(source, source, power.amount), power.amount));
         }
-        amount += 2;
-        updateDescription();
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        flash();
+        AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+        addToBot(new LoseHPMindAction(target, owner, amount));
     }
 
     @Override
@@ -67,6 +65,6 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public AbstractPower makeCopy() {
-        return new EldritchFormPower(owner, source, amount);
+        return new UncannyLaughterPower(owner, source, amount);
     }
 }

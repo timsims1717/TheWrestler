@@ -33,8 +33,8 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
 
     private static final int GRAPPLE = 3;
     private static final int UPGRADE_GRP = 2;
-    private static final int VULN = 2;
-    private static final int UPGRADE_VUKN = 1;
+    private static final int VULN = 1;
+    private static final int UPGRADE_VULN = 1;
 
     // /STAT DECLARATION/
 
@@ -64,7 +64,7 @@ public class PenetratingShot_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeGrappleNumber(UPGRADE_GRP);
-            upgradeMagicNumber(UPGRADE_VUKN);
+            upgradeMagicNumber(UPGRADE_VULN);
             initializeDescription();
         }
     }

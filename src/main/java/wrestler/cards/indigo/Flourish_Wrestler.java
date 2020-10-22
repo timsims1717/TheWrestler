@@ -1,19 +1,21 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
+import wrestler.powers.AmnesiaPower;
+import wrestler.powers.FlourishPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class VoidCage_Wrestler extends AbstractWrestlerCard {
+public class Flourish_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(VoidCage_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String ID = wrestler.Wrestler.makeID(Flourish_Wrestler.class.getSimpleName());
+    public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
 
@@ -22,28 +24,27 @@ public class VoidCage_Wrestler extends AbstractWrestlerCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
-    private static final int BLOCK = 27;
-    private static final int UPGRADE_BLOCK = 5;
+    private static final int BLOCK = 2;
+    private static final int UPGRADE_BLOCK = 1;
 
     // /STAT DECLARATION/
 
-
-    public VoidCage_Wrestler() {
+    public Flourish_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = BLOCK;
+        isCombo = true;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
-        addToBot(new GainBlockAction(p, p, block));
+        addToBot(new ApplyPowerAction(p, p, new FlourishPower(p, p, magicNumber), magicNumber));
         super.use(p,m);
     }
 
@@ -53,7 +54,7 @@ public class VoidCage_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_BLOCK);
             initializeDescription();
         }
     }

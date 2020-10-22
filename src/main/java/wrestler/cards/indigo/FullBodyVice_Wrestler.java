@@ -41,7 +41,7 @@ public class FullBodyVice_Wrestler extends AbstractWrestlerCard {
     private static final int DAMAGE = 16;
     private static final int UPGRADE_DMG = 4;
     private static final int STR_DOWN = 11;
-    private static final int UPGRADE_STR_DOWN = 7;
+    private static final int UPGRADE_STR_DOWN = 4;
 
     public FullBodyVice_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

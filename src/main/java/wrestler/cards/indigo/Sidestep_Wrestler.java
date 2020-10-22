@@ -35,7 +35,7 @@ public class Sidestep_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int DEX = 2;
+    private static final int DEX = 3;
     private static final int UPGRADE_DEX = 1;
     private static final int BLOCK = 5;
 

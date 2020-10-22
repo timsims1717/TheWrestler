@@ -1,12 +1,11 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.CloseQuartersPower;
-import wrestler.powers.RelentlessPower;
+import wrestler.powers.CrowdPleaserPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -39,7 +38,7 @@ public class Relentless_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new RelentlessPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new CrowdPleaserPower(p), 1));
         super.use(p,m);
     }
 

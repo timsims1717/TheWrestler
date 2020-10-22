@@ -35,10 +35,9 @@ public class Haymaker_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 2;
 
-    private static final int DAMAGE = 24;
-    private static final int UPGRADE_DMG = 2;
-    private static final int VULN = 2;
-    private static final int UPGRADE_VULN = -1;
+    private static final int DAMAGE = 26;
+    private static final int UPGRADE_DMG = 6;
+    private static final int VULN = 1;
 
     public Haymaker_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -61,7 +60,6 @@ public class Haymaker_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
-            upgradeMagicNumber(UPGRADE_VULN);
             initializeDescription();
         }
     }

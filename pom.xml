@@ -1,18 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
-    <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
     <groupId>wrestler</groupId>
     <artifactId>Wrestler</artifactId>
     <name>The Wrestler</name>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <description>A Wrestler from a far city, banished for using mind altering moves.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
+        <SlayTheSpire.version>07-30-2020</SlayTheSpire.version>
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
         <Steam.path>/home/tim/.steam/steam/steamapps</Steam.path>

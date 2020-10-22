@@ -1,6 +1,7 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -23,15 +24,16 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
 
-    private static final int STR_DOWN = 4;
+    private static final int STR_DOWN = 5;
     private static final int UPGRADE_STR_DOWN = 2;
+    private static final int DRAW = 2;
 
     public VitalityDrain_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -42,6 +44,7 @@ public class VitalityDrain_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         tempStrDown(p, m, magicNumber);
+        addToBot(new DrawCardAction(DRAW));
     }
 
     // Upgraded stats.

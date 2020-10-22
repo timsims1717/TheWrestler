@@ -15,11 +15,7 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(ArmBar_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
@@ -33,7 +29,8 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_BLOCK = 2;
 
     // /STAT DECLARATION/
 
@@ -41,6 +38,7 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
     public ArmBar_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        isCombo = true;
     }
 
 
@@ -61,8 +59,7 @@ public class ArmBar_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            isCombo = true;
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBlock(UPGRADE_BLOCK);
             initializeDescription();
         }
     }

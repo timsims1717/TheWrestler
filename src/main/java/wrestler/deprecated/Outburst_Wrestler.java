@@ -1,10 +1,9 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-import wrestler.actions.MakeRandomCardAction;
 import wrestler.cards.AbstractTriggerOnDrawnCard;
 import wrestler.characters.TheWrestler;
 

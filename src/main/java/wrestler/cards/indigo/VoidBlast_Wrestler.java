@@ -33,7 +33,7 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 13;
+    private static final int DAMAGE = 15;
     private static final int UPGRADE_DMG = 4;
 
     public VoidBlast_Wrestler() {

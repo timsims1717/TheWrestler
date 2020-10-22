@@ -36,9 +36,9 @@ public class MindSpike_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 5;
     private static final int UPGRADE_DMG = 2;
-    private static final int LOSEHP = 4;
+    private static final int LOSEHP = 5;
     private static final int UPGRADE_LOSEHP = 2;
 
     public MindSpike_Wrestler() {

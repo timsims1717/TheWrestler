@@ -14,7 +14,7 @@ import java.util.Iterator;
 import static wrestler.Wrestler.makeRelicOutlinePath;
 import static wrestler.Wrestler.makeRelicPath;
 
-public class StartingRelic extends CustomRelic {
+public class MultiGrappleRelic extends CustomRelic {
 
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
@@ -23,13 +23,13 @@ public class StartingRelic extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = wrestler.Wrestler.makeID("StartingRelic");
+    public static final String ID = wrestler.Wrestler.makeID("MultiGrappleRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
-    public StartingRelic() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+    public MultiGrappleRelic() {
+        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.MAGICAL);
     }
 
     // Flash at the start of Battle.

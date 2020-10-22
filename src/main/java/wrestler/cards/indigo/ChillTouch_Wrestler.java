@@ -25,7 +25,7 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int LOSEHP = 4;
     private static final int UPGRADE_LOSEHP = 2;
 

@@ -1,5 +1,6 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -8,15 +9,15 @@ import wrestler.characters.TheWrestler;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class VoidCage_Wrestler extends AbstractWrestlerCard {
+public class CircleBehind_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(VoidCage_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String ID = wrestler.Wrestler.makeID(CircleBehind_Wrestler.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
+    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
@@ -25,28 +26,33 @@ public class VoidCage_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 0;
 
-    private static final int BLOCK = 27;
-    private static final int UPGRADE_BLOCK = 5;
+    private static final int BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 2;
+    private static final int DRAW = 1;
 
     // /STAT DECLARATION/
 
-
-    public VoidCage_Wrestler() {
+    public CircleBehind_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = DRAW;
+        isCombo = true;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        devoid();
-        addToBot(new GainBlockAction(p, p, block));
+        addToBot(new GainBlockAction(p, block));
         super.use(p,m);
     }
 
+    @Override
+    public void comboUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(magicNumber));
+    }
 
     // Upgraded stats.
     @Override

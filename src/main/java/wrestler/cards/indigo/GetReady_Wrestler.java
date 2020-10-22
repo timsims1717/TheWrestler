@@ -3,6 +3,8 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -17,9 +19,7 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(GetReady_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-
+    public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
 
@@ -28,21 +28,20 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
 
-    private static final int CARD_MANIP = 2;
-    private static final int UPGRADE_CARD_MANIP = 1;
+    private static final int STR_DEX = 1;
+    private static final int UPGRADE_STR_DEX = 1;
 
     // /STAT DECLARATION/
 
     public GetReady_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = CARD_MANIP;
+        magicNumber = baseMagicNumber = STR_DEX;
         isInnate = true;
-        exhaust = true;
         isCombo = true;
     }
 
@@ -50,8 +49,8 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ForgetAction(magicNumber));
-        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
         super.use(p,m);
     }
 
@@ -61,7 +60,7 @@ public class GetReady_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_CARD_MANIP);
+            upgradeMagicNumber(UPGRADE_STR_DEX);
             initializeDescription();
         }
     }

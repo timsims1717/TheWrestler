@@ -4,9 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -70,17 +68,16 @@ public class ComboPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (amount >= THRESHOLD * ENERGY) {
-            addToBot(new GainEnergyAction(ENERGY_AMOUNT));
-            flash();
-        }
-    }
-
-    @Override
-    public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
+        protect = false;
         if (amount >= THRESHOLD * BLOCK) {
             addToBot(new GainBlockAction(owner, BLOCK_AMOUNT));
             flash();
+        }
+        if (amount >= THRESHOLD * DRAW) {
+            addToBot(new DrawCardAction(DRAW_AMOUNT));
+        }
+        if (amount >= THRESHOLD * ENERGY) {
+            addToBot(new GainEnergyAction(ENERGY_AMOUNT));
         }
     }
 
@@ -91,26 +88,30 @@ public class ComboPower extends AbstractPower implements CloneablePowerInterface
         }
         fontScale = 8.0F;
         amount += stackAmount;
-        AbstractPlayer player = AbstractDungeon.player;
-        if (amount >= THRESHOLD * DRAW && amount - stackAmount < THRESHOLD * DRAW) {
-            player.gameHandSize += DRAW_AMOUNT;
-        }
     }
 
     @Override
     public void updateDescription() {
+        boolean done = false;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 10; i++) {
-            if (i > 0) {
-                sb.append(" NL ");
+            if (done) {
+                break;
             }
+            if (i == 0) {
+                sb.append(DESCRIPTIONS[10]);
+            }
+            if (i == 3) {
+                sb.append(" NL ");
+                sb.append(DESCRIPTIONS[11]);
+            }
+            sb.append(" NL ");
             int j = (i + 1) * THRESHOLD;
             if (j <= amount) {
                 sb.append("#b");
-            } else {
-                if (j - THRESHOLD <= amount) {
-                    sb.append("#y");
-                }
+            } else if (j - THRESHOLD <= amount) {
+                sb.append("#y");
+                done = true;
             }
             sb.append(j);
             sb.append(": ");
@@ -121,32 +122,25 @@ public class ComboPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public int onLoseHp(int damageAmount) {
-        if (!protect) {
-            breakCombo();
-        }
-        protect = false;
+        breakCombo();
         return damageAmount;
     }
 
     @Override
     public void onAfterCardPlayed(AbstractCard usedCard) {
-        if (!AbstractDungeon.player.hasPower(RelentlessPower.POWER_ID)) {
-            if (usedCard instanceof AbstractWrestlerCard) {
-                AbstractWrestlerCard card = (AbstractWrestlerCard) usedCard;
-                if (card.isCombo) {
-                    return;
-                }
+        if (usedCard instanceof AbstractWrestlerCard) {
+            AbstractWrestlerCard card = (AbstractWrestlerCard) usedCard;
+            if (card.isCombo) {
+                return;
             }
-            breakCombo();
         }
+        breakCombo();
     }
 
     private void breakCombo() {
-        AbstractPlayer player = AbstractDungeon.player;
-        if (amount >= THRESHOLD * DRAW) {
-            player.gameHandSize -= DRAW_AMOUNT;
+        if (!AbstractDungeon.player.hasPower(CrowdPleaserPower.POWER_ID)) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
         }
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

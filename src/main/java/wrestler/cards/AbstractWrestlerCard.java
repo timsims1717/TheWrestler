@@ -36,6 +36,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public boolean isLoseHPModified;
 
     public boolean isCombo;
+    public boolean isComboException;
 
     public AbstractWrestlerCard(final String id,
                                 final String img,
@@ -176,7 +177,9 @@ public abstract class AbstractWrestlerCard extends CustomCard {
             if (playerHasCombo()) {
                 comboUse(p, m);
             }
-            combo();
+            if (!isComboException) {
+                combo();
+            }
         }
     }
 

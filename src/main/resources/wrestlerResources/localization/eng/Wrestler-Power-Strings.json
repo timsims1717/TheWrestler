@@ -6,8 +6,8 @@
     "wrestler:CompelledPower": {
         "NAME": "Compelled",
         "DESCRIPTIONS": [
-            "At the end of the round, this creature will",
-            " lose #b", " HP for each time it attacked",
+            "This creature will",
+            " lose #b", " HP each time it attacks",
             " gain #b", " #yWeak", " #yVulnerable",
             " apply #b", " #yDexterity to you", " #yStrength to you",
             " and will", ".",
@@ -42,7 +42,7 @@
     },
     "wrestler:EldritchFormPower": {
         "NAME": "Eldritch Form",
-        "DESCRIPTIONS": ["At the end of your turn, lose #b", " HP and increase this number by #b2."]
+        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #yCompelled to ALL enemies and increase this number by #b2."]
     },
     "wrestler:StickyFingersPower": {
         "NAME": "Sticky Fingers",
@@ -78,20 +78,53 @@
     "wrestler:ComboPower": {
         "NAME": "Combo",
         "DESCRIPTIONS": [
-            "Gain #b4 Block each turn.",
+            "Gain #b4 Block.",
             "Draw #b1 additional card.",
             "Gain #b1 additional Energy.",
-            "Gain #b10 Gold at the end of the battle.",
-            "Heal #b7 HP at the end of the battle.",
-            "Gain #b25 Gold at the end of the battle.",
-            "Gain #b1 additional card at the end of the battle.",
-            "Gain #b50 Gold at the end of the battle.",
-            "Gain #b4 Max HP the end of the battle.",
-            "Gain #b100 Gold at the end of the battle."
+            "Gain #b10 Gold",
+            "Heal #b7 HP",
+            "Gain #b25 Gold",
+            "Gain #b1 additional card",
+            "Gain #b50 Gold",
+            "Gain #b4 Max HP",
+            "Gain #b100 Gold",
+            "At the start of your turn:",
+            "At the end of the battle:"
         ]
     },
-    "wrestler:RelentlessPower": {
-        "NAME": "Relentless",
-        "DESCRIPTIONS": ["Playing non-Combo cards does not break your Combo."]
+    "wrestler:CrowdPleaserPower": {
+        "NAME": "Crowd Pleaser",
+        "DESCRIPTIONS": [
+            "Your Combo cannot be broken this turn.",
+            "Your Combo cannot be broken the next #b", "turns."
+        ]
+    },
+    "wrestler:AmnesiaPower": {
+        "NAME": "Amnesia",
+        "DESCRIPTIONS": [
+            "At the start of your turn, discard up to #y",
+            " cards from your draw pile."
+        ]
+    },
+    "wrestler:PizzazzPower": {
+        "NAME": "Pizzazz",
+        "DESCRIPTIONS": [
+            "Whenever you gain Combo, gain #y",
+            " Strength and #y", " this turn."
+        ]
+    },
+    "wrestler:FlourishPower": {
+        "NAME": "Flourish",
+        "DESCRIPTIONS": [
+            "Whenever you gain Combo, gain #y",
+            " Block."
+        ]
+    },
+    "wrestler:UntouchablePower": {
+        "NAME": "Untouchable",
+        "DESCRIPTIONS": [
+            "At the start of your turn, if you have #bCombo, gain #y",
+            " Combo."
+        ]
     }
 }

@@ -2,26 +2,25 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class MountainBomb_Wrestler extends AbstractWrestlerCard {
+
+public class Roundhouse_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(MountainBomb_Wrestler.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(Roundhouse_Wrestler.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
-    // /TEXT DECLARATION/
 
+    // /TEXT DECLARATION/
+    final static public String NoComboMessage = "I don't have a Combo going.";
 
     // STAT DECLARATION
 
@@ -30,31 +29,33 @@ public class MountainBomb_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 2;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_DMG = 3;
 
-    // /STAT DECLARATION/
-
-
-    public MountainBomb_Wrestler() {
+    public Roundhouse_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        tags.add(CardTags.STRIKE);
         isCombo = true;
     }
 
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if (!super.canUse(p, m)) {
+            return false;
+        } else if (!playerHasCombo()) {
+            cantUseMessage = NoComboMessage;
+            return false;
+        }
+        return true;
+    }
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        super.use(p,m);
-    }
-
-    @Override
     public void comboUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     // Upgraded stats.
@@ -62,7 +63,7 @@ public class MountainBomb_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            upgradeDamage(UPGRADE_DMG);
             initializeDescription();
         }
     }

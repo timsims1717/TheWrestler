@@ -21,8 +21,8 @@ public class BearHug_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(BearHug_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    public static final String IMG = makeCardPath("Attack.png");
+
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
@@ -35,9 +35,9 @@ public class BearHug_Wrestler extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
 
-    private static final int GRAPPLE = 5;
+    private static final int GRAPPLE = 6;
     private static final int UPGRADE_GRAPPLE = 2;
 
     // /STAT DECLARATION/
