@@ -1,11 +1,10 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.TormentPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -29,8 +28,8 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int LOSEHP = 2;
-    private static final int UPGRADE_LOSEHP = 1;
+    private static final int LOSEHP = 4;
+    private static final int UPGRADE_LOSEHP = 2;
 
     // /STAT DECLARATION/
 

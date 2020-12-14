@@ -32,7 +32,7 @@ public class ElbowCut_Wrestler extends AbstractWrestlerCard {
 
     private static final int DAMAGE = 9;
     private static final int UPGRADE_DMG = 4;
-    private static final int DRAW = 1;
+    private static final int DRAW = 2;
 
     // /STAT DECLARATION/
 
@@ -47,7 +47,7 @@ public class ElbowCut_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         super.use(p,m);
     }
 

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.NightmarePower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,7 +63,27 @@ public class OutOfNothingAction extends AbstractGameAction {
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
                 tickDuration();
             } else if (cardToDupe != null) {
-                addToBot(new MakeTempCardInDrawPileAction(cardToDupe.makeCopy(), effect, true, true));
+                AbstractCard c;
+                int i;
+                if (effect < 6) {
+                    for(i = 0; i < effect; i++) {
+                        c = cardToDupe.makeStatEquivalentCopy();
+                        if (c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS && AbstractDungeon.player.hasPower("MasterRealityPower")) {
+                            c.upgrade();
+                        }
+
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToDrawPileEffect(c, true, false));
+                    }
+                } else {
+                    for(i = 0; i < effect; i++) {
+                        c = cardToDupe.makeStatEquivalentCopy();
+                        if (c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS && AbstractDungeon.player.hasPower("MasterRealityPower")) {
+                            c.upgrade();
+                        }
+
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToDrawPileEffect(c, true, false));
+                    }
+                }
                 player.hand.addToBottom(cardToDupe);
                 if (!freeToPlayOnce) {
                     player.energy.use(EnergyPanel.totalCount);

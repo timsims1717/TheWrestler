@@ -29,7 +29,7 @@ public class PounceAction extends AbstractGameAction {
     public void update() {
         if (duration == startDuration && target != null) {
 
-            AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.BLUNT_HEAVY));
             target.damage(info);
             if (!((AbstractMonster)target).isDying && target.currentHealth > 0 && !target.halfDead) {
                 AbstractPlayer player = AbstractDungeon.player;
@@ -42,7 +42,9 @@ public class PounceAction extends AbstractGameAction {
                         addToBot(new RemoveSpecificPowerAction(mon, player, GrapplePower.POWER_ID));
                     }
                 }
-                addToBot(new ApplyPowerAction(target, player, new GrapplePower(target, player, grappleMove), grappleMove));
+                if (grappleMove > 0) {
+                    addToBot(new ApplyPowerAction(target, player, new GrapplePower(target, player, grappleMove), grappleMove));
+                }
             }
         }
 

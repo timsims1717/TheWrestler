@@ -33,13 +33,13 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
 
     public ChillTouch_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        psychic = basePsychic = LOSEHP;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ChillTouchPower(p, p, loseHP), loseHP));
+        addToBot(new ApplyPowerAction(p, p, new ChillTouchPower(p, p, psychic), psychic));
         super.use(p,m);
     }
 
@@ -48,7 +48,7 @@ public class ChillTouch_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradePsychicDamageNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

@@ -1,4 +1,44 @@
 # Changelog
+## 0.0.5
+### Cards Added
+
+### Cards Changed
+- Strike and Defend given the Starter tag
+- Dominate Mind: Compelled 5(7) -> 8(11)
+- Dominate Mind: HP Loss 15(21) -> 24(32)
+- Eldritch Portal: Removed Compelled
+- Eldritch Portal: Renamed to Invisible Hand
+- Body Shield: Power -> Skill
+- Body Shield: Changed to "Gain 7(9) block. Whenever an enemy attacks this turn, deal 4(6) damage to ALL grappled enemies."
+- Crusher: Changed from multi hit to single hit
+- Jab: Multihit 2(3) -> 2
+- Jab: Damage 3 -> 2(3)
+- Migraine: Changed to "The enemy loses 8(12) HP. Increase the value of this card by half (4(6))."
+- Mind Spike: Damage 5(7) -> 4(6)
+- Mind Spike: HP Loss 5(7) -> 4(6)
+- Shocking Grasp: Damage 3 -> 3(4)
+- Shocking Grasp: Multihit 3(4) -> 3
+- Torment: HP Loss Boost 2(3) -> 4(6)
+- Void Blast: Renamed to Eldritch Blast
+### Cards Removed
+- Agility Training
+- Cross Training
+- Invisible Hand (Old)
+- Self Delusion
+- Torment
+- Weight Training
+### Powers
+- Compelled HP Loss -> 3
+### Artwork
+- Amnesia Power
+- Chill Touch Power
+- Compelled Power
+- Grapple Power
+- Hammer Strike
+- Invisible Hand
+### Other
+- Changed damage effects for most attacks
+
 ## 0.0.4
 - Added Changelog
 ### Cards Added
@@ -42,7 +82,6 @@
 - Haymaker: Vulnerable 2(1) -> 1
 - Hip Throw: Combo added
 - Jab: Combo changed to upgrade
-- Jab: Multihit 2(3) -> 2
 - Invisible Hand: Damage 3(4) -> 3(5)
 - Invisible Hand: Block 3(4) -> 3(5)
 - Invisible Hand: Combo w/out upgrade

@@ -48,10 +48,6 @@
         "NAME": "Sticky Fingers",
         "DESCRIPTIONS": ["Whenever you play a card this turn, apply #b", " #yGrapple to ", "a random enemy.", "ALL enemies."]
     },
-    "wrestler:TormentPower": {
-        "NAME": "Torment",
-        "DESCRIPTIONS": ["Whenever you cause an enemy to lose HP, they lose #b", " additional HP."]
-    },
     "wrestler:UnearthlyVisionsPower": {
         "NAME": "Unearthly Visions",
         "DESCRIPTIONS": ["Whenever a Void card exhausts, apply #b", " #yCompulsion to ALL enemy."]
@@ -102,29 +98,36 @@
     "wrestler:AmnesiaPower": {
         "NAME": "Amnesia",
         "DESCRIPTIONS": [
-            "At the start of your turn, discard up to #y",
+            "At the start of your turn, discard up to #b",
             " cards from your draw pile."
         ]
     },
     "wrestler:PizzazzPower": {
         "NAME": "Pizzazz",
         "DESCRIPTIONS": [
-            "Whenever you gain Combo, gain #y",
-            " Strength and #y", " this turn."
+            "Whenever you gain Combo, gain #b",
+            " Strength and #b", " this turn."
         ]
     },
     "wrestler:FlourishPower": {
         "NAME": "Flourish",
         "DESCRIPTIONS": [
-            "Whenever you gain Combo, gain #y",
+            "Whenever you gain Combo, gain #b",
             " Block."
         ]
     },
     "wrestler:UntouchablePower": {
         "NAME": "Untouchable",
         "DESCRIPTIONS": [
-            "At the start of your turn, if you have #bCombo, gain #y",
-            " Combo."
+            "At the start of your turn, if you have #yCombo, gain #b",
+            " #yCombo."
+        ]
+    },
+    "wrestler:MaladyPower": {
+        "NAME": "Malady",
+        "DESCRIPTIONS": [
+            "Whenever a Void card exhausts, the enemy loses #b",
+            " HP and this amount increases by #b", "."
         ]
     }
 }

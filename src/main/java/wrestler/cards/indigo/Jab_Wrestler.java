@@ -33,9 +33,9 @@ public class Jab_Wrestler extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 2;
+    private static final int UPGRADE_DAMAGE = 1;
     private static final int COUNT = 2;
-    private static final int UPGRADE_COUNT = 1;
 
     // /STAT DECLARATION/
 
@@ -50,11 +50,11 @@ public class Jab_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
         if (isTargetGrappled(m)) {
             for (int i = 0; i < magicNumber; i++) {
-                this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }
         }
         super.use(p,m);
@@ -65,7 +65,7 @@ public class Jab_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_COUNT);
+            upgradeDamage(UPGRADE_DAMAGE);
             isCombo = true;
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

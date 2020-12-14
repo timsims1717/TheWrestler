@@ -55,7 +55,7 @@ public class Roundhouse_Wrestler extends AbstractWrestlerCard {
     // Actions the card should do.
     @Override
     public void comboUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     // Upgraded stats.

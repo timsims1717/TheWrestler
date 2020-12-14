@@ -1,15 +1,11 @@
-package wrestler.cards.indigo;
+package wrestler.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.red.SearingBlow;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
@@ -21,7 +17,7 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(AgilityTraining_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("Power.png");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -34,13 +30,13 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
-    private static final int DEXTERITY = 4;
-    private static final int UPGRADE_DEXTERITY = 1;
+    private static final int TURNS = 4;
+    private static final int UPGRADE_TURNS = 1;
 
     public AgilityTraining_Wrestler() {
         this(0);
@@ -48,15 +44,15 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
 
     public AgilityTraining_Wrestler(int upgrades) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DEXTERITY;
-        exhaust = true;
+        magicNumber = baseMagicNumber = TURNS;
+        isInnate = true;
         timesUpgraded = upgrades;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new AgilityTrainingPower(p, p, magicNumber), magicNumber));
         super.use(p,m);
     }
 
@@ -68,7 +64,7 @@ public class AgilityTraining_Wrestler extends AbstractWrestlerCard {
     @Override
     public void upgrade() {
         timesUpgraded++;
-        upgradeMagicNumber(UPGRADE_DEXTERITY);
+        upgradeMagicNumber(UPGRADE_TURNS);
         upgraded = true;
         name = NAME + "+" + timesUpgraded;
         initializeTitle();

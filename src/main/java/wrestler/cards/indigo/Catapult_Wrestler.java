@@ -49,16 +49,14 @@ public class Catapult_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int total = 0;
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-        while (var1.hasNext()) {
-            AbstractMonster mon = (AbstractMonster) var1.next();
+        for (AbstractMonster mon : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (isTargetGrappled(mon)) {
                 total += 1;
             }
         }
 
         for (int i = 0; i < total; i++) {
-            addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToBot(new DamageAllGrappledEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         }
         super.use(p,m);
     }

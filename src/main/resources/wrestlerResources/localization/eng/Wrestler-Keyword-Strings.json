@@ -36,5 +36,11 @@
       "combo"
     ],
     "DESCRIPTION": "Build up your Combo for special benefits. NL Combo is lost when HP is lost from enemies or when a card without Combo is played."
+  },
+  {
+    "NAMES": [
+      "psychic"
+    ],
+    "DESCRIPTION": "Psychic damage ignores block but is blocked by Artifact charges. It also does not scale with Strength."
   }
 ]

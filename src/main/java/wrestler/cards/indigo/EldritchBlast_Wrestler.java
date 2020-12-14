@@ -1,24 +1,27 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
 import static wrestler.Wrestler.makeCardPath;
 
 
-public class VoidBlast_Wrestler extends AbstractWrestlerCard {
+public class EldritchBlast_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(VoidBlast_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("VoidBlast_Wrestler.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    public static final String ID = wrestler.Wrestler.makeID(EldritchBlast_Wrestler.class.getSimpleName());
+    public static final String IMG = makeCardPath("EldritchBlast_Wrestler.png");
 
 
     // /TEXT DECLARATION/
@@ -36,7 +39,7 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard {
     private static final int DAMAGE = 15;
     private static final int UPGRADE_DMG = 4;
 
-    public VoidBlast_Wrestler() {
+    public EldritchBlast_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
     }
@@ -45,7 +48,10 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
-        addToBot(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+        AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+        addToBot(new VFXAction(new LightningEffect(target.drawX, target.drawY), 0.05F));
+        addToTop(new SFXAction("ORB_LIGHTNING_EVOKE", 0.1F));
+        addToBot(new DamageAction(target, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
     }
 
     // Upgraded stats.
@@ -59,6 +65,6 @@ public class VoidBlast_Wrestler extends AbstractWrestlerCard {
     }
 
     public AbstractCard makeCopy() {
-        return new VoidBlast_Wrestler();
+        return new EldritchBlast_Wrestler();
     }
 }

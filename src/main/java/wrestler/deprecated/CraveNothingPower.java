@@ -1,4 +1,4 @@
-package wrestler.powers;
+package wrestler.deprecated;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;

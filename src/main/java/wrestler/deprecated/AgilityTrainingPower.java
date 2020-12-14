@@ -1,29 +1,23 @@
-package wrestler.powers;
+package wrestler.deprecated;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import wrestler.util.TextureLoader;
-
-import java.util.Iterator;
 
 import static wrestler.Wrestler.makePowerPath;
 
-public class TormentPower extends AbstractPower implements CloneablePowerInterface {
+public class AgilityTrainingPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(TormentPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(AgilityTrainingPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -31,7 +25,7 @@ public class TormentPower extends AbstractPower implements CloneablePowerInterfa
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public TormentPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public AgilityTrainingPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -40,12 +34,18 @@ public class TormentPower extends AbstractPower implements CloneablePowerInterfa
         this.source = source;
 
         type = PowerType.BUFF;
-        isTurnBased = false;
+        isTurnBased = true;
 
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+        region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        updateDescription();
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
+        addToBot(new ReducePowerAction(owner, owner, this.ID, 1));
     }
 
     @Override
@@ -55,6 +55,6 @@ public class TormentPower extends AbstractPower implements CloneablePowerInterfa
 
     @Override
     public AbstractPower makeCopy() {
-        return new TormentPower(owner, source, amount);
+        return new AgilityTrainingPower(owner, source, amount);
     }
 }

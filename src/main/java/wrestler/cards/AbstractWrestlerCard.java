@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import wrestler.powers.ComboPower;
 import wrestler.powers.GrapplePower;
-import wrestler.powers.TormentPower;
+import wrestler.deprecated.TormentPower;
 
 import java.util.Iterator;
 
@@ -30,10 +30,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public boolean wantsTargetGrapple;
     final static public String NotGrappledMessage = "That enemy is not Grappled.";
 
-    public int loseHP;
-    public int baseLoseHP;
-    public boolean upgradedLoseHP;
-    public boolean isLoseHPModified;
+    public int psychic;
+    public int basePsychic;
+    public boolean upgradedPsychic;
+    public boolean isPsychicModified;
 
     public boolean isCombo;
     public boolean isComboException;
@@ -54,7 +54,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         isBlockModified = false;
         isMagicNumberModified = false;
         isGrappleModified = false;
-        isLoseHPModified = false;
+        isPsychicModified = false;
         requiresTargetGrapple = false;
         wantsTargetGrapple = false;
     }
@@ -65,9 +65,9 @@ public abstract class AbstractWrestlerCard extends CustomCard {
             grapple = baseGrapple;
             isGrappleModified = true;
         }
-        if (upgradedLoseHP) {
-            loseHP = baseLoseHP;
-            isLoseHPModified = true;
+        if (upgradedPsychic) {
+            psychic = basePsychic;
+            isPsychicModified = true;
         }
     }
 
@@ -77,10 +77,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         upgradedGrapple = true;
     }
 
-    public void upgradeLoseHPNumber(int amount) {
-        baseLoseHP += amount;
-        loseHP = baseLoseHP;
-        upgradedLoseHP = true;
+    public void upgradePsychicDamageNumber(int amount) {
+        basePsychic += amount;
+        psychic = basePsychic;
+        upgradedPsychic = true;
     }
 
     @Override
@@ -137,20 +137,20 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         super.applyPowers();
         if (AbstractDungeon.player.hasPower(TormentPower.POWER_ID)) {
             int amount = AbstractDungeon.player.getPower(TormentPower.POWER_ID).amount;
-            isLoseHPModified = false;
-            float tmp = (float) baseLoseHP;
+            isPsychicModified = false;
+            float tmp = (float) basePsychic;
 
             tmp += amount;
 
-            if (baseLoseHP != MathUtils.floor(tmp)) {
-                isLoseHPModified = true;
+            if (basePsychic != MathUtils.floor(tmp)) {
+                isPsychicModified = true;
             }
 
             if (tmp < 0.0F) {
                 tmp = 0.0F;
             }
 
-            loseHP = MathUtils.floor(tmp);
+            psychic = MathUtils.floor(tmp);
         }
     }
 

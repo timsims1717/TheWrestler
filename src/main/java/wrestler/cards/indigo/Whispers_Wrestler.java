@@ -3,7 +3,7 @@ package wrestler.cards.indigo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.LoseHPMindAction;
+import wrestler.actions.PsychicDamageAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 
@@ -37,7 +37,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
 
     public Whispers_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        psychic = basePsychic = LOSEHP;
     }
 
     // Actions the card should do.
@@ -46,7 +46,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         while (var1.hasNext()) {
             AbstractMonster mon = (AbstractMonster) var1.next();
-            addToBot(new LoseHPMindAction(mon, p, loseHP));
+            addToBot(new PsychicDamageAction(mon, p, psychic));
         }
     }
 
@@ -55,7 +55,7 @@ public class Whispers_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradePsychicDamageNumber(UPGRADE_LOSEHP);
             initializeDescription();
         }
     }

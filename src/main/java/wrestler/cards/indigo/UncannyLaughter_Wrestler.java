@@ -26,21 +26,21 @@ public class UncannyLaughter_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int LOSEHP = 5;
-    private static final int UPGRADE_LOSEHP = 2;
+    private static final int PSYCHIC = 5;
+    private static final int UPGRADE_PSYCHIC = 2;
 
     // /STAT DECLARATION/
 
     public UncannyLaughter_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        magicNumber = baseMagicNumber = PSYCHIC;
         isEthereal = true;
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new UncannyLaughterPower(p, p, loseHP), loseHP));
+        addToBot(new ApplyPowerAction(p, p, new UncannyLaughterPower(p, p, psychic), psychic));
         super.use(p,m);
     }
 
@@ -49,7 +49,7 @@ public class UncannyLaughter_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_PSYCHIC);
             initializeDescription();
         }
     }

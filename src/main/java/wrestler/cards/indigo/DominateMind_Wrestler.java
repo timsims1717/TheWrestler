@@ -1,27 +1,21 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.LoseHPMindAction;
+import wrestler.actions.PsychicDamageAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.deprecated.MindvicePower;
 import wrestler.powers.CompelledPower;
 
 import static wrestler.Wrestler.makeCardPath;
-
 
 public class DominateMind_Wrestler extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(DominateMind_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
@@ -34,14 +28,14 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 4;
-    private static final int LOSEHP = 15;
+    private static final int LOSEHP = 24;
     private static final int UPGRADE_LOSEHP = 6;
-    private static final int COMPULSION = 5;
-    private static final int UPGRADE_COMPULSION = 2;
+    private static final int COMPULSION = 8;
+    private static final int UPGRADE_COMPULSION = 3;
 
     public DominateMind_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        psychic = basePsychic = LOSEHP;
         magicNumber = baseMagicNumber = COMPULSION;
     }
 
@@ -49,7 +43,7 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
-        addToBot(new LoseHPMindAction(m, p, loseHP));
+        addToBot(new PsychicDamageAction(m, p, psychic));
         super.use(p,m);
     }
 
@@ -58,7 +52,7 @@ public class DominateMind_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradePsychicDamageNumber(UPGRADE_LOSEHP);
             upgradeMagicNumber(UPGRADE_COMPULSION);
             initializeDescription();
         }

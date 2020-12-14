@@ -1,8 +1,6 @@
-package wrestler.powers;
+package wrestler.deprecated;
 
-import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
-import basemod.interfaces.PostExhaustSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,17 +8,21 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
+import wrestler.powers.CompelledPower;
 import wrestler.util.TextureLoader;
+
+import java.util.Iterator;
 
 import static wrestler.Wrestler.makePowerPath;
 
-public class VanishingPower extends AbstractPower implements CloneablePowerInterface, PostExhaustSubscriber {
+public class UnearthlyVisionsPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(VanishingPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(UnearthlyVisionsPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -28,7 +30,7 @@ public class VanishingPower extends AbstractPower implements CloneablePowerInter
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public VanishingPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public UnearthlyVisionsPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -43,14 +45,20 @@ public class VanishingPower extends AbstractPower implements CloneablePowerInter
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
-        BaseMod.subscribe(this);
     }
 
     @Override
-    public void receivePostExhaust(AbstractCard abstractCard) {
+    public void onExhaust(AbstractCard abstractCard) {
         if (abstractCard.cardID.equals(VoidCard.ID)) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
+            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+
+            while (var1.hasNext()) {
+                AbstractMonster m = (AbstractMonster) var1.next();
+                if (!m.isDeadOrEscaped()) {
+                    addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
+                }
+            }
         }
     }
 
@@ -61,6 +69,6 @@ public class VanishingPower extends AbstractPower implements CloneablePowerInter
 
     @Override
     public AbstractPower makeCopy() {
-        return new VanishingPower(owner, source, amount);
+        return new UnearthlyVisionsPower(owner, source, amount);
     }
 }

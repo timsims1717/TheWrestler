@@ -4,13 +4,11 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.actions.DamageAllGrappledEnemiesAction;
@@ -38,7 +36,7 @@ public class BodyShieldPower extends AbstractPower implements CloneablePowerInte
         this.source = source;
 
         type = PowerType.BUFF;
-        isTurnBased = false;
+        isTurnBased = true;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
@@ -50,9 +48,14 @@ public class BodyShieldPower extends AbstractPower implements CloneablePowerInte
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner) {
             flash();
-            addToTop(new DamageAllGrappledEnemiesAction((AbstractPlayer) owner, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            addToTop(new DamageAllGrappledEnemiesAction((AbstractPlayer) owner, amount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
         return damageAmount;
+    }
+
+    @Override
+    public void atEndOfRound() {
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this.ID));
     }
 
     @Override

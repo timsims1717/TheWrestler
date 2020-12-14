@@ -1,13 +1,16 @@
 package wrestler.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import wrestler.powers.GrapplePower;
 
 import java.util.Iterator;
@@ -46,9 +49,9 @@ public class CrusherAction extends AbstractGameAction {
         }
 
         if (effect > 0) {
-            for (int i = 0; i < effect; i++) {
-                addToBot(new DamageAction(target, new DamageInfo(target, damage, DamageInfo.DamageType.NORMAL), AttackEffect.SLASH_HORIZONTAL));
-            }
+            addToBot(new VFXAction(new WeightyImpactEffect(target.hb.cX, target.hb.cY)));
+            addToBot(new WaitAction(0.8F));
+            addToBot(new DamageAction(target, new DamageInfo(target, damage * effect, DamageInfo.DamageType.NORMAL)));
             if (!freeToPlayOnce) {
                 player.energy.use(EnergyPanel.totalCount);
             }

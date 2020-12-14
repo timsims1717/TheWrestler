@@ -42,6 +42,7 @@ public class Defend_Wrestler extends AbstractWrestlerCard {
     public Defend_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        tags.add(CardTags.STARTER_DEFEND);
     }
 
 

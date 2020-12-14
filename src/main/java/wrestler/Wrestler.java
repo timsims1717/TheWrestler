@@ -35,7 +35,7 @@ import wrestler.rewards.ComboGoldReward;
 import wrestler.util.IDCheckDontTouchPls;
 import wrestler.util.TextureLoader;
 import wrestler.variables.Grapple;
-import wrestler.variables.LoseHP;
+import wrestler.variables.PsychicDamage;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -403,7 +403,7 @@ public class Wrestler implements
         logger.info("Adding variables...");
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new Grapple());
-        BaseMod.addDynamicVariable(new LoseHP());
+        BaseMod.addDynamicVariable(new PsychicDamage());
 
         // Add the cards
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
@@ -443,8 +443,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(HalfNelson_Wrestler.ID);
         BaseMod.addCard(new HammerStrike_Wrestler());
         UnlockTracker.unlockCard(HammerStrike_Wrestler.ID);
-        BaseMod.addCard(new InvisibleHand_Wrestler());
-        UnlockTracker.unlockCard(InvisibleHand_Wrestler.ID);
         BaseMod.addCard(new Jab_Wrestler());
         UnlockTracker.unlockCard(Jab_Wrestler.ID);
         BaseMod.addCard(new Melee_Wrestler());
@@ -463,8 +461,8 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Suplex_Wrestler.ID);
         BaseMod.addCard(new VitalityDrain_Wrestler());
         UnlockTracker.unlockCard(VitalityDrain_Wrestler.ID);
-        BaseMod.addCard(new VoidBlast_Wrestler());
-        UnlockTracker.unlockCard(VoidBlast_Wrestler.ID);
+        BaseMod.addCard(new EldritchBlast_Wrestler());
+        UnlockTracker.unlockCard(EldritchBlast_Wrestler.ID);
         BaseMod.addCard(new Whispers_Wrestler());
         UnlockTracker.unlockCard(Whispers_Wrestler.ID);
         BaseMod.addCard(new WindUp_Wrestler());
@@ -473,8 +471,6 @@ public class Wrestler implements
 
     public void uncommonCards() {
         logger.info("Adding Uncommon cards...");
-        BaseMod.addCard(new AgilityTraining_Wrestler());
-        UnlockTracker.unlockCard(AgilityTraining_Wrestler.ID);
         BaseMod.addCard(new ArmBar_Wrestler());
         UnlockTracker.unlockCard(ArmBar_Wrestler.ID);
         BaseMod.addCard(new BearHug_Wrestler());
@@ -489,14 +485,12 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Chokehold_Wrestler.ID);
         BaseMod.addCard(new CloseQuarters_Wrestler());
         UnlockTracker.unlockCard(CloseQuarters_Wrestler.ID);
-        BaseMod.addCard(new CrossTraining_Wrestler());
-        UnlockTracker.unlockCard(CrossTraining_Wrestler.ID);
         BaseMod.addCard(new CrowdPleaser_Wrestler());
         UnlockTracker.unlockCard(CrowdPleaser_Wrestler.ID);
         BaseMod.addCard(new DarkSuggestion_Wrestler());
         UnlockTracker.unlockCard(DarkSuggestion_Wrestler.ID);
-        BaseMod.addCard(new EldritchPortal_Wrestler());
-        UnlockTracker.unlockCard(EldritchPortal_Wrestler.ID);
+        BaseMod.addCard(new InvisibleHand_Wrestler());
+        UnlockTracker.unlockCard(InvisibleHand_Wrestler.ID);
         BaseMod.addCard(new Flourish_Wrestler());
         UnlockTracker.unlockCard(Flourish_Wrestler.ID);
         BaseMod.addCard(new GetReady_Wrestler());
@@ -523,8 +517,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Pounce_Wrestler.ID);
         BaseMod.addCard(new Roundhouse_Wrestler());
         UnlockTracker.unlockCard(Roundhouse_Wrestler.ID);
-        BaseMod.addCard(new SelfDelusion_Wrestler());
-        UnlockTracker.unlockCard(SelfDelusion_Wrestler.ID);
         BaseMod.addCard(new ShockingGrasp_Wrestler());
         UnlockTracker.unlockCard(ShockingGrasp_Wrestler.ID);
         BaseMod.addCard(new Roundhouse_Wrestler());
@@ -539,8 +531,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Untouchable_Wrestler.ID);
         BaseMod.addCard(new VoidCage_Wrestler());
         UnlockTracker.unlockCard(VoidCage_Wrestler.ID);
-        BaseMod.addCard(new WeightTraining_Wrestler());
-        UnlockTracker.unlockCard(WeightTraining_Wrestler.ID);
     }
 
     public void rareCards() {
@@ -577,8 +567,6 @@ public class Wrestler implements
         UnlockTracker.unlockCard(Submission_Wrestler.ID);
         BaseMod.addCard(new TagTeam_Wrestler());
         UnlockTracker.unlockCard(TagTeam_Wrestler.ID);
-        BaseMod.addCard(new Torment_Wrestler());
-        UnlockTracker.unlockCard(Torment_Wrestler.ID);
         BaseMod.addCard(new WearDown_Wrestler());
         UnlockTracker.unlockCard(WearDown_Wrestler.ID);
         BaseMod.addCard(new WeirdConduit_Wrestler());

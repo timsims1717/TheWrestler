@@ -41,7 +41,7 @@ public class MindEater_Wrestler extends AbstractWrestlerCard {
     public MindEater_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        loseHP = baseLoseHP = MINDVICE;
+        psychic = basePsychic = MINDVICE;
         requiresTargetGrapple = true;
     }
 
@@ -49,7 +49,7 @@ public class MindEater_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(m, p, new MindvicePower(m, p, loseHP, false), loseHP));
+        addToBot(new ApplyPowerAction(m, p, new MindvicePower(m, p, psychic, false), psychic));
     }
 
     // Upgraded stats.
@@ -58,7 +58,7 @@ public class MindEater_Wrestler extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
-            upgradeLoseHPNumber(UPGRADE_MINDVICE);
+            upgradePsychicDamageNumber(UPGRADE_MINDVICE);
             initializeDescription();
         }
     }

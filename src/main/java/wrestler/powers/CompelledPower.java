@@ -3,10 +3,7 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+import wrestler.actions.PsychicDamageAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
@@ -29,8 +27,8 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("CompelledPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("CompelledPower32.png"));
 
     public CompelledPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -38,7 +36,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
 
         this.owner = owner;
         this.amount = amount;
-        hpLossAmount = amount * 4;
+        hpLossAmount = amount * 3;
         this.source = source;
 
         type = PowerType.DEBUFF;
@@ -110,7 +108,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     }
 
     private void attack() {
-        addToBot(new LoseHPAction(owner, owner, hpLossAmount, AbstractGameAction.AttackEffect.FIRE));
+        addToTop(new PsychicDamageAction(owner, owner, hpLossAmount));
     }
 
     private void buff() {
@@ -130,7 +128,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     }
 
     private void escape() {
-        addToBot(new LoseHPAction(owner, owner, hpLossAmount, AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new PsychicDamageAction(owner, owner, hpLossAmount));
     }
 
     @Override

@@ -1,14 +1,10 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.LoseHPMindAction;
+import wrestler.actions.PsychicDamageAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.deprecated.MindvicePower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -18,9 +14,7 @@ public class Migraine_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Migraine_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
@@ -36,19 +30,24 @@ public class Migraine_Wrestler extends AbstractWrestlerCard {
     private static final int LOSEHP = 8;
     private static final int UPGRADE_LOSEHP = 4;
     private static final int INCREASE = 4;
+    private static final int UPGRADE_INCREASE = 2;
 
     public Migraine_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        loseHP = baseLoseHP = LOSEHP;
+        psychic = basePsychic = LOSEHP;
+        magicNumber = baseMagicNumber = INCREASE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new LoseHPMindAction(m, p, loseHP));
-        baseLoseHP += INCREASE;
-        loseHP += INCREASE;
-        isLoseHPModified = true;
+        addToBot(new PsychicDamageAction(m, p, psychic));
+        basePsychic += magicNumber;
+        psychic += magicNumber;
+        baseMagicNumber += magicNumber / 2;
+        magicNumber += magicNumber / 2;
+        isPsychicModified = true;
+        isMagicNumberModified = true;
         initializeDescription();
         super.use(p,m);
     }
@@ -58,7 +57,8 @@ public class Migraine_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeLoseHPNumber(UPGRADE_LOSEHP);
+            upgradePsychicDamageNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_INCREASE);
             initializeDescription();
         }
     }

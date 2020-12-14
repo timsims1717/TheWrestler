@@ -57,7 +57,7 @@ public class BearHug_Wrestler extends AbstractWrestlerCard {
         calculateBlock(m);
         addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), damage > 9 ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         super.use(p,m);
     }
 
