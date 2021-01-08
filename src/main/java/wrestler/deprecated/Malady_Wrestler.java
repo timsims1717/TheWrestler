@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.MaladyPower;
+import wrestler.powers.InfectionPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -53,7 +53,7 @@ public class Malady_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(m, p, new MaladyPower(m, p, magicNumber), psychic));
+        addToBot(new ApplyPowerAction(m, p, new InfectionPower(m, p, magicNumber), psychic));
     }
 
     // Upgraded stats.

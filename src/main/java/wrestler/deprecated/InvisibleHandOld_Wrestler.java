@@ -41,7 +41,6 @@ public class InvisibleHandOld_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         block = baseBlock = BLOCK;
-        isCombo = true;
     }
 
     // Actions the card should do.
@@ -49,7 +48,6 @@ public class InvisibleHandOld_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        super.use(p,m);
     }
 
     // Upgraded stats.

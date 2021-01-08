@@ -3,16 +3,18 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import wrestler.actions.PsychicDamageAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 public class ChillTouchPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
@@ -46,7 +48,7 @@ public class ChillTouchPower extends AbstractPower implements CloneablePowerInte
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             if (power.ID.equals(GrapplePower.POWER_ID)) {
-                addToBot(new PsychicDamageAction(target, source, amount));
+                addToBot(new DamageAction(target, new DamageInfo(owner, amount, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
                 flash();
             }
         }

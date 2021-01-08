@@ -1,19 +1,19 @@
 package wrestler.cards;
 
 import basemod.abstracts.CustomCard;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import wrestler.powers.ComboPower;
+import wrestler.powers.AgilityTrainingPower;
 import wrestler.powers.GrapplePower;
-import wrestler.deprecated.TormentPower;
+import wrestler.powers.WeightTrainingPower;
 
 import java.util.Iterator;
 
@@ -34,9 +34,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public int basePsychic;
     public boolean upgradedPsychic;
     public boolean isPsychicModified;
-
-    public boolean isCombo;
-    public boolean isComboException;
+    public int[] multiPsychicDamage;
 
     public AbstractWrestlerCard(final String id,
                                 final String img,
@@ -59,7 +57,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         wantsTargetGrapple = false;
     }
 
-    public void displayUpgrades() { // Display the upgrade - when you click a card to upgrade it
+    public void displayUpgrades() {
         super.displayUpgrades();
         if (upgradedGrapple) {
             grapple = baseGrapple;
@@ -84,6 +82,22 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     }
 
     @Override
+    public void applyPowers() {
+        AbstractPlayer p = AbstractDungeon.player;
+        grapple = baseGrapple;
+        isGrappleModified = false;
+        if (p.hasPower(WeightTrainingPower.POWER_ID) && p.hasPower(StrengthPower.POWER_ID)) {
+            grapple += p.getPower(StrengthPower.POWER_ID).amount;
+            isGrappleModified = true;
+        }
+        if (p.hasPower(AgilityTrainingPower.POWER_ID) && p.hasPower(DexterityPower.POWER_ID)) {
+            grapple += p.getPower(DexterityPower.POWER_ID).amount;
+            isGrappleModified = true;
+        }
+        super.applyPowers();
+    }
+
+    @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean can = super.canUse(p, m);
         if (!can) {
@@ -96,9 +110,7 @@ public abstract class AbstractWrestlerCard extends CustomCard {
                     return false;
                 }
             } else {
-                Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-                while (var1.hasNext()) {
-                    AbstractMonster mon = (AbstractMonster) var1.next();
+                for (AbstractMonster mon : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if (isTargetGrappled(mon)) {
                         return true;
                     }
@@ -113,44 +125,13 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     public void triggerOnGlowCheck() {
         if (requiresTargetGrapple || wantsTargetGrapple) {
             glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
 
-            while (var1.hasNext()) {
-                AbstractMonster m = (AbstractMonster) var1.next();
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (isTargetGrappled(m)) {
                     glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
                     break;
                 }
             }
-        } else if (isCombo) {
-            glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            if (playerHasCombo()) {
-                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-            }
-        } else {
-            super.triggerOnGlowCheck();
-        }
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        if (AbstractDungeon.player.hasPower(TormentPower.POWER_ID)) {
-            int amount = AbstractDungeon.player.getPower(TormentPower.POWER_ID).amount;
-            isPsychicModified = false;
-            float tmp = (float) basePsychic;
-
-            tmp += amount;
-
-            if (basePsychic != MathUtils.floor(tmp)) {
-                isPsychicModified = true;
-            }
-
-            if (tmp < 0.0F) {
-                tmp = 0.0F;
-            }
-
-            psychic = MathUtils.floor(tmp);
         }
     }
 
@@ -164,33 +145,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     }
 
     public void devoid(int amount) {
-        addToTop(new MakeTempCardInDrawPileAction(new VoidCard(), amount, true, true));
+        addToTop(new MakeTempCardInDiscardAction(new VoidCard(), amount));
     }
 
     public void devoid() {
         devoid(1);
-    }
-
-    @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        if (isCombo) {
-            if (playerHasCombo()) {
-                comboUse(p, m);
-            }
-            if (!isComboException) {
-                combo();
-            }
-        }
-    }
-
-    public void comboUse(AbstractPlayer p, AbstractMonster m) {}
-
-    public boolean playerHasCombo() {
-        return AbstractDungeon.player.hasPower(ComboPower.POWER_ID);
-    }
-
-    public void combo() {
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(p, p, new ComboPower(p, p, 1), 1));
     }
 }

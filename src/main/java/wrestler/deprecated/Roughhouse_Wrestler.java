@@ -48,7 +48,6 @@ public class Roughhouse_Wrestler extends AbstractWrestlerCard {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
-        super.use(p,m);
     }
 
     // Upgraded stats.

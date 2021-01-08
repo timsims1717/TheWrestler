@@ -6,11 +6,18 @@
       "At the start of combat, Apply 1 Grapple to each enemy."
     ]
   },
-  "wrestler:VoidMaskRelic": {
-    "NAME": "Void Mask",
-    "FLAVOR": "The secret to the Wrestler's unusual techniques.",
+  "wrestler:ForgetAtStartRelic": {
+    "NAME": "ForgetAtStartRelic",
+    "FLAVOR": "cool mask.",
     "DESCRIPTIONS": [
       "At the start of combat, discard 1 card from your draw pile."
+    ]
+  },
+  "wrestler:ComboCountOneRelic": {
+    "NAME": "ComboCountOneRelic",
+    "FLAVOR": "C-c-c-COMBO!!!",
+    "DESCRIPTIONS": [
+      "Your Combo Multiplier increases every 4 cards instead of 5."
     ]
   }
 }

@@ -40,10 +40,7 @@ public class MultiGrappleRelic extends CustomRelic {
 
     @Override
     public void atBattleStart() {
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
             AbstractDungeon.actionManager.addToBottom(
                     new ApplyPowerAction(m, m, new GrapplePower(m, m, 1), 1)
             );

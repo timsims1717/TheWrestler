@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import wrestler.powers.GrapplePower;
 
 public class SubmissionAction extends AbstractGameAction {
+    private static final int THRESHOLD = 50;
 
     public SubmissionAction(AbstractCreature target) {
         this.duration = Settings.ACTION_DUR_FAST;
@@ -21,7 +22,7 @@ public class SubmissionAction extends AbstractGameAction {
     public void update() {
         if (duration == Settings.ACTION_DUR_FAST
                 && target.hasPower(GrapplePower.POWER_ID)
-                && target.getPower(GrapplePower.POWER_ID).amount >= target.currentHealth
+                && target.getPower(GrapplePower.POWER_ID).amount >= THRESHOLD
                 && target instanceof AbstractMonster) {
             addToBot(new VFXAction(new WeightyImpactEffect(target.hb.cX, target.hb.cY)));
             addToBot(new WaitAction(0.8F));

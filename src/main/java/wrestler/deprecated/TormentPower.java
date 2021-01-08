@@ -3,6 +3,7 @@ package wrestler.deprecated;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
 
 public class TormentPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
@@ -37,6 +39,14 @@ public class TormentPower extends AbstractPower implements CloneablePowerInterfa
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        if (type == PSYCHIC_DAMAGE) {
+            return damage + amount;
+        }
+        return damage;
     }
 
     @Override

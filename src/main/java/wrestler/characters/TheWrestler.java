@@ -18,21 +18,20 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wrestler.Wrestler;
-import wrestler.cards.indigo.Defend_Wrestler;
-import wrestler.cards.indigo.Grab_Wrestler;
-import wrestler.cards.indigo.HipThrow_Wrestler;
-import wrestler.cards.indigo.Strike_Wrestler;
-import wrestler.relics.MultiGrappleRelic;
-import wrestler.relics.VoidMaskRelic;
+import wrestler.cards.indigo.Defend_Indigo;
+import wrestler.cards.indigo.Grab;
+import wrestler.cards.indigo.HipThrow;
+import wrestler.cards.indigo.Strike_Indigo;
+import wrestler.relics.ComboCountOneRelic;
 
 import java.util.ArrayList;
 
 import static wrestler.Wrestler.*;
 import static wrestler.characters.TheWrestler.Enums.COLOR_INDIGO;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -154,13 +153,13 @@ public class TheWrestler extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         for (int i = 0; i < 4; i++) {
-            retVal.add(Strike_Wrestler.ID);
+            retVal.add(Strike_Indigo.ID);
         }
         for (int i = 0; i < 4; i++) {
-            retVal.add(Defend_Wrestler.ID);
+            retVal.add(Defend_Indigo.ID);
         }
-        retVal.add(Grab_Wrestler.ID);
-        retVal.add(HipThrow_Wrestler.ID);
+        retVal.add(Grab.ID);
+        retVal.add(HipThrow.ID);
 
         return retVal;
     }
@@ -168,14 +167,14 @@ public class TheWrestler extends CustomPlayer {
     // Starting Relics	
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(VoidMaskRelic.ID);
+        retVal.add(ComboCountOneRelic.ID);
         return retVal;
     }
 
     // character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
+        CardCrawlGame.sound.playA("BLUNT_FAST", 1.25f); // Sound Effect
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false); // Screen Effect
     }
@@ -183,7 +182,7 @@ public class TheWrestler extends CustomPlayer {
     // character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        return "ATTACK_DAGGER_1";
+        return "BLUNT_FAST";
     }
 
     // Should return how much HP your maximum HP reduces by when starting a run at
@@ -221,7 +220,7 @@ public class TheWrestler extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Grab_Wrestler();
+        return new Grab();
     }
 
     // The class name as it appears next to your player name in-game
@@ -257,20 +256,16 @@ public class TheWrestler extends CustomPlayer {
         return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                PSYCHIC_EFFECT,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY};
     }
 
-    // Should return a string containing what text is shown when your character is
-    // about to attack the heart. For example, the defect is "NL You charge your
-    // core to its maximum..."
     @Override
     public String getSpireHeartText() {
         return TEXT[1];
     }
 
-    // The vampire events refer to the base game characters as "brother", "sister",
-    // and "broken one" respectively.This method should return a String containing
-    // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
         return TEXT[2];

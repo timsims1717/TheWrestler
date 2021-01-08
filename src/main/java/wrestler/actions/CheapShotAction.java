@@ -1,15 +1,9 @@
 package wrestler.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Claw;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import wrestler.cards.indigo.CheapShot_Wrestler;
-import wrestler.powers.GrapplePower;
+import wrestler.cards.indigo.CheapShot;
 
 import java.util.Iterator;
 
@@ -32,7 +26,7 @@ public class CheapShotAction extends AbstractGameAction {
             AbstractCard c;
             while (var1.hasNext()) {
                 c = (AbstractCard) var1.next();
-                if (c instanceof CheapShot_Wrestler) {
+                if (c instanceof CheapShot) {
                     c.baseDamage -= this.amount;
                     c.applyPowers();
                 }
@@ -42,7 +36,7 @@ public class CheapShotAction extends AbstractGameAction {
 
             while (var1.hasNext()) {
                 c = (AbstractCard) var1.next();
-                if (c instanceof CheapShot_Wrestler) {
+                if (c instanceof CheapShot) {
                     c.baseDamage -= this.amount;
                     c.applyPowers();
                 }
@@ -52,7 +46,7 @@ public class CheapShotAction extends AbstractGameAction {
 
             while (var1.hasNext()) {
                 c = (AbstractCard) var1.next();
-                if (c instanceof CheapShot_Wrestler) {
+                if (c instanceof CheapShot) {
                     c.baseDamage -= this.amount;
                     c.applyPowers();
                 }

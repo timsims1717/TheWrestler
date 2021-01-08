@@ -53,10 +53,7 @@ public class StickyFingersPower extends AbstractPower implements CloneablePowerI
     @Override
     public void onAfterCardPlayed(AbstractCard usedCard) {
         if (upgraded) {
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-            while (var1.hasNext()) {
-                AbstractMonster m = (AbstractMonster) var1.next();
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (!m.isDeadOrEscaped()) {
                     addToTop(new ApplyPowerAction(m, owner, new GrapplePower(m, owner, amount), amount));
                 }

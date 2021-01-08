@@ -13,20 +13,29 @@ Void being a good thing (in certain situations)
 Scaling Block through str down (enemy), dex up (self)
 Scaling Damage through grapple, str up (self), reflecting damage
 
-19 common 19 rare 4 basic 33 uncommon
-
 Keywords:
 	Devoid: When you play this card, shuffle a void into your draw pile.
-	Boon: Type of Skill card that can be created into your hand or deck
-		0 power
-		Devoid
-		Exhaust
-Buffs/Debuffs:
+Wrestler Ideas:
 	Grapple: Duration debuff on enemies (no benefit by itself)
-	Horror: If applied this turn, they lose that much HP. Otherwise, they lose half their Horror.
-Cycles:
-	0 cost uncommon "if the enemy is grappled, ___"
-	1 cost uncommon "(Innate.) ___. Exhaust."
+	Combo: Implement a combo counter:
+		Damage = 1 point
+		Playing a card = 1 point
+		Every 5 cards played = increased multiplier
+		First turn bonus
+		Take damage (except from cards) breaks the combo
+		Graded based on points (S, A, B, C ...)
+		Earn coins based on grade
+		Earn Relics if get S?
+Eldritch Ideas:
+	Psychic Damage: Ignores block, but doesn't scale with Strength
+	Fickle: At the start of combat, randomizes the values of the card (between -1 and +1 of original value)
+	Compelled: The next time the enemy attacks, they damage themselves.
+	Abominations:
+		Special enemies that show up in certain circumstances
+		Card that infects an enemy, and if they die from the infection, they turn into an abomination
+
+Card name ideas:
+Telekinesis
 
 Thoughts:
 Not sure if there is enough variation. May need one more mechanic or theme.
@@ -52,3 +61,4 @@ Outfit:
 	4A152C
 	3b1123
 	260b16
+

@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -37,24 +38,30 @@ public class ManiaPower extends AbstractPower implements CloneablePowerInterface
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
+        AbstractDungeon.player.gameHandSize -= amount;
+
         updateDescription();
     }
 
-    public void updateDescription() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(DESCRIPTIONS[0]);
-
-        for (int i = 0; i < amount; i++) {
-            sb.append(DESCRIPTIONS[1]);
-        }
-
-        sb.append(DESCRIPTIONS[2]);
-        description = sb.toString();
+    @Override
+    public void stackPower(int stackAmount) {
+        fontScale = 8.0F;
+        amount += stackAmount;
+        AbstractDungeon.player.gameHandSize -= amount;
     }
 
-    public void onEnergyRecharge() {
+    public void updateDescription() {
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + (amount == 1 ? DESCRIPTIONS[2] : DESCRIPTIONS[3]);
+    }
+
+    @Override
+    public void onRemove() {
+        AbstractDungeon.player.gameHandSize += amount;
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
         flash();
-        AbstractDungeon.player.loseEnergy(amount);
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 

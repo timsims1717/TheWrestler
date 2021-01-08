@@ -38,7 +38,6 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DRAW;
-        isCombo = true;
     }
 
 
@@ -46,14 +45,7 @@ public class CircleBehind_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        super.use(p,m);
     }
-
-    @Override
-    public void comboUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(magicNumber));
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {

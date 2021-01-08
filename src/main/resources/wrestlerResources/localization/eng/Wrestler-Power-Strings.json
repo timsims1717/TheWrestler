@@ -1,68 +1,114 @@
 {
-    "wrestler:GrapplePower": {
-        "NAME": "Grapple",
-        "DESCRIPTIONS": ["Each turn, Grapple is reduced by 1."]
+    "wrestler:AgilityTrainingPower": {
+        "NAME": "Agility Training",
+        "DESCRIPTIONS": [
+            "#yGrapple is affected by #yDexterity."
+        ]
+    },
+    "wrestler:AmnesiaPower": {
+        "NAME": "Amnesia",
+        "DESCRIPTIONS": [
+            "At the start of your turn, discard #b",
+            "At the start of your turn, discard up to #b",
+            " cards from your draw pile."
+        ]
+    },
+    "wrestler:BodyShieldPower": {
+        "NAME": "Body Shield",
+        "DESCRIPTIONS": [
+            "Whenever you are attacked this turn, deal #b",
+            " damage to all #yGrappled enemies."
+        ]
+    },
+    "wrestler:ChillTouchPower": {
+        "NAME": "Chill Touch",
+        "DESCRIPTIONS": [
+            "Whenever you apply #yGrapple, deal #b",
+            " #yPsychic damage."
+        ]
+    },
+    "wrestler:CloseQuartersPower": {
+        "NAME": "Close Quarters",
+        "DESCRIPTIONS": [
+            "Your attacks deal #b",
+            " additional damage to #yGrappled enemies."
+        ]
     },
     "wrestler:CompelledPower": {
         "NAME": "Compelled",
         "DESCRIPTIONS": [
-            "This creature will",
-            " lose #b", " HP each time it attacks",
-            " gain #b", " #yWeak", " #yVulnerable",
-            " apply #b", " #yDexterity to you", " #yStrength to you",
-            " and will", ".",
-            "This creature cannot escape and will lose #b", " HP instead.",
-            "Compelled has no effect this turn."
+            "This creature will deal damage to itself equal to #b", "% of its attack whenever it attacks.",
+            "This creature cannot escape and will deal #b5 damage to itself instead."
         ]
-    },
-
-    "wrestler:BodyShieldPower": {
-        "NAME": "Body Shield",
-        "DESCRIPTIONS": ["Whenever you are attacked, deal #b", " damage to each #yGrappled enemy."]
-    },
-    "wrestler:ChillTouchPower": {
-        "NAME": "Chill Touch",
-        "DESCRIPTIONS": ["Whenever you apply #yGrapple, the enemy loses #b", " HP."]
-    },
-    "wrestler:CloseQuartersPower": {
-        "NAME": "Close Quarters",
-        "DESCRIPTIONS": ["Your attacks deal #b", " additional damage to #yGrappled enemies."]
-    },
-    "wrestler:CraveNothingPower": {
-        "NAME": "Crave Nothing",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, heal #b", " HP."]
-    },
-    "wrestler:WeirdConduitPower": {
-        "NAME": "Weird Conduit",
-        "DESCRIPTIONS": ["Whenever you draw a Void card on your turn, gain ", "[E] ", " and draw #b", " card.", " cards."]
-    },
-    "wrestler:IronGripPower": {
-        "NAME": "Iron Grip",
-        "DESCRIPTIONS": ["#bGrapple is affected by #yStrength and #yDexterity."]
     },
     "wrestler:EldritchFormPower": {
         "NAME": "Eldritch Form",
-        "DESCRIPTIONS": ["At the start of your turn, apply #b", " #yCompelled to ALL enemies and increase this number by #b2."]
+        "DESCRIPTIONS": [
+            "At the start of your turn, apply #b",
+            " #yCompelled to ALL enemies and increase this value by #b",
+            "."
+        ]
     },
-    "wrestler:StickyFingersPower": {
-        "NAME": "Sticky Fingers",
-        "DESCRIPTIONS": ["Whenever you play a card this turn, apply #b", " #yGrapple to ", "a random enemy.", "ALL enemies."]
+    "wrestler:FlourishPower": {
+        "NAME": "Flourish",
+        "DESCRIPTIONS": [
+            "Whenever you increase your #yCombo #yMultiplier, draw #b",
+            " card.",
+            " cards."
+        ]
     },
-    "wrestler:UnearthlyVisionsPower": {
-        "NAME": "Unearthly Visions",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, apply #b", " #yCompulsion to ALL enemy."]
+    "wrestler:GrapplePower": {
+        "NAME": "Grapple",
+        "DESCRIPTIONS": [
+            "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength."
+        ]
     },
-    "wrestler:UnnervingLaughterPower": {
-        "NAME": "Unnerving Laughter",
-        "DESCRIPTIONS": ["At the start of your turn, a random enemy loses #b", " HP."]
-    },
-    "wrestler:VanishingPower": {
-        "NAME": "Vanishing",
-        "DESCRIPTIONS": ["Whenever a Void card exhausts, gain #b", " #yDexterity."]
+    "wrestler:InfectionPower": {
+        "NAME": "Infection",
+        "DESCRIPTIONS": [
+            "At the end of its turn, loses #b",
+            " HP, then double its #yInfection. If it would die from Infection, replace the enemy with an Eldritch Horror with HP equal to its current HP."
+        ]
     },
     "wrestler:ManiaPower": {
         "NAME": "Mania",
-        "DESCRIPTIONS": ["Next turn, lose ", "[E] ", "."]
+        "DESCRIPTIONS": [
+            "Next turn, draw #b",
+            " fewer ",
+            "card.",
+            "cards."
+        ]
+    },
+    "wrestler:MentalWardPower": {
+        "NAME": "Mental Ward",
+        "DESCRIPTIONS": [
+            "Whenever you receive unblocked attack damage, the enemy loses #b",
+            " HP."
+        ]
+    },
+    "wrestler:PizzazzPower": {
+        "NAME": "Pizzazz",
+        "DESCRIPTIONS": [
+            "Whenever your #yCombo multiplier increases, gain #b",
+            " #yStrength and #b",
+            " #yDexterity."
+        ]
+    },
+    "wrestler:StickyFingersPower": {
+        "NAME": "Sticky Fingers",
+        "DESCRIPTIONS": [
+            "Whenever you play a card this turn, apply #b",
+            " #yGrapple to ",
+            "a random enemy.",
+            "ALL enemies."
+        ]
+    },
+    "wrestler:UntouchablePower": {
+        "NAME": "Untouchable",
+        "DESCRIPTIONS": [
+            "At the end of your turn, gain Block equal to your #yCombo #yMultiplier", " ", ".",
+            " times."
+        ]
     },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",
@@ -71,63 +117,20 @@
             "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP #b", " times."
         ]
     },
-    "wrestler:ComboPower": {
-        "NAME": "Combo",
+    "wrestler:WeightTrainingPower": {
+        "NAME": "Weight Training",
         "DESCRIPTIONS": [
-            "Gain #b4 Block.",
-            "Draw #b1 additional card.",
-            "Gain #b1 additional Energy.",
-            "Gain #b10 Gold",
-            "Heal #b7 HP",
-            "Gain #b25 Gold",
-            "Gain #b1 additional card",
-            "Gain #b50 Gold",
-            "Gain #b4 Max HP",
-            "Gain #b100 Gold",
-            "At the start of your turn:",
-            "At the end of the battle:"
+            "#yGrapple is affected by #yStrength."
         ]
     },
-    "wrestler:CrowdPleaserPower": {
-        "NAME": "Crowd Pleaser",
+    "wrestler:WeirdConduitPower": {
+        "NAME": "Weird Conduit",
         "DESCRIPTIONS": [
-            "Your Combo cannot be broken this turn.",
-            "Your Combo cannot be broken the next #b", "turns."
-        ]
-    },
-    "wrestler:AmnesiaPower": {
-        "NAME": "Amnesia",
-        "DESCRIPTIONS": [
-            "At the start of your turn, discard up to #b",
-            " cards from your draw pile."
-        ]
-    },
-    "wrestler:PizzazzPower": {
-        "NAME": "Pizzazz",
-        "DESCRIPTIONS": [
-            "Whenever you gain Combo, gain #b",
-            " Strength and #b", " this turn."
-        ]
-    },
-    "wrestler:FlourishPower": {
-        "NAME": "Flourish",
-        "DESCRIPTIONS": [
-            "Whenever you gain Combo, gain #b",
-            " Block."
-        ]
-    },
-    "wrestler:UntouchablePower": {
-        "NAME": "Untouchable",
-        "DESCRIPTIONS": [
-            "At the start of your turn, if you have #yCombo, gain #b",
-            " #yCombo."
-        ]
-    },
-    "wrestler:MaladyPower": {
-        "NAME": "Malady",
-        "DESCRIPTIONS": [
-            "Whenever a Void card exhausts, the enemy loses #b",
-            " HP and this amount increases by #b", "."
+            "At the start of your turn, shuffle #b",
+            " card",
+            " cards",
+            " from your discard pile into your draw pile and draw #b",
+            "."
         ]
     }
 }

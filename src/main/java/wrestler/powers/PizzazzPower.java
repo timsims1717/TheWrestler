@@ -42,15 +42,9 @@ public class PizzazzPower extends AbstractPower implements CloneablePowerInterfa
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
-    @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.ID.equals(ComboPower.POWER_ID) && target instanceof AbstractPlayer) {
-            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
-            addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
-
-            addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
-            addToBot(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));
-        }
+    public void activate() {
+        addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
+        addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
     }
 
     @Override

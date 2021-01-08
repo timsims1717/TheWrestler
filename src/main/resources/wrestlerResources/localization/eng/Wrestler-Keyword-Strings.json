@@ -4,43 +4,32 @@
       "grapple",
       "grappled"
     ],
-    "DESCRIPTION": "Each turn, Grapple is reduced by #b1."
+    "DESCRIPTION": "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength."
   },
   {
     "NAMES": [
-      "devoid"
+      "compelled",
+      "compulsion"
     ],
-    "DESCRIPTION": "Shuffle a Void card into your draw pile."
+    "DESCRIPTION": "Compelled creatures deal damage to themselves the next time they attack and cannot escape combat."
   },
   {
     "NAMES": [
-      "compulsion",
-      "compelled"
+      "infection"
     ],
-    "DESCRIPTION": "Compelled creatures lose HP, give themselves #yDebuffs, and give the player #yBuffs depending on their #yIntent."
-  },
-  {
-    "NAMES": [
-      "forget"
-    ],
-    "DESCRIPTION": "Move X cards from your draw pile to your discard pile."
-  },
-  {
-    "NAMES": [
-      "remember"
-    ],
-    "DESCRIPTION": "Shuffle X cards from your discard pile into your draw pile."
-  },
-  {
-    "NAMES": [
-      "combo"
-    ],
-    "DESCRIPTION": "Build up your Combo for special benefits. NL Combo is lost when HP is lost from enemies or when a card without Combo is played."
+    "DESCRIPTION": "Infected creatures lose HP, then double their Infection. If it would die from Infection, the creature is replaced with an Eldritch Horror."
   },
   {
     "NAMES": [
       "psychic"
     ],
-    "DESCRIPTION": "Psychic damage ignores block but is blocked by Artifact charges. It also does not scale with Strength."
+    "DESCRIPTION": "Psychic damage ignores block and Thorns, is blocked by Artifact charges, and does not scale with Strength."
+  },
+  {
+    "NAMES": [
+      "combo",
+      "multiplier"
+    ],
+    "DESCRIPTION": "Playing cards and dealing damage adds to your combo score, and playing cards increases your score multiplier. At the end of combat, you receive gold based on your score."
   }
 ]

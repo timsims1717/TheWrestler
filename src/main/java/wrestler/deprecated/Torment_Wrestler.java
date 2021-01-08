@@ -13,12 +13,9 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(Torment_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
-
+    public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
@@ -28,14 +25,14 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int LOSEHP = 4;
-    private static final int UPGRADE_LOSEHP = 2;
+    private static final int PSYCHIC = 4;
+    private static final int UPGRADE_PSYCHIC = 2;
 
     // /STAT DECLARATION/
 
     public Torment_Wrestler() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = LOSEHP;
+        magicNumber = baseMagicNumber = PSYCHIC;
     }
 
 
@@ -43,7 +40,6 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new TormentPower(p, p, magicNumber), magicNumber));
-        super.use(p,m);
     }
 
 
@@ -52,7 +48,7 @@ public class Torment_Wrestler extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_LOSEHP);
+            upgradeMagicNumber(UPGRADE_PSYCHIC);
             initializeDescription();
         }
     }

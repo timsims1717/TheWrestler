@@ -17,6 +17,8 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import java.util.Iterator;
 
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
+
 public class IntoNothingAction extends AbstractGameAction {
 
     private final AbstractPlayer player;
@@ -38,7 +40,7 @@ public class IntoNothingAction extends AbstractGameAction {
 
     public void update() {
         if (duration == startDuration && target != null) {
-            AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AttackEffect.NONE));
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, PSYCHIC_EFFECT));
             target.damage(info);
             if ((((AbstractMonster)target).isDying || target.currentHealth <= 0) && !target.halfDead && !target.hasPower("Minion")) {
                 remove = true;

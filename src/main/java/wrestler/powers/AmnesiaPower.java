@@ -13,7 +13,7 @@ import wrestler.util.TextureLoader;
 import static wrestler.Wrestler.makePowerPath;
 
 public class AmnesiaPower extends AbstractPower implements CloneablePowerInterface {
-    public AbstractCreature source;
+    public boolean upgraded;
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(AmnesiaPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -23,13 +23,13 @@ public class AmnesiaPower extends AbstractPower implements CloneablePowerInterfa
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("AmnesiaPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("AmnesiaPower32.png"));
 
-    public AmnesiaPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public AmnesiaPower(final AbstractCreature owner, final int amount, final boolean upgraded) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-        this.source = source;
+        this.upgraded = upgraded;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -37,22 +37,22 @@ public class AmnesiaPower extends AbstractPower implements CloneablePowerInterfa
         region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        updateDescription();
     }
 
     @Override
     public void atStartOfTurn() {
         flash();
-        addToBot(new ForgetAction(amount, true));
+        addToBot(new ForgetAction(amount, upgraded));
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[upgraded ? 1 : 0] + amount + DESCRIPTIONS[2];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new AmnesiaPower(owner, source, amount);
+        return new AmnesiaPower(owner, amount, upgraded);
     }
 }

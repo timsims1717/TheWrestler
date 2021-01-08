@@ -17,7 +17,7 @@ import java.util.Iterator;
 import static wrestler.Wrestler.makePowerPath;
 
 public class EldritchFormPower extends AbstractPower implements CloneablePowerInterface {
-    public AbstractCreature source;
+    public int increase;
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(EldritchFormPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -27,13 +27,13 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public EldritchFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public EldritchFormPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-        this.source = source;
+        increase = 2;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -45,27 +45,31 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        flash();
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        increase += 2;
+        updateDescription();
+    }
 
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
+    @Override
+    public void atStartOfTurn() {
+        flash();
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!m.isDeadOrEscaped()) {
                 addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
             }
         }
-        amount += 2;
+        amount += increase;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + increase + DESCRIPTIONS[2];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new EldritchFormPower(owner, source, amount);
+        return new EldritchFormPower(owner, amount);
     }
 }

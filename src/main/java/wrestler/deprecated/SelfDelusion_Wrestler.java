@@ -46,7 +46,6 @@ public class SelfDelusion_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(magicNumber));
         addToBot(new RandomizeHandCostAction());
-        super.use(p,m);
     }
 
 

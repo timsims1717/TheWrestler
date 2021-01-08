@@ -14,8 +14,7 @@ public class UncannyVisions_Wrestler extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(UncannyVisions_Wrestler.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");// "public static final String IMG = makeCardPath("${NAME}.png");
-    // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
+    public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
 
@@ -42,7 +41,6 @@ public class UncannyVisions_Wrestler extends AbstractWrestlerCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         devoid();
         addToBot(new ApplyPowerAction(p, p, new UnearthlyVisionsPower(p, p, magicNumber), magicNumber));
-        super.use(p,m);
     }
 
     // Upgraded stats.

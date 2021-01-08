@@ -3,24 +3,24 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
-import wrestler.actions.PsychicDamageAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 public class CompelledPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
-    private int hpLossAmount;
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(CompelledPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -36,7 +36,6 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
 
         this.owner = owner;
         this.amount = amount;
-        hpLossAmount = amount * 3;
         this.source = source;
 
         type = PowerType.DEBUFF;
@@ -56,13 +55,6 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        hpLossAmount = amount * 4;
-        updateDescription();
-    }
-
-    @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         super.onAttack(info, damageAmount, target);
         if (info.type.equals(DamageInfo.DamageType.NORMAL)) {
@@ -75,103 +67,41 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
         if (owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster) owner;
             switch (m.intent) {
-                case ATTACK_BUFF:
-                case BUFF:
-                    buff();
-                    break;
-                case ATTACK_DEBUFF:
-                case DEBUFF:
-                    debuff();
-                    break;
-                case ATTACK_DEFEND:
-                case DEFEND:
-                    block();
-                    break;
-                case STRONG_DEBUFF:
-                    strDebuff();
-                    break;
-                case DEFEND_DEBUFF:
-                    block();
-                    debuff();
-                    break;
-                case DEFEND_BUFF:
-                    block();
-                    buff();
-                    break;
                 case ESCAPE:
                     escape();
+                case ATTACK:
+                case ATTACK_BUFF:
+                case ATTACK_DEBUFF:
+                case ATTACK_DEFEND:
+                    addToTop(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
                     break;
             }
         }
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        addToBot(new ReducePowerAction(owner, owner, POWER_ID, 1));
         updateDescription();
     }
 
     private void attack() {
-        addToTop(new PsychicDamageAction(owner, owner, hpLossAmount));
-    }
-
-    private void buff() {
-        addToBot(new ApplyPowerAction(owner, owner, new WeakPower(owner, amount, true)));
-    }
-
-    private void debuff() {
-        addToBot(new ApplyPowerAction(owner, owner, new VulnerablePower(owner, amount, true)));
-    }
-
-    private void block() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, owner, new DexterityPower(AbstractDungeon.player, amount)));
-    }
-
-    private void strDebuff() {
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, owner, new StrengthPower(AbstractDungeon.player, amount)));
+        if (owner instanceof AbstractMonster) {
+            int damage = ((AbstractMonster) owner).getIntentDmg();
+            if (damage > 0 && amount > 0) {
+                addToTop(new DamageAction(owner, new DamageInfo(owner, Math.max(Math.round(damage * amount / 10.0f), 1), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            }
+        }
     }
 
     private void escape() {
-        addToBot(new PsychicDamageAction(owner, owner, hpLossAmount));
+        addToBot(new DamageAction(owner, new DamageInfo(owner, 5, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     @Override
     public void updateDescription() {
         if (owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster) owner;
-            switch (m.intent) {
-                case ATTACK:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + hpLossAmount + DESCRIPTIONS[2] + DESCRIPTIONS[10];
-                    break;
-                case ATTACK_BUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + hpLossAmount + DESCRIPTIONS[2] + DESCRIPTIONS[9] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[4] + DESCRIPTIONS[10];
-                    break;
-                case ATTACK_DEBUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + hpLossAmount + DESCRIPTIONS[2] + DESCRIPTIONS[9] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[5] + DESCRIPTIONS[10];
-                    break;
-                case ATTACK_DEFEND:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + hpLossAmount + DESCRIPTIONS[2] + DESCRIPTIONS[9] + DESCRIPTIONS[6] + amount + DESCRIPTIONS[7] + DESCRIPTIONS[10];
-                    break;
-                case BUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[4] + DESCRIPTIONS[10];
-                    break;
-                case DEBUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[5] + DESCRIPTIONS[10];
-                    break;
-                case STRONG_DEBUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[6] + amount + DESCRIPTIONS[8] + DESCRIPTIONS[10];
-                    break;
-                case DEFEND:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[6] + amount + DESCRIPTIONS[7] + DESCRIPTIONS[10];
-                    break;
-                case DEFEND_BUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[6] + amount + DESCRIPTIONS[7] + DESCRIPTIONS[9] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[4] + DESCRIPTIONS[10];
-                    break;
-                case DEFEND_DEBUFF:
-                    description = DESCRIPTIONS[0] + DESCRIPTIONS[6] + amount + DESCRIPTIONS[7] + DESCRIPTIONS[9] + DESCRIPTIONS[3] + amount + DESCRIPTIONS[5] + DESCRIPTIONS[10];
-                    break;
-                case ESCAPE:
-                    description = DESCRIPTIONS[11] + hpLossAmount + DESCRIPTIONS[12];
-                    break;
-                default:
-                    description = DESCRIPTIONS[13];
-                    break;
+            if (m.intent == AbstractMonster.Intent.ESCAPE) {
+                description = DESCRIPTIONS[2];
+            } else {
+                description = DESCRIPTIONS[0] + (amount * 10) + DESCRIPTIONS[1];
             }
         }
     }
