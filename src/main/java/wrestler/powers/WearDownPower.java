@@ -49,7 +49,7 @@ public class WearDownPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atEndOfRound() {
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             return;
         }

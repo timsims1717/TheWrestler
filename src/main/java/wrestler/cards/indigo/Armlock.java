@@ -23,15 +23,15 @@ public class Armlock extends AbstractWrestlerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
 
-    private static final int GRAPPLE = 2;
-    private static final int UPGRADE_GRAPPLE = 1;
+    private static final int GRAPPLE = 4;
+    private static final int UPGRADE_GRAPPLE = 2;
 
     public Armlock() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -39,23 +39,16 @@ public class Armlock extends AbstractWrestlerCard {
         exhaust = true;
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster mon : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!mon.isDeadOrEscaped()) {
-                addToTop(new ApplyPowerAction(mon, p, new GrapplePower(mon, p, grapple), grapple));
-            }
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        int mGrapple = 0;
+        if (m.hasPower(GrapplePower.POWER_ID)) {
+            mGrapple += m.getPower(GrapplePower.POWER_ID).amount;
         }
-        for (AbstractMonster mon : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!isTargetGrappled(mon)) {
-                int mGrapple = mon.getPower(GrapplePower.POWER_ID).amount;
-                tempStrDown(p, mon, mGrapple + grapple);
-            }
-        }
+        tempStrDown(p, m, mGrapple + grapple);
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

@@ -37,8 +37,9 @@ Eldritch Ideas:
 Card name ideas:
 Telekinesis
 
-Thoughts:
-Not sure if there is enough variation. May need one more mechanic or theme.
+TODO:
+Need a couple Combo
+Need a couple "if the target is not grappled"
 
 Costume relics
 
@@ -62,3 +63,42 @@ Outfit:
 	3b1123
 	260b16
 
+Grapple changed to a "Condition":
+	Condition is a stance for an enemy. Maybe get two or three on the Wrestler.
+	Another condition could be a "Hunter's Mark" for the other character idea I have.
+	Grapple would still be "only one enemy at a time" (w/o Agility Training)
+	The enemy escapes the Grapple if you don't Grapple the enemy that turn.
+	Card Changes:
+		Change Apply Grapple to "Grapple the enemy" on:
+			Circle Behind
+			Mountain Bomb
+			Penetrating Shot
+		Submit:
+			Grapple the enemy. Apply 8(10) Submission. Exhaust.
+		SubmissionKeyword:
+			If the enemy is Grappled, Submission damages the enemy and increases.
+		SubmissionPower:
+			At the end of the turn, if the enemy is Grappled, increase their submission by X and they lose HP equal to their Submission.
+		Vitality Drain:
+			Deal 10 Psychic damage. If the enemy is Grappled, deal 6(8) additional Psychic damage. Heal HP equal to the damage dealt. Exhaust.
+		Wear Down:
+			(Innate.) At the end of your turn, apply 1 Submission to ALL Grappled enemies.
+		Armlock:
+			If the enemy is Grappled, apply 4(6) Submission and the enemy loses Strength equal to their Submission this turn. Exhaust.
+		Bear Hug:
+			Grapple the enemy. Deal 8(11) damage to ALL Grappled enemies and gain 8(11) Block for each Grapple enemy.
+		Chill Touch:
+			Whenever you Grapple an enemy, deal 5(7) Psychic damage.
+		Chokehold:
+			If the enemy is Grappled, deal damage equal to 2(3) times the enemy's Submission.
+		Iron Grip:
+			Grapple the enemy. Apply 3(5) Submission.
+		Mind Read:
+			For each Grappled enemy, gain 3(5) block and draw 1 card.
+		Pounce:
+			Change to cost 1
+			Grapple the enemy. If the enemy was not Grappled, deal 12(18) damage.
+		Shocking Grasp:
+			Deal 8(11) damage. Whenever you Grapple an enemy, deal 4(5) damage.
+		Weight Training:
+			(Gain 1 Strength.) Grapple cannot be escaped for 1 extra turn.

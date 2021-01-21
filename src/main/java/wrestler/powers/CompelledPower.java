@@ -77,7 +77,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
                     break;
             }
         }
-        addToBot(new ReducePowerAction(owner, owner, POWER_ID, 1));
+//        addToBot(new ReducePowerAction(owner, owner, POWER_ID, 1));
         updateDescription();
     }
 
@@ -99,7 +99,7 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
         if (owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster) owner;
             if (m.intent == AbstractMonster.Intent.ESCAPE) {
-                description = DESCRIPTIONS[2];
+                description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
             } else {
                 description = DESCRIPTIONS[0] + (amount * 10) + DESCRIPTIONS[1];
             }

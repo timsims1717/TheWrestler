@@ -59,7 +59,7 @@ public class LeapFrog extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        if (m.isDeadOrEscaped() && m.intent != ATTACK && m.intent != ATTACK_BUFF && m.intent != ATTACK_DEBUFF && m.intent != ATTACK_DEFEND) {
+        if (!m.isDeadOrEscaped() && m.intent != ATTACK && m.intent != ATTACK_BUFF && m.intent != ATTACK_DEBUFF && m.intent != ATTACK_DEFEND) {
             addToBot(new GainEnergyAction(ENERGY_CARD));
             addToBot(new DrawCardAction(ENERGY_CARD));
         }

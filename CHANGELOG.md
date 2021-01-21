@@ -1,4 +1,37 @@
 # Changelog
+## 0.0.7
+- When Grapple is applied, it is removed from all other enemies
+### Cards Added
+
+### Cards Changed
+- Agility Training changed to "You can Grapple multiple enemies."
+- Agility Training+ changed to "Gain 1 Dexterity. You can Grapple multiple enemies."
+- Armlock changed to "Apply 4 Grapple. The enemy loses Strength equal to their Grapple this turn. Exhaust."
+- Armlock+ changed to "Apply 6 Grapple. The enemy loses Strength equal to their Grapple this turn. Exhaust."
+- Catapult and Catapult+ cost 3 -> 2
+- Catapult changed to "If an enemy is Grappled, deal 19 damage to ALL enemies. Remove Grapple from ALL enemies."
+- Catapult+ changed to "If an enemy is Grappled, deal 24 damage to ALL enemies. Remove Grapple from ALL enemies."
+- Charming Words+ Compelled 1 -> 2
+- Chill Touch changed to "Whenever you deal non-Psychic damage, deal 2 Psychic damage to ALL Grappled enemies."
+- Chill Touch+ changed to "Whenever you deal non-Psychic damage, deal 3 Psychic damage to ALL Grappled enemies."
+- Eldritch Form compelled 3 -> 5
+- Eldritch Form+ compelled 4 -> 5
+- Eldritch Form+ compelled increase 2 -> 3
+- Into Nothing changed to "Add a Void into your discard pile. Deal 10 Psychic damage. Whenever a Void card exhausts, the enemy loses 10 HP."
+- Into Nothing+ changed to "Add a Void into your discard pile. Deal 14 Psychic damage. Whenever a Void card exhausts, the enemy loses 14 HP."
+- Invisible Hand changed to "Deal 4 damage. If the enemy is not Grappled, gain 4 Block."
+- Invisible Hand+ changed to "Deal 6 damage. If the enemy is not Grappled, gain 6 Block."
+- Shocking Grasp changed to "Deal 8 damage. Whenever you apply Grapple this turn, deal 4 damage."
+- Shocking Grasp+ changed to "Deal 11 damage. Whenever you apply Grapple this turn, deal 5 damage."
+- Wear Down changed to "At the end of the round, deal damage to each Grappled enemy equal to their Grapple."
+- Wear Down+ changed to "Innate. At the end of the round, deal damage to each Grappled enemy equal to their Grapple."
+- Weight Training changed to "Grapple is no longer reduced by an enemy's Strength."
+- Weight Training+ changed to "Gain 1 Strength. Grapple is no longer reduced by an enemy's Strength."
+### Cards Removed
+- Careful Approach
+- Close Quarters
+- Sticky Fingers
+
 ## 0.0.6
 - HP Loss replaced by Psychic damage
 - Psychic damage is not blocked by block, is negated by artifact charges, and does not scale with Strength

@@ -28,21 +28,22 @@ public class EldritchForm extends AbstractWrestlerCard {
 
     private static final int COST = 3;
 
-    private static final int COMPELLED = 3;
-    private static final int UPGRADE_COMPELLED = 1;
+    private static final int COMPELLED = 5;
+    private static final int UP = 2;
+    private static final int UPGRADE_UP = 1;
 
     // /STAT DECLARATION/
 
     public EldritchForm() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = COMPELLED;
+        magicNumber = baseMagicNumber = UP;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new EldritchFormPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new EldritchFormPower(p, COMPELLED, magicNumber), COMPELLED));
     }
 
 
@@ -51,7 +52,7 @@ public class EldritchForm extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_COMPELLED);
+            upgradeMagicNumber(UPGRADE_UP);
             initializeDescription();
         }
     }

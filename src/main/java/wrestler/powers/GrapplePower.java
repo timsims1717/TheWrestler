@@ -4,6 +4,7 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import wrestler.deprecated.WeightTrainingPower_Old;
+import wrestler.deprecated.CloseQuartersPower;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
@@ -46,19 +47,20 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        if ((type == DamageInfo.DamageType.NORMAL || type == PSYCHIC_DAMAGE) && AbstractDungeon.player.hasPower(CloseQuartersPower.POWER_ID)) {
-            int amount = AbstractDungeon.player.getPower(CloseQuartersPower.POWER_ID).amount;
-            return damage + amount;
-        } else {
-            return damage;
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (!target.equals(owner) && power.ID.equals(POWER_ID)) {
+            if (AbstractDungeon.player.hasPower(AgilityTrainingPower.POWER_ID)) {
+                AbstractDungeon.player.getPower(AgilityTrainingPower.POWER_ID).flash();
+            } else {
+                addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
+            }
         }
     }
 
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
         int total = 1;
-        if (!AbstractDungeon.player.hasPower(WeightTrainingPower_Old.POWER_ID)) {
+        if (!AbstractDungeon.player.hasPower(WeightTrainingPower.POWER_ID)) {
             if (owner.hasPower(StrengthPower.POWER_ID)) {
                 int str = owner.getPower(StrengthPower.POWER_ID).amount;
                 if (str > 0) {
@@ -66,7 +68,7 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
                 }
             }
         } else {
-            AbstractDungeon.player.getPower(WeightTrainingPower_Old.POWER_ID).flash();
+            AbstractDungeon.player.getPower(WeightTrainingPower.POWER_ID).flash();
         }
         addToBot(new ReducePowerAction(owner, owner, POWER_ID, total));
     }

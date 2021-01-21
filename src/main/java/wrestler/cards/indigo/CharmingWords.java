@@ -33,6 +33,7 @@ public class CharmingWords extends AbstractWrestlerCard {
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 3;
     private static final int COMPELLED = 1;
+    private static final int UPGRADE_COMPELLED = 1;
 
     // /STAT DECLARATION/
 
@@ -58,6 +59,7 @@ public class CharmingWords extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
+            upgradeMagicNumber(UPGRADE_COMPELLED);
             initializeDescription();
         }
     }

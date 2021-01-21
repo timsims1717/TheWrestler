@@ -2,7 +2,7 @@
     "wrestler:AgilityTrainingPower": {
         "NAME": "Agility Training",
         "DESCRIPTIONS": [
-            "#yGrapple is affected by #yDexterity."
+            "You may #yGrapple multiple enemies."
         ]
     },
     "wrestler:AmnesiaPower": {
@@ -23,22 +23,15 @@
     "wrestler:ChillTouchPower": {
         "NAME": "Chill Touch",
         "DESCRIPTIONS": [
-            "Whenever you apply #yGrapple, deal #b",
-            " #yPsychic damage."
-        ]
-    },
-    "wrestler:CloseQuartersPower": {
-        "NAME": "Close Quarters",
-        "DESCRIPTIONS": [
-            "Your attacks deal #b",
-            " additional damage to #yGrappled enemies."
+            "Whenever you deal non #yPsychic damage, deal #b",
+            " #yPsychic damage to ALL #yGrappled enemies."
         ]
     },
     "wrestler:CompelledPower": {
         "NAME": "Compelled",
         "DESCRIPTIONS": [
             "This creature will deal damage to itself equal to #b", "% of its attack whenever it attacks.",
-            "This creature cannot escape and will deal #b5 damage to itself instead."
+            "This creature cannot escape and will deal #b", " damage to itself instead."
         ]
     },
     "wrestler:EldritchFormPower": {
@@ -70,6 +63,12 @@
             " HP, then double its #yInfection. If it would die from Infection, replace the enemy with an Eldritch Horror with HP equal to its current HP."
         ]
     },
+    "wrestler:IntoNothingPower": {
+        "NAME": "Into Nothing",
+        "DESCRIPTIONS": [
+            "Loses #b", " whenever a Void card exhausts."
+        ]
+    },
     "wrestler:ManiaPower": {
         "NAME": "Mania",
         "DESCRIPTIONS": [
@@ -94,13 +93,11 @@
             " #yDexterity."
         ]
     },
-    "wrestler:StickyFingersPower": {
-        "NAME": "Sticky Fingers",
+    "wrestler:ShockingGraspPower": {
+        "NAME": "Shocking Grasp",
         "DESCRIPTIONS": [
-            "Whenever you play a card this turn, apply #b",
-            " #yGrapple to ",
-            "a random enemy.",
-            "ALL enemies."
+            "Whenever you apply #yGrapple this turn, deal #b",
+            " damage."
         ]
     },
     "wrestler:UntouchablePower": {
@@ -113,14 +110,14 @@
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",
         "DESCRIPTIONS": [
-            "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP.",
-            "At the end of your turn, deal damage to each #yGrappled enemy equal to 10% of their current HP #b", " times."
+            "At the end of each round, deal damage to each #yGrappled enemy equal to their #yGrapple.",
+            "At the end of each round, deal damage to each #yGrappled enemy equal to their #yGrapple #b", " times."
         ]
     },
     "wrestler:WeightTrainingPower": {
         "NAME": "Weight Training",
         "DESCRIPTIONS": [
-            "#yGrapple is affected by #yStrength."
+            "#yGrapple is no longer reduced by an enemy's #yStrength."
         ]
     },
     "wrestler:WeirdConduitPower": {

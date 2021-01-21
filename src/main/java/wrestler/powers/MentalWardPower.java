@@ -16,6 +16,7 @@ import wrestler.actions.DamageAllGrappledEnemiesAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
 import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 public class MentalWardPower extends AbstractPower implements CloneablePowerInterface {
@@ -47,7 +48,7 @@ public class MentalWardPower extends AbstractPower implements CloneablePowerInte
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner && damageAmount > 0) {
             flash();
-            addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, amount, DamageInfo.DamageType.HP_LOSS), PSYCHIC_EFFECT));
+            addToTop(new DamageAction(info.owner, new DamageInfo(info.owner, amount, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
         }
         return damageAmount;
     }

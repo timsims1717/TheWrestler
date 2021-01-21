@@ -12,25 +12,20 @@ import wrestler.powers.GrapplePower;
 import java.util.Iterator;
 
 public class WearDownAction extends AbstractGameAction {
-    private static final float PERC = 0.1F;
-
     public WearDownAction() {
         attackEffect = AttackEffect.FIRE;
     }
 
     public void update() {
         if (duration == startDuration) {
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-            while (var1.hasNext()) {
-                AbstractMonster m = (AbstractMonster) var1.next();
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (!m.isDeadOrEscaped() && m.hasPower(GrapplePower.POWER_ID)) {
 
                     if (m.currentHealth > 0) {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, attackEffect));
                     }
 
-                    m.damage(new DamageInfo(source, (int) Math.ceil(PERC * m.currentHealth), DamageInfo.DamageType.HP_LOSS));
+                    m.damage(new DamageInfo(source, m.getPower(GrapplePower.POWER_ID).amount, DamageInfo.DamageType.THORNS));
                     if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                         AbstractDungeon.actionManager.clearPostCombatActions();
                     }

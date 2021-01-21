@@ -2,6 +2,8 @@ package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import wrestler.cards.AbstractWrestlerCard;
@@ -18,6 +20,8 @@ public class WeightTraining extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(WeightTraining.class.getSimpleName());
     public static final String IMG = makeCardPath("WeightTraining.png");
 
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -29,9 +33,9 @@ public class WeightTraining extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
-    private static final int STRENGTH = 1;
+    private static final int STRENGTH = 0;
     private static final int UPGRADE_STRENGTH = 1;
 
     public WeightTraining() {
@@ -41,7 +45,9 @@ public class WeightTraining extends AbstractWrestlerCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+        if (upgraded) {
+            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+        }
         addToBot(new ApplyPowerAction(p, p, new WeightTrainingPower(p)));
     }
 
@@ -50,6 +56,7 @@ public class WeightTraining extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_STRENGTH);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -43,7 +43,6 @@ public class WeirdConduit extends AbstractWrestlerCard {
 
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        devoid();
         addToBot(new ApplyPowerAction(p, p, new WeirdConduitPower(p, CARD_MOVE), CARD_MOVE));
     }
 

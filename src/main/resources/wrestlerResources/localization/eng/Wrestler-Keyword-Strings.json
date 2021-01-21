@@ -4,7 +4,7 @@
       "grapple",
       "grappled"
     ],
-    "DESCRIPTION": "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength."
+    "DESCRIPTION": "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength. Only one enemy may be #yGrappled at a time."
   },
   {
     "NAMES": [

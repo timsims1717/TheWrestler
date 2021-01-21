@@ -82,22 +82,6 @@ public abstract class AbstractWrestlerCard extends CustomCard {
     }
 
     @Override
-    public void applyPowers() {
-        AbstractPlayer p = AbstractDungeon.player;
-        grapple = baseGrapple;
-        isGrappleModified = false;
-        if (p.hasPower(WeightTrainingPower.POWER_ID) && p.hasPower(StrengthPower.POWER_ID)) {
-            grapple += p.getPower(StrengthPower.POWER_ID).amount;
-            isGrappleModified = true;
-        }
-        if (p.hasPower(AgilityTrainingPower.POWER_ID) && p.hasPower(DexterityPower.POWER_ID)) {
-            grapple += p.getPower(DexterityPower.POWER_ID).amount;
-            isGrappleModified = true;
-        }
-        super.applyPowers();
-    }
-
-    @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean can = super.canUse(p, m);
         if (!can) {

@@ -19,7 +19,7 @@ import java.util.Iterator;
 
 import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
-public class IntoNothingAction extends AbstractGameAction {
+public class IntoNothingOldAction extends AbstractGameAction {
 
     private final AbstractPlayer player;
     private AbstractCard theCard = null;
@@ -30,7 +30,7 @@ public class IntoNothingAction extends AbstractGameAction {
             "Choose a Card to Remove."
     };
 
-    public IntoNothingAction(AbstractCreature target, DamageInfo info) {
+    public IntoNothingOldAction(AbstractCreature target, DamageInfo info) {
         this.info = info;
         setValues(target, info);
         duration = startDuration = Settings.ACTION_DUR_FAST;

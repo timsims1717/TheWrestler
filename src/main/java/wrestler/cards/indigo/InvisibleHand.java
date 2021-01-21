@@ -1,7 +1,9 @@
 package wrestler.cards.indigo;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,39 +30,47 @@ public class InvisibleHand extends AbstractWrestlerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 0;
-    private static final int GRAPPLE = 1;
-    private static final int UPGRADE_GRAPPLE = 1;
-    private static final int PSYCHIC = 2;
-    private static final int UPGRADE_PSYCHIC = 1;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_DAMAGE = 2;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 2;
 
     public InvisibleHand() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
-        psychic = basePsychic = PSYCHIC;
-        isMultiDamage = true;
+        damage = baseDamage = DAMAGE;
+        block = baseBlock = BLOCK;
     }
 
-    // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAllEnemiesAction(p, multiPsychicDamage, PSYCHIC_DAMAGE, PSYCHIC_EFFECT));
-        for (AbstractMonster mon : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            addToBot(new ApplyPowerAction(mon, p, new GrapplePower(mon, p, grapple), grapple));
+    public void triggerOnGlowCheck() {
+        glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!isTargetGrappled(m)) {
+                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+                break;
+            }
         }
     }
 
-    // Upgraded stats.
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        if (!isTargetGrappled(m)) {
+            addToBot(new GainBlockAction(p, block));
+        }
+    }
+
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeGrappleNumber(UPGRADE_GRAPPLE);
-            upgradePsychicDamageNumber(UPGRADE_PSYCHIC);
+            upgradeDamage(UPGRADE_DAMAGE);
+            upgradeBlock(UPGRADE_BLOCK);
             initializeDescription();
         }
     }
