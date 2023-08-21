@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.CompelledPower;
+import wrestler.powers.HypnotizedPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -38,7 +38,7 @@ public class DarkSuggestion extends AbstractWrestlerCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new HypnotizedPower(m, p, magicNumber), magicNumber));
     }
 
     @Override

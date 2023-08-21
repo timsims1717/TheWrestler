@@ -1,9 +1,9 @@
 {
-  "wrestler:MultiGrappleRelic": {
-    "NAME": "MultiGrappleRelic",
+  "wrestler:GrappleRelic": {
+    "NAME": "GrappleRelic",
     "FLAVOR": "What is this?",
     "DESCRIPTIONS": [
-      "At the start of combat, Apply 1 Grapple to each enemy."
+      "At the start of combat, Grapple a random enemy."
     ]
   },
   "wrestler:ForgetAtStartRelic": {

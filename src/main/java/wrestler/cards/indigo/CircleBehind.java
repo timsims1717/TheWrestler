@@ -31,8 +31,6 @@ public class CircleBehind extends AbstractWrestlerCard {
 
     private static final int BLOCK = 5;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int GRAPPLE = 1;
-    private static final int UPGRADE_GRAPPLE = 1;
 
     // /STAT DECLARATION/
 
@@ -40,7 +38,6 @@ public class CircleBehind extends AbstractWrestlerCard {
     public CircleBehind() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        grapple = baseGrapple = GRAPPLE;
         wantsTargetGrapple = true;
     }
 
@@ -51,7 +48,7 @@ public class CircleBehind extends AbstractWrestlerCard {
             addToBot(new GainBlockAction(p, block));
         }
 
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
     }
 
     @Override
@@ -59,7 +56,6 @@ public class CircleBehind extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            upgradeGrappleNumber(UPGRADE_GRAPPLE);
             initializeDescription();
         }
     }

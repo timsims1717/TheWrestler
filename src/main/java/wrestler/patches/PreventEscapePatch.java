@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.city.Mugger;
 import com.megacrit.cardcrawl.monsters.exordium.Looter;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import wrestler.powers.CompelledPower;
+import wrestler.powers.HypnotizedPower;
 
 import java.util.ArrayList;
 
@@ -20,10 +20,10 @@ public class PreventEscapePatch {
                 locator = LooterEscapeLocator.class
         )
         public static SpireReturn looterInsert(Looter __instance) {
-            if (__instance.hasPower(CompelledPower.POWER_ID)) {
+            if (__instance.hasPower(HypnotizedPower.POWER_ID)) {
                 __instance.addToBot(new TalkAction(__instance, CANT_LEAVE_MESSAGE, 0.75F, 2.5F));
                 __instance.addToBot(new SetMoveAction(__instance, Looter.MOVES[1], (byte)1, AbstractMonster.Intent.ATTACK, (__instance.damage.get(0)).base));
-                __instance.getPower(CompelledPower.POWER_ID).flash();
+                __instance.getPower(HypnotizedPower.POWER_ID).flash();
                 return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
@@ -43,10 +43,10 @@ public class PreventEscapePatch {
                 locator = MuggerEscapeLocator.class
         )
         public static SpireReturn muggerInsert(Mugger __instance) {
-            if (__instance.hasPower(CompelledPower.POWER_ID)) {
+            if (__instance.hasPower(HypnotizedPower.POWER_ID)) {
                 __instance.addToBot(new TalkAction(__instance, CANT_LEAVE_MESSAGE, 0.75F, 2.5F));
                 __instance.addToBot(new SetMoveAction(__instance, Mugger.MOVES[1], (byte)1, AbstractMonster.Intent.ATTACK, (__instance.damage.get(0)).base));
-                __instance.getPower(CompelledPower.POWER_ID).flash();
+                __instance.getPower(HypnotizedPower.POWER_ID).flash();
                 return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();

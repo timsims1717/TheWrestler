@@ -53,6 +53,6 @@ public class CheapShotAction extends AbstractGameAction {
             }
         }
 
-        this.isDone = true;
+        isDone = true;
     }
 }

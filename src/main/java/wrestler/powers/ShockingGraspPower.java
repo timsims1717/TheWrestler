@@ -47,13 +47,12 @@ public class ShockingGraspPower extends AbstractPower implements CloneablePowerI
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            if (power.ID.equals(GrapplePower.POWER_ID)) {
-                addToBot(new ShockingGraspAction(owner, target, amount));
-                flash();
-            }
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner && damageAmount > 0) {
+            addToTop(new ShockingGraspAction(owner, info.owner, amount));
+            flash();
         }
+        return damageAmount;
     }
 
     @Override

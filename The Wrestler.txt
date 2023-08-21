@@ -34,12 +34,11 @@ Eldritch Ideas:
 		Special enemies that show up in certain circumstances
 		Card that infects an enemy, and if they die from the infection, they turn into an abomination
 
-Card name ideas:
-Telekinesis
 
 TODO:
 Need a couple Combo
 Need a couple "if the target is not grappled"
+Need a couple more self-debuff
 
 Costume relics
 
@@ -102,3 +101,11 @@ Grapple changed to a "Condition":
 			Deal 8(11) damage. Whenever you Grapple an enemy, deal 4(5) damage.
 		Weight Training:
 			(Gain 1 Strength.) Grapple cannot be escaped for 1 extra turn.
+
+
+ball
+size 45
+chain
+size 13, aspect 1.0, start at 50 go up by 7.5
+inner chain
+size 8, aspect 1.5, start at 50 go up by 7.5

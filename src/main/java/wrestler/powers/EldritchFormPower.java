@@ -12,8 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.util.TextureLoader;
 
-import java.util.Iterator;
-
 import static wrestler.Wrestler.makePowerPath;
 
 public class EldritchFormPower extends AbstractPower implements CloneablePowerInterface {
@@ -56,7 +54,7 @@ public class EldritchFormPower extends AbstractPower implements CloneablePowerIn
         flash();
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!m.isDeadOrEscaped()) {
-                addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
+                addToBot(new ApplyPowerAction(m, owner, new HypnotizedPower(m, owner, amount), amount));
             }
         }
         amount += increase;

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.GrapplePower;
+import wrestler.powers.SubmissionPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -16,38 +17,36 @@ public class IronGrip extends AbstractWrestlerCard {
     // TEXT DECLARATION
 
     public static final String ID = wrestler.Wrestler.makeID(IronGrip.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
-
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
+
+    private static final int SUBMISSION = 3;
+    private static final int UPGRADE_SUBMISSION = 2;
 
     // /STAT DECLARATION/
 
     public IronGrip() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        exhaust = true;
+        magicNumber = baseMagicNumber = SUBMISSION;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(GrapplePower.POWER_ID)) {
-            int gAmount = m.getPower(GrapplePower.POWER_ID).amount * (upgraded ? 2 : 1);
-            addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, gAmount), gAmount));
-        }
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
+        addToBot(new ApplyPowerAction(m, p, new SubmissionPower(m, p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.
@@ -55,7 +54,7 @@ public class IronGrip extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_SUBMISSION);
             initializeDescription();
         }
     }

@@ -31,8 +31,6 @@ public class PenetratingShot extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int GRAPPLE = 3;
-    private static final int UPGRADE_GRP = 2;
     private static final int VULN = 1;
     private static final int UPGRADE_VULN = 1;
 
@@ -40,26 +38,14 @@ public class PenetratingShot extends AbstractWrestlerCard {
 
     public PenetratingShot() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
         magicNumber = baseMagicNumber = VULN;
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-
-        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (m != null && !m.isDeadOrEscaped() && !m.hasPower(GrapplePower.POWER_ID)) {
-                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-                break;
-            }
-        }
+        wantsTargetNonGrapple = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         boolean hasGrapple = isTargetGrappled(m);
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
         if (!hasGrapple) {
             addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
         }
@@ -69,7 +55,6 @@ public class PenetratingShot extends AbstractWrestlerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeGrappleNumber(UPGRADE_GRP);
             upgradeMagicNumber(UPGRADE_VULN);
             initializeDescription();
         }

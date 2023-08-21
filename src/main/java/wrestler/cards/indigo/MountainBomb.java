@@ -32,15 +32,12 @@ public class MountainBomb extends AbstractWrestlerCard {
 
     private static final int DAMAGE = 6;
     private static final int UPGRADE_DMG = 2;
-    private static final int GRAPPLE = 1;
-    private static final int UPGRADE_GRAPPLE = 1;
 
     // /STAT DECLARATION/
 
     public MountainBomb() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        grapple = baseGrapple = GRAPPLE;
         wantsTargetGrapple = true;
     }
 
@@ -54,7 +51,7 @@ public class MountainBomb extends AbstractWrestlerCard {
             addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
 
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
     }
 
     // Upgraded stats.
@@ -63,7 +60,6 @@ public class MountainBomb extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_DMG);
-            upgradeGrappleNumber(UPGRADE_GRAPPLE);
             initializeDescription();
         }
     }

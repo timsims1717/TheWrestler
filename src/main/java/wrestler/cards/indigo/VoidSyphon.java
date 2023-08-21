@@ -8,15 +8,15 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.ManiaPower;
+import wrestler.powers.VoidSyphonPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-public class Mania extends AbstractWrestlerCard {
+public class VoidSyphon extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(Mania.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(VoidSyphon.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -36,7 +36,7 @@ public class Mania extends AbstractWrestlerCard {
     private static final int ENERGY = 2;
     private static final int UPGRADE_ENERGY = 1;
 
-    public Mania() {
+    public VoidSyphon() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ENERGY;
         exhaust = true;
@@ -46,7 +46,7 @@ public class Mania extends AbstractWrestlerCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new ManiaPower(p, 1), 1));
+        addToBot(new ApplyPowerAction(p, p, new VoidSyphonPower(p, 1), 1));
     }
 
 

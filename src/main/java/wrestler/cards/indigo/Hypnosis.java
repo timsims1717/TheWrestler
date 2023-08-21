@@ -1,13 +1,16 @@
 package wrestler.cards.indigo;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.CompelledPower;
+import wrestler.powers.HypnotizedPower;
 
 import static wrestler.Wrestler.makeCardPath;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
+import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 
 public class Hypnosis extends AbstractWrestlerCard {
@@ -23,7 +26,7 @@ public class Hypnosis extends AbstractWrestlerCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
@@ -31,18 +34,20 @@ public class Hypnosis extends AbstractWrestlerCard {
 
     private static final int PSYCHIC = 5;
     private static final int UPGRADE_PSYCHIC = 3;
-    private static final int COMPELLED = 3;
-    private static final int UPGRADE_COMPELLED = 1;
+    private static final int HYPNOSIS = 3;
+    private static final int UPGRADE_HYPNOSIS = 1;
 
     public Hypnosis() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         psychic = basePsychic = PSYCHIC;
-        magicNumber = baseMagicNumber = COMPELLED;
+        magicNumber = baseMagicNumber = HYPNOSIS;
+        isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
+        addToBot(new DamageAllEnemiesAction(p, multiPsychicDamage, PSYCHIC_DAMAGE, PSYCHIC_EFFECT));
+        addToBot(new ApplyPowerAction(m, p, new HypnotizedPower(m, p, magicNumber), magicNumber));
     }
 
     @Override
@@ -50,7 +55,7 @@ public class Hypnosis extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradePsychicDamageNumber(UPGRADE_PSYCHIC);
-            upgradeMagicNumber(UPGRADE_COMPELLED);
+            upgradeMagicNumber(UPGRADE_HYPNOSIS);
             initializeDescription();
         }
     }

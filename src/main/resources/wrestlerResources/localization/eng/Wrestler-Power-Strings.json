@@ -23,15 +23,15 @@
     "wrestler:ChillTouchPower": {
         "NAME": "Chill Touch",
         "DESCRIPTIONS": [
-            "Whenever you deal non #yPsychic damage, deal #b",
-            " #yPsychic damage to ALL #yGrappled enemies."
+            "Whenever you #yGrapple an enemy, deal #b",
+            " #yPsychic damage."
         ]
     },
-    "wrestler:CompelledPower": {
-        "NAME": "Compelled",
+    "wrestler:HypnotizedPower": {
+        "NAME": "Hypnotized",
         "DESCRIPTIONS": [
-            "This creature will deal damage to itself equal to #b", "% of its attack whenever it attacks.",
-            "This creature cannot escape and will deal #b", " damage to itself instead."
+            "This enemy will apply debuffs to itself, buffs to you, and deal damage to itself equal to #b", "% of its attack whenever it attacks.",
+            "This enemy cannot escape and will deal #b", " damage to itself instead."
         ]
     },
     "wrestler:EldritchFormPower": {
@@ -53,35 +53,28 @@
     "wrestler:GrapplePower": {
         "NAME": "Grapple",
         "DESCRIPTIONS": [
-            "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength."
+            "This enemy will escape their #yGrapple this turn.",
+            "This enemy will escape their #yGrapple next turn.",
+            "This enemy will escape their #yGrapple in #b", " turns."
         ]
     },
-    "wrestler:InfectionPower": {
-        "NAME": "Infection",
+    "wrestler:DormantMutationPower": {
+        "NAME": "Dormant Mutation",
         "DESCRIPTIONS": [
             "At the end of its turn, loses #b",
-            " HP, then double its #yInfection. If it would die from Infection, replace the enemy with an Eldritch Horror with HP equal to its current HP."
+            " HP, then doubles this value. If it would die from this, replace it with an #yAberration with HP equal to its current HP."
         ]
     },
     "wrestler:IntoNothingPower": {
         "NAME": "Into Nothing",
         "DESCRIPTIONS": [
-            "Loses #b", " whenever a Void card exhausts."
-        ]
-    },
-    "wrestler:ManiaPower": {
-        "NAME": "Mania",
-        "DESCRIPTIONS": [
-            "Next turn, draw #b",
-            " fewer ",
-            "card.",
-            "cards."
+            "Loses #b", " HP whenever a Void card exhausts."
         ]
     },
     "wrestler:MentalWardPower": {
         "NAME": "Mental Ward",
         "DESCRIPTIONS": [
-            "Whenever you receive unblocked attack damage, the enemy loses #b",
+            "Whenever an enemy applies a debuff to you or creates a card, that enemy loses #b",
             " HP."
         ]
     },
@@ -96,8 +89,15 @@
     "wrestler:ShockingGraspPower": {
         "NAME": "Shocking Grasp",
         "DESCRIPTIONS": [
-            "Whenever you apply #yGrapple this turn, deal #b",
-            " damage."
+            "Whenever you are dealt unblocked damage this turn, deal #b",
+            " damage back."
+        ]
+    },
+    "wrestler:SubmissionPower": {
+        "NAME": "Submission",
+        "DESCRIPTIONS": [
+            "If the enemy is #yGrappled, you deal #b",
+            " damage at the start of their turn. Then, Submission increases by #b1."
         ]
     },
     "wrestler:UntouchablePower": {
@@ -107,17 +107,25 @@
             " times."
         ]
     },
+    "wrestler:VoidSyphonPower": {
+        "NAME": "Void Syphon",
+        "DESCRIPTIONS": [
+            "Next turn, draw #b",
+            " fewer ",
+            "card.",
+            "cards."
+        ]
+    },
     "wrestler:WearDownPower": {
         "NAME": "Wear Down",
         "DESCRIPTIONS": [
-            "At the end of each round, deal damage to each #yGrappled enemy equal to their #yGrapple.",
-            "At the end of each round, deal damage to each #yGrappled enemy equal to their #yGrapple #b", " times."
+            "At the end of your turn, apply #b", " #ySubmission to ALL #yGrappled enemies"
         ]
     },
     "wrestler:WeightTrainingPower": {
         "NAME": "Weight Training",
         "DESCRIPTIONS": [
-            "#yGrapple is no longer reduced by an enemy's #yStrength."
+            "Enemies escape your #yGrapple in #b", " extra turn.", " extra turns."
         ]
     },
     "wrestler:WeirdConduitPower": {

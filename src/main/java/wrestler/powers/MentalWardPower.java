@@ -3,20 +3,18 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import wrestler.actions.DamageAllGrappledEnemiesAction;
+import wrestler.actions.MentalWardAction;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
-import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
 import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
 public class MentalWardPower extends AbstractPower implements CloneablePowerInterface {
@@ -25,8 +23,8 @@ public class MentalWardPower extends AbstractPower implements CloneablePowerInte
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("MentalWardPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("MentalWardPower32.png"));
 
     public MentalWardPower(final AbstractCreature owner, final int amount) {
         name = NAME;
@@ -44,13 +42,12 @@ public class MentalWardPower extends AbstractPower implements CloneablePowerInte
         updateDescription();
     }
 
-    @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner && damageAmount > 0) {
-            flash();
-            addToTop(new DamageAction(info.owner, new DamageInfo(info.owner, amount, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
-        }
-        return damageAmount;
+    public void triggerTop(AbstractCreature source) {
+        addToTop(new MentalWardAction(source, amount));
+    }
+
+    public void triggerBot(AbstractCreature source) {
+        addToBot(new MentalWardAction(source, amount));
     }
 
     @Override

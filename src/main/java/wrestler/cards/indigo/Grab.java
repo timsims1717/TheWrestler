@@ -29,23 +29,20 @@ public class Grab extends AbstractWrestlerCard {
 
     private static final int COST = 0;
 
-    private static final int GRAPPLE = 2;
-    private static final int UPGRADE_GRP = 1;
     private static final int BLOCK = 2;
-    private static final int UPGRADE_BLOCK = 1;
+    private static final int UPGRADE_BLOCK = 2;
 
     // /STAT DECLARATION/
 
     public Grab() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
         block = baseBlock = BLOCK;
     }
 
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
         addToBot(new GainBlockAction(p, p, block));
     }
 
@@ -55,7 +52,6 @@ public class Grab extends AbstractWrestlerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_BLOCK);
-            upgradeGrappleNumber(UPGRADE_GRP);
             initializeDescription();
         }
     }

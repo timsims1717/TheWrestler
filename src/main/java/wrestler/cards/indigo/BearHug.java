@@ -7,7 +7,10 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import wrestler.actions.BearHugAction;
+import wrestler.actions.DamageAllGrappledEnemiesAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.GrapplePower;
@@ -32,54 +35,31 @@ public class BearHug extends AbstractWrestlerCard {
 
     private static final int COST = 2;
 
-    private static final int GRAPPLE = 2;
-    private static final int UPGRADE_GRAPPLE = 1;
+    private static final int BASE = 8;
+    private static final int UPGRADE_BASE = 3;
 
     // /STAT DECLARATION/
 
     public BearHug() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        grapple = baseGrapple = GRAPPLE;
-        damage = baseDamage = GRAPPLE;
-        block = baseBlock = GRAPPLE;
+        damage = baseDamage = BASE;
+        block = baseBlock = BASE;
     }
 
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        calculateCardDamage(m);
-        calculateBlock(m);
-        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p, grapple), grapple));
-        addToBot(new GainBlockAction(p, p, block));
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), damage > 9 ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
+        addToBot(new BearHugAction(p, block));
+        addToBot(new DamageAllGrappledEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
-    public void calculateBlock(AbstractMonster mo) {
-        if (mo != null && mo.hasPower(GrapplePower.POWER_ID)) {
-            block = baseBlock = mo.getPower(GrapplePower.POWER_ID).amount + grapple;
-        } else {
-            block = baseBlock = grapple;
-        }
-        applyPowersToBlock();
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        if (mo != null && mo.hasPower(GrapplePower.POWER_ID)) {
-            damage = baseDamage = mo.getPower(GrapplePower.POWER_ID).amount + grapple;
-        } else {
-            damage = baseDamage = grapple;
-        }
-        super.calculateCardDamage(mo);
-    }
-
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeGrappleNumber(UPGRADE_GRAPPLE);
+            upgradeDamage(UPGRADE_BASE);
+            upgradeBlock(UPGRADE_BASE);
             initializeDescription();
         }
     }

@@ -4,26 +4,26 @@
       "grapple",
       "grappled"
     ],
-    "DESCRIPTION": "Each turn, #yGrapple is reduced by #b1 plus the enemy's #yStrength. Only one enemy may be #yGrappled at a time."
+    "DESCRIPTION": "Enemies escape #yGrapple if #yGrapple is not applied that turn. Only one enemy may be #yGrappled at a time."
   },
   {
     "NAMES": [
-      "compelled",
-      "compulsion"
+      "hypnosis",
+      "hypnotized"
     ],
-    "DESCRIPTION": "Compelled creatures deal damage to themselves the next time they attack and cannot escape combat."
+    "DESCRIPTION": "Hypnotized creatures buff the player, debuff themselves, and deal damage to themselves depending on their intent. They cannot escape combat."
   },
   {
     "NAMES": [
-      "infection"
+      "aberration"
     ],
-    "DESCRIPTION": "Infected creatures lose HP, then double their Infection. If it would die from Infection, the creature is replaced with an Eldritch Horror."
+    "DESCRIPTION": "Aberrations are Eldritch creatures that attack all enemies and damage those that debuff it."
   },
   {
     "NAMES": [
       "psychic"
     ],
-    "DESCRIPTION": "Psychic damage ignores block and Thorns, is blocked by Artifact charges, and does not scale with Strength."
+    "DESCRIPTION": "Psychic damage ignores block, is blocked by Artifact charges, and does not scale with Strength."
   },
   {
     "NAMES": [
@@ -31,5 +31,11 @@
       "multiplier"
     ],
     "DESCRIPTION": "Playing cards and dealing damage adds to your combo score, and playing cards increases your score multiplier. At the end of combat, you receive gold based on your score."
+  },
+  {
+    "NAMES": [
+      "submission"
+    ],
+    "DESCRIPTION": "Grappled creatures with Submission take damage at the start of their turn and Submission increases by #b1."
   }
 ]

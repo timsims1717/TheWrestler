@@ -4,39 +4,42 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
-import static wrestler.patches.PsychicDamagePatch.PSYCHIC_EFFECT;
 
-public class CompelledPower extends AbstractPower implements CloneablePowerInterface {
+public class HypnotizedPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
+    public boolean shouldRemove;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(CompelledPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(HypnotizedPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("CompelledPower84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("CompelledPower32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("HypnotizedPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("HypnotizedPower32.png"));
 
-    public CompelledPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public HypnotizedPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
         this.source = source;
+        shouldRemove = false;
 
         type = PowerType.DEBUFF;
         isTurnBased = true;
@@ -63,21 +66,27 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        AbstractPlayer p = AbstractDungeon.player;
+        if (source.equals(owner) && !source.equals(p)) {
+            if (power.type == PowerType.BUFF && target.equals(owner)) {
+                addToBot(new ApplyPowerAction(p, owner, power));
+                shouldRemove = true;
+            } else if (power.type == PowerType.DEBUFF && target.equals(p)) {
+                addToBot(new ApplyPowerAction(owner, owner, power));
+                shouldRemove = true;
+            }
+        }
+    }
+
+    @Override
     public void atEndOfTurn(final boolean isPlayer) {
         if (owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster) owner;
-            switch (m.intent) {
-                case ESCAPE:
-                    escape();
-                case ATTACK:
-                case ATTACK_BUFF:
-                case ATTACK_DEBUFF:
-                case ATTACK_DEFEND:
-                    addToTop(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
-                    break;
+            if (m.intent == AbstractMonster.Intent.ESCAPE) {
+                escape();
             }
         }
-//        addToBot(new ReducePowerAction(owner, owner, POWER_ID, 1));
         updateDescription();
     }
 
@@ -88,10 +97,12 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
                 addToTop(new DamageAction(owner, new DamageInfo(owner, Math.max(Math.round(damage * amount / 10.0f), 1), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             }
         }
+        shouldRemove = true;
     }
 
     private void escape() {
-        addToBot(new DamageAction(owner, new DamageInfo(owner, 5, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        shouldRemove = true;
     }
 
     @Override
@@ -101,13 +112,20 @@ public class CompelledPower extends AbstractPower implements CloneablePowerInter
             if (m.intent == AbstractMonster.Intent.ESCAPE) {
                 description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
             } else {
-                description = DESCRIPTIONS[0] + (amount * 10) + DESCRIPTIONS[1];
+                description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
             }
         }
     }
 
     @Override
+    public void atEndOfRound() {
+        if (shouldRemove) {
+            addToTop(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
+        }
+    }
+
+    @Override
     public AbstractPower makeCopy() {
-        return new CompelledPower(owner, source, amount);
+        return new HypnotizedPower(owner, source, amount);
     }
 }

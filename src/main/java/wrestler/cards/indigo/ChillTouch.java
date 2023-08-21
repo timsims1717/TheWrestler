@@ -26,8 +26,9 @@ public class ChillTouch extends AbstractWrestlerCard {
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
     private static final int COST = 1;
-    private static final int PSYCHIC = 2;
-    private static final int UPGRADE_PSYCHIC = 1;
+
+    private static final int PSYCHIC = 5;
+    private static final int UPGRADE_PSYCHIC = 2;
 
     // /STAT DECLARATION/
 

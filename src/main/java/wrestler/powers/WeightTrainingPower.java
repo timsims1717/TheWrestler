@@ -20,11 +20,12 @@ public class WeightTrainingPower extends AbstractPower implements CloneablePower
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public WeightTrainingPower(final AbstractCreature owner) {
+    public WeightTrainingPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
+        this.amount = amount;
 
         type = PowerType.BUFF;
         isTurnBased = true;
@@ -32,11 +33,20 @@ public class WeightTrainingPower extends AbstractPower implements CloneablePower
         region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        description = DESCRIPTIONS[0];
+        updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        } else {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new WeightTrainingPower(owner);
+        return new WeightTrainingPower(owner, amount);
     }
 }

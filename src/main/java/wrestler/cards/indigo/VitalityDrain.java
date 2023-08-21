@@ -22,9 +22,6 @@ public class VitalityDrain extends AbstractWrestlerCard {
     public static final String ID = wrestler.Wrestler.makeID(VitalityDrain.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-
 
     // /TEXT DECLARATION/
 
@@ -40,30 +37,31 @@ public class VitalityDrain extends AbstractWrestlerCard {
 
     // /STAT DECLARATION/
 
+    private static final int PSYCHIC = 9;
+    private static final int UPGRADE_PSYCHIC = 3;
+
 
     public VitalityDrain() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        requiresTargetGrapple = true;
+        psychic = basePsychic = PSYCHIC;
+        wantsTargetGrapple = true;
         exhaust = true;
     }
 
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(GrapplePower.POWER_ID)) {
-            int grpl = m.getPower(GrapplePower.POWER_ID).amount;
-            addToBot(new DamageAction(m, new DamageInfo(p, grpl, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
-            addToBot(new VitalityDrainAction(p, m, upgraded));
+        addToBot(new DamageAction(m, new DamageInfo(p, psychic, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
+        if (isTargetGrappled(m)) {
+            addToBot(new VitalityDrainAction(p, m));
         }
     }
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradePsychicDamageNumber(UPGRADE_PSYCHIC);
             initializeDescription();
         }
     }

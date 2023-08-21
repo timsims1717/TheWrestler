@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
 import wrestler.powers.GrapplePower;
+import wrestler.powers.SubmissionPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -55,8 +56,8 @@ public class Chokehold extends AbstractWrestlerCard {
 
     @Override // todo: add damage to card (needs this one and apply powers)
     public void calculateCardDamage(AbstractMonster mo) {
-        if (mo != null && mo.hasPower(GrapplePower.POWER_ID)) {
-            damage = baseDamage = mo.getPower(GrapplePower.POWER_ID).amount;
+        if (mo != null && mo.hasPower(SubmissionPower.POWER_ID)) {
+            damage = baseDamage = mo.getPower(SubmissionPower.POWER_ID).amount;
         } else {
             damage = baseDamage = 0;
         }

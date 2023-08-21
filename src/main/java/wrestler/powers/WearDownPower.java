@@ -49,23 +49,17 @@ public class WearDownPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void atEndOfRound() {
+    public void atEndOfTurn(boolean isPlayer) {
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             return;
         }
-        for (int i = 0; i < amount; i++) {
-            addToBot(new WearDownAction());
-        }
+        addToBot(new WearDownAction(owner, amount));
         flash();
     }
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0];
-        } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override

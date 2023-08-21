@@ -10,7 +10,7 @@
 
   "wrestler:Grab": {
     "NAME": "Grab",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL Gain !B! Block."
+    "DESCRIPTION": "wrestler:Grapple the enemy. NL Gain !B! Block."
   },
   "wrestler:Defend_Indigo": {
     "NAME": "Defend",
@@ -21,7 +21,7 @@
 
   "wrestler:CharmingWords": {
     "NAME": "Charming Words",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! wrestler:Compelled."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! wrestler:Hypnotized."
   },
   "wrestler:CheapShot": {
     "NAME": "Cheap Shot",
@@ -30,7 +30,7 @@
   },
   "wrestler:CircleBehind": {
     "NAME": "Circle Behind",
-    "DESCRIPTION": "Gain !B! Block. NL If the enemy is wrestler:Grappled, gain !B! Block again. NL Apply !wrestler:Grapple! wrestler:Grapple."
+    "DESCRIPTION": "Gain !B! Block. NL If the enemy is wrestler:Grappled, gain !B! Block again. NL wrestler:Grapple the enemy."
   },
   "wrestler:ElbowCut": {
     "NAME": "Elbow Cut",
@@ -42,7 +42,7 @@
   },
   "wrestler:MountainBomb": {
     "NAME": "Mountain Bomb",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage again. NL Apply !wrestler:Grapple! wrestler:Grapple."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, deal !D! damage again. NL wrestler:Grapple the enemy."
   },
   "wrestler:HammerStrike": {
     "NAME": "Hammer Strike",
@@ -63,7 +63,7 @@
   },
   "wrestler:PenetratingShot": {
     "NAME": "Penetrating Shot",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. If the enemy did not have wrestler:Grapple, apply !M! Vulnerable."
+    "DESCRIPTION": "wrestler:Grapple the enemy. If the enemy was not wrestler:Grappled, apply !M! Vulnerable."
   },
   "wrestler:PsychicStrike": {
     "NAME": "Psychic Strike",
@@ -80,7 +80,7 @@
   },
   "wrestler:Suplex": {
     "NAME": "Suplex",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is Grappled, gain [E]."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is wrestler:Grappled, gain [E]."
   },
   "wrestler:Enfeeble": {
     "NAME": "Enfeeble",
@@ -100,15 +100,15 @@
   },
   "wrestler:Armlock": {
     "NAME": "Armlock",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL The enemy loses Strength equal to their wrestler:Grapple this turn. NL Exhaust."
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, apply !M! wrestler:Submission and the enemy loses Strength equal to their wrestler:Submission this turn. NL Exhaust."
   },
   "wrestler:BearHug": {
     "NAME": "Bear Hug",
-    "DESCRIPTION": "Gain Block and deal damage equal to the enemy's wrestler:Grapple."
+    "DESCRIPTION": "wrestler:Grapple the enemy. NL Gain !B! Block for each wrestler:Grappled enemy. NL Deal !D! damage to ALL wrestler:Grappled enemies."
   },
   "wrestler:BodyShield": {
     "NAME": "Body Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever an enemy attacks this turn, deal !M! damage to ALL grappled enemies."
+    "DESCRIPTION": "Gain !B! Block. NL Whenever an enemy attacks this turn, deal !M! damage to ALL wrestler:Grappled enemies."
   },
   "wrestler:Brainstorm": {
     "NAME": "Brainstorm",
@@ -117,15 +117,15 @@
   },
   "wrestler:ChillTouch": {
     "NAME": "Chill Touch",
-    "DESCRIPTION": "Whenever you deal non wrestler:Psychic damage, deal !M! wrestler:Psychic damage to ALL wrestler:Grappled enemies."
+    "DESCRIPTION": "Whenever you wrestler:Grapple an enemy, deal !M! wrestler:Psychic damage."
   },
   "wrestler:Chokehold": {
     "NAME": "Chokehold",
-    "DESCRIPTION": "Deal damage equal to the enemy's wrestler:Grapple times !M!."
+    "DESCRIPTION": "If the enemy is wrestler:Grappled, deal damage equal to the enemy's wrestler:Submission times !M!."
   },
   "wrestler:DarkSuggestion": {
     "NAME": "Dark Suggestion",
-    "DESCRIPTION": "Apply !M! wrestler:Compelled."
+    "DESCRIPTION": "Apply !M! wrestler:Hypnotized."
   },
   "wrestler:Flourish": {
     "NAME": "Flourish",
@@ -134,7 +134,7 @@
   },
   "wrestler:Hypnosis": {
     "NAME": "Hypnosis",
-    "DESCRIPTION": "Deal !wrestler:Psychic! wrestler:Psychic damage. Apply !M! wrestler:Compelled."
+    "DESCRIPTION": "Deal !wrestler:Psychic! wrestler:Psychic damage to ALL enemies. NL Apply !M! wrestler:Hypnotized to ALL enemies."
   },
   "wrestler:InvisibleHand": {
     "NAME": "Invisible Hand",
@@ -142,8 +142,7 @@
   },
   "wrestler:IronGrip": {
     "NAME": "Iron Grip",
-    "DESCRIPTION": "Double the enemy's wrestler:Grapple NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Triple the enemy's wrestler:Grapple NL Exhaust."
+    "DESCRIPTION": "wrestler:Grapple the enemy. NL Apply !M! wrestler:Submission."
   },
   "wrestler:Lariat": {
     "NAME": "Lariat",
@@ -157,14 +156,9 @@
     "NAME": "Malady",
     "DESCRIPTION": "Add a Void into your discard pile. NL Deal !D! damage. NL Apply !M! wrestler:Malady. NL Exhaust."
   },
-  "wrestler:Mania": {
-    "NAME": "Mania",
-    "DESCRIPTION": "Gain [E] [E] . NL Next turn, draw 1 fewer card.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] . NL Next turn, draw 1 fewer card."
-  },
   "wrestler:MentalWard": {
     "NAME": "Mental Ward",
-    "DESCRIPTION": "Whenever you receive unblocked attack damage, deal !M! wrestler:Psychic damage back."
+    "DESCRIPTION": "Whenever an enemy applies a debuff to you or creates a card, that enemy loses !M! HP."
   },
   "wrestler:Migraine": {
     "NAME": "Migraine",
@@ -178,17 +172,13 @@
     "NAME": "Modify Memory",
     "DESCRIPTION": "Discard up to !M! cards from your draw pile. Shuffle that many cards into your draw pile."
   },
-  "wrestler:OutOfReach": {
-    "NAME": "Out of Reach",
-    "DESCRIPTION": "Gain !B! Block for all wrestler:Grapple on ALL enemies. NL Remove all wrestler:Grapple from ALL enemies."
-  },
   "wrestler:Piledriver": {
     "NAME": "Piledriver",
     "DESCRIPTION": "Deal !D! damage. NL Increase your wrestler:Combo wrestler:Multiplier by !M!."
   },
   "wrestler:Pounce": {
     "NAME": "Pounce",
-    "DESCRIPTION": "Deal !D! damage. NL Move all wrestler:Grapple to that enemy."
+    "DESCRIPTION": "wrestler:Grapple the enemy. NL If the enemy was not wrestler:Grappled, deal !D! damage."
   },
   "wrestler:SelfDelusion": {
     "NAME": "Self Delusion",
@@ -197,7 +187,7 @@
   },
   "wrestler:ShockingGrasp": {
     "NAME": "Shocking Grasp",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you apply wrestler:Grapple this turn, deal !M! damage."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you are dealt unblocked damage this turn, deal !M! damage back."
   },
   "wrestler:ThoughtEater": {
     "NAME": "Thought Eater",
@@ -215,10 +205,15 @@
     "NAME": "Vanish",
     "DESCRIPTION": "Add a Void into your discard pile. NL Gain !B! Block."
   },
+  "wrestler:VoidSyphon": {
+    "NAME": "Void Syphon",
+    "DESCRIPTION": "Gain [E] [E] . NL Next turn, draw 1 fewer card.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] . NL Next turn, draw 1 fewer card."
+  },
   "wrestler:WeightTraining": {
     "NAME": "Weight Training",
-    "DESCRIPTION": "wrestler:Grapple is no longer reduced by an enemy's Strength.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Strength. NL wrestler:Grapple is no longer reduced by an enemy's Strength."
+    "DESCRIPTION": "Enemies escape your wrestler:Grapple in 1 extra turn.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Strength. NL Enemies escape your wrestler:Grapple in 1 extra turn."
   },
 
 
@@ -234,11 +229,11 @@
   },
   "wrestler:DominateMind": {
     "NAME": "Dominate Mind",
-    "DESCRIPTION": "Deal !wrestler:Psychic! wrestler:Psychic damage. NL Apply !M! Weak, Vulnerable, and wrestler:Compelled."
+    "DESCRIPTION": "Deal !wrestler:Psychic! wrestler:Psychic damage. NL Apply !M! Weak, Vulnerable, and wrestler:Hypnotized."
   },
   "wrestler:EldritchForm": {
     "NAME": "Eldritch Form",
-    "DESCRIPTION": "At the start of your turn, apply 5 wrestler:Compelled to ALL enemies and increase this value by !M!."
+    "DESCRIPTION": "At the start of your turn, apply 5 wrestler:Hypnotized to ALL enemies and increase this value by !M!."
   },
   "wrestler:EldritchInsight": {
     "NAME": "Eldritch Insight",
@@ -253,9 +248,9 @@
     "NAME": "Into Nothing",
     "DESCRIPTION": "Add a Void into your discard pile. NL Deal !wrestler:Psychic! wrestler:Psychic damage. NL Whenever a Void card exhausts, the enemy loses !M! HP."
   },
-  "wrestler:Infection": {
-    "NAME": "Infection",
-    "DESCRIPTION": "Apply !M! wrestler:Infection. NL Exhaust."
+  "wrestler:DormantMutation": {
+    "NAME": "Dormant Mutation",
+    "DESCRIPTION": "The enemy loses !M! HP at the end of their turn and doubles this value. NL If the enemy would die from this, it is replaced with an wrestler:Aberration."
   },
   "wrestler:Leverage": {
     "NAME": "Leverage",
@@ -270,13 +265,17 @@
     "DESCRIPTION": "Choose a card. NL Shuffle X copies of NL that card into your NL draw pile. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Choose a card. NL Shuffle X+1 copies of NL that card into your NL draw pile. NL Exhaust."
   },
+  "wrestler:OutOfReach": {
+    "NAME": "Out of Reach",
+    "DESCRIPTION": "If an enemy is wrestler:Grappled, gain !B! Block. NL Remove wrestler:Grapple from ALL enemies."
+  },
   "wrestler:Pizzazz": {
     "NAME": "Pizzazz",
     "DESCRIPTION": "Whenever your wrestler:Combo wrestler:Multiplier increases, gain !M! Strength and !M! Dexterity."
   },
-  "wrestler:Submission": {
-    "NAME": "Submission",
-    "DESCRIPTION": "Apply !wrestler:Grapple! wrestler:Grapple. NL If the enemy's wrestler:Grapple is greater than or equal to 50, set that enemy's HP to 0. NL Exhaust."
+  "wrestler:Submit": {
+    "NAME": "Submit",
+    "DESCRIPTION": "wrestler:Grapple the enemy. NL Apply !M! wrestler:Submission. NL Exhaust."
   },
   "wrestler:TagTeam": {
     "NAME": "Tag Team",
@@ -288,13 +287,12 @@
   },
   "wrestler:VitalityDrain": {
     "NAME": "Vitality Drain",
-    "DESCRIPTION": "Deal wrestler:Psychic damage equal to the enemy's wrestler:Grapple. NL Heal HP equal to a quarter of the damage dealt. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal wrestler:Psychic damage equal to the enemy's wrestler:Grapple. NL Heal HP equal to half of the damage dealt. NL Exhaust."
+    "DESCRIPTION": "Deal !wrestler:Psychic! wrestler:Psychic damage. NL If the enemy is wrestler:Grappled, heal HP equal to the damage dealt. NL Exhaust."
   },
   "wrestler:WearDown": {
     "NAME": "Wear Down",
-    "DESCRIPTION": "At the end of each round, deal damage to each wrestler:Grappled enemy equal to their wrestler:Grapple.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the end of each round, deal damage to each wrestler:Grappled enemy equal to their wrestler:Grapple."
+    "DESCRIPTION": "At the end of your turn, apply !M! wrestler:Submission to ALL wrestler:Grappled enemies.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the end of your turn, apply !M! wrestler:Submission to ALL wrestler:Grappled enemies."
   },
   "wrestler:WeirdConduit": {
     "NAME": "Weird Conduit",

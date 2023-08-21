@@ -5,17 +5,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.CompelledPower;
-import wrestler.powers.InfectionPower;
+import wrestler.powers.GrapplePower;
+import wrestler.powers.SubmissionPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
-
-public class Infection extends AbstractWrestlerCard {
+public class Submit extends AbstractWrestlerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = wrestler.Wrestler.makeID(Infection.class.getSimpleName());
+    public static final String ID = wrestler.Wrestler.makeID(Submit.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -28,25 +27,34 @@ public class Infection extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
-    private static final int INFECTION = 3;
-    private static final int UPGRADE_INFECTION = 1;
+    private static final int COST = 2;
 
-    public Infection() {
+    private static final int SUBMISSION = 8;
+    private static final int UPGRADE_SUBMISSION = 2;
+
+    // /STAT DECLARATION/
+
+    public Submit() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = INFECTION;
+        magicNumber = baseMagicNumber = SUBMISSION;
+        exhaust = true;
     }
+
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new InfectionPower(m, p, magicNumber), magicNumber));
+        if (m != null) {
+            addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
+            addToBot(new ApplyPowerAction(m, p, new SubmissionPower(m, p, magicNumber), magicNumber));
+        }
     }
+
 
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_INFECTION);
+            upgradeMagicNumber(UPGRADE_SUBMISSION);
             initializeDescription();
         }
     }

@@ -1,28 +1,22 @@
-package wrestler.deprecated;
+package wrestler.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.VoidCard;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import wrestler.powers.CompelledPower;
 import wrestler.util.TextureLoader;
-
-import java.util.Iterator;
 
 import static wrestler.Wrestler.makePowerPath;
 
-public class UnearthlyVisionsPower extends AbstractPower implements CloneablePowerInterface {
+public class VoidSyphonPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = wrestler.Wrestler.makeID(UnearthlyVisionsPower.class.getSimpleName());
+    public static final String POWER_ID = wrestler.Wrestler.makeID(VoidSyphonPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -30,45 +24,48 @@ public class UnearthlyVisionsPower extends AbstractPower implements CloneablePow
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public UnearthlyVisionsPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public VoidSyphonPower(final AbstractCreature owner, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
         this.amount = amount;
-        this.source = source;
 
-        type = PowerType.BUFF;
-        isTurnBased = false;
+        type = PowerType.DEBUFF;
+        isTurnBased = true;
 
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
+
+        AbstractDungeon.player.gameHandSize -= amount;
 
         updateDescription();
     }
 
     @Override
-    public void onExhaust(AbstractCard abstractCard) {
-        if (abstractCard.cardID.equals(VoidCard.ID)) {
-            flash();
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+    public void stackPower(int stackAmount) {
+        fontScale = 8.0F;
+        amount += stackAmount;
+        AbstractDungeon.player.gameHandSize -= amount;
+    }
 
-            while (var1.hasNext()) {
-                AbstractMonster m = (AbstractMonster) var1.next();
-                if (!m.isDeadOrEscaped()) {
-                    addToBot(new ApplyPowerAction(m, owner, new CompelledPower(m, owner, amount), amount));
-                }
-            }
-        }
+    public void updateDescription() {
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + (amount == 1 ? DESCRIPTIONS[2] : DESCRIPTIONS[3]);
     }
 
     @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+    public void onRemove() {
+        AbstractDungeon.player.gameHandSize += amount;
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        flash();
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new UnearthlyVisionsPower(owner, source, amount);
+        return new VoidSyphonPower(owner, amount);
     }
 }

@@ -1,8 +1,61 @@
 # Changelog
-## 0.0.7
-- When Grapple is applied, it is removed from all other enemies
+## 0.0.8
 ### Cards Added
+- Dormant Mutation: 1 cost Rare Skill: "The enemy loses 3 HP at the end of their turn and doubles this value. If the enemy would die from this, it is replaced with an Aberration."
+- Dormant Mutation+: 1 cost Rare Skill: "The enemy loses 4 HP at the end of their turn and doubles this value. If the enemy would die from this, it is replaced with an Aberration."
+- Note: Aberrations have not been added.
+- Hypnosis: 1 cost Uncommon Attack: "Deal 5 Psychic damage to ALL enemies. Apply 3 Hypnosis to ALL enemies."
+- Hypnosis+: 1 cost Uncommon Attack: "Deal 8 Psychic damage to ALL enemies. Apply 4 Hypnosis to ALL enemies."
+### Cards Changed
+- Armlock changed to "If the enemy is Grappled, apply 4 Submission and the enemy loses Strength equal to their Submission this turn. Exhaust."
+- Armlock+ changed to "If the enemy is Grappled, apply 6 Submission and the enemy loses Strength equal to their Submission this turn. Exhaust."
+- Bear Hug changed to "Grapple the enemy. Gain 8 Block for each Grappled enemy. Deal 8 damage to ALL Grappled enemies."
+- Bear Hug+ changed to "Grapple the enemy. Gain 11 Block for each Grappled enemy. Deal 11 damage to ALL Grappled enemies."
+- Chill Touch changed to "Whenever you Grapple an enemy, deal 5 Psychic damage"
+- Chill Touch+ changed to "Whenever you Grapple an enemy, deal 7 Psychic damage"
+- Chokehold changed to "If the enemy is Grappled, deal damage equal to the enemy's Submission times 2."
+- Chokehold+ changed to "If the enemy is Grappled, deal damage equal to the enemy's Submission times 3."
+- Grab+ block 3 -> 4
+- Hip Throw damage 10 -> 9
+- Hip Throw+ damage 14 -> 13
+- Iron Grip and Iron Grip+ cost 0 -> 1
+- Iron Grip changed to "Grapple the enemy. Apply 3 Submission."
+- Iron Grip+ changed to "Grapple the enemy. Apply 5 Submission."
+- Mania renamed to Void Syphon
+- Mental Ward changed to "Whenever an enemy applies a debuff to you or creates a card, that enemy loses 8 HP."
+- Mental Ward+ changed to "Whenever an enemy applies a debuff to you or creates a card, that enemy loses 12 HP."
+- Out of Reach and Out of Reach+ changed to Rare
+- Out of Reach changed to "If an enemy is Grappled, gain 15 Block. Remove Grapple from ALL enemies."
+- Out of Reach changed to "If an enemy is Grappled, gain 20 Block. Remove Grapple from ALL enemies."
+- Pounce and Pounce+ cost 2 -> 1
+- Pounce changed to "Grapple the enemy. If the enemy was not Grappled, deal 12 damage."
+- Pounce+ changed to "Grapple the enemy. If the enemy was not Grappled, deal 18 damage."
+- Shocking Grasp and Shocking Grasp+ cost 1 -> 0
+- Shocking Grasp changed to "Deal 3 damage. Whenever you are dealt unblocked damage this turn, deal 3 damage back."
+- Shocking Grasp+ changed to "Deal 5 damage. Whenever you are dealt unblocked damage this turn, deal 5 damage back."
+- Vitality Drain changed to "Deal 9 Psychic damage. If the enemy is Grappled, heal HP equal to the damage dealt. Exhaust."
+- Vitality Drain+ changed to "Deal 12 Psychic damage. If the enemy is Grappled, heal HP equal to the damage dealt. Exhaust."
+- Wear Down changed to "At the end of your turn, apply 1 Submission to ALL Grappled enemies."
+- Wear Down+ changed to "Innate. At the end of your turn, apply 1 Submission to ALL Grappled enemies."
+- Weight Training changed to "Enemies escape your Grapple in 1 extra turn."
+- Weight Training+ changed to "Gain 1 Strength. Enemies escape your Grapple in 1 extra turn."
+### Powers
+- Grapple:
+    - Doesn't decrease with Strength and doesn't "stack"
+    - Grapple is removed (they "escape" the grapple) if grapple was not applied the current turn
+- Hypnotized:
+    - Renamed from Compelled
+    - Gives all applied debuffs to themselves and all applied buffs to the player
+    - Gives all block to the player
+    - Deal damage to themselves equal to 10xstack % of the damage
+    - Can't escape
+    - If one of the above effects happens, it is removed
+    - Does nothing when cards are created
+- Submission:
+    - If the enemy is Grappled, you deal X damage at the start of their turn. Then, Submission increases by 1.
+    - If the enemy is not Grappled, nothing happens.
 
+## 0.0.7
 ### Cards Changed
 - Agility Training changed to "You can Grapple multiple enemies."
 - Agility Training+ changed to "Gain 1 Dexterity. You can Grapple multiple enemies."
@@ -31,6 +84,8 @@
 - Careful Approach
 - Close Quarters
 - Sticky Fingers
+### Powers
+- When Grapple is applied, it is removed from all other enemies
 
 ## 0.0.6
 - HP Loss replaced by Psychic damage

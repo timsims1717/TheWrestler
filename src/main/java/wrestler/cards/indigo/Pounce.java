@@ -1,11 +1,14 @@
 package wrestler.cards.indigo;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import wrestler.actions.PounceAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
+import wrestler.powers.GrapplePower;
 
 
 import static wrestler.Wrestler.makeCardPath;
@@ -27,10 +30,10 @@ public class Pounce extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
-    private static final int DAMAGE = 15;
-    private static final int UPGRADE_DAMAGE = 5;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_DAMAGE = 6;
 
     // /STAT DECLARATION/
 
@@ -38,16 +41,19 @@ public class Pounce extends AbstractWrestlerCard {
     public Pounce() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        wantsTargetNonGrapple = true;
     }
-
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PounceAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        boolean hasGrapple = isTargetGrappled(m);
+        addToBot(new ApplyPowerAction(m, p, new GrapplePower(m, p)));
+        if (!hasGrapple) {
+            addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
     }
 
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

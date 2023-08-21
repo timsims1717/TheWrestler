@@ -21,13 +21,9 @@ import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class AbstractWrestlerCard extends CustomCard {
 
-    public int grapple;
-    public int baseGrapple;
-    public boolean upgradedGrapple;
-    public boolean isGrappleModified;
-
     public boolean requiresTargetGrapple;
     public boolean wantsTargetGrapple;
+    public boolean wantsTargetNonGrapple;
     final static public String NotGrappledMessage = "That enemy is not Grappled.";
 
     public int psychic;
@@ -51,7 +47,6 @@ public abstract class AbstractWrestlerCard extends CustomCard {
         isDamageModified = false;
         isBlockModified = false;
         isMagicNumberModified = false;
-        isGrappleModified = false;
         isPsychicModified = false;
         requiresTargetGrapple = false;
         wantsTargetGrapple = false;
@@ -59,20 +54,10 @@ public abstract class AbstractWrestlerCard extends CustomCard {
 
     public void displayUpgrades() {
         super.displayUpgrades();
-        if (upgradedGrapple) {
-            grapple = baseGrapple;
-            isGrappleModified = true;
-        }
         if (upgradedPsychic) {
             psychic = basePsychic;
             isPsychicModified = true;
         }
-    }
-
-    public void upgradeGrappleNumber(int amount) {
-        baseGrapple += amount;
-        grapple = baseGrapple;
-        upgradedGrapple = true;
     }
 
     public void upgradePsychicDamageNumber(int amount) {
@@ -112,6 +97,15 @@ public abstract class AbstractWrestlerCard extends CustomCard {
 
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (isTargetGrappled(m)) {
+                    glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+                    break;
+                }
+            }
+        } else if (wantsTargetNonGrapple) {
+            glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                if (!isTargetGrappled(m)) {
                     glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
                     break;
                 }

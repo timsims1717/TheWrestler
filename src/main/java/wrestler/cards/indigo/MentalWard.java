@@ -29,8 +29,8 @@ public class MentalWard extends AbstractWrestlerCard {
 
     private static final int COST = 1;
 
-    private static final int PSYCHIC = 2;
-    private static final int UPGRADE_PSYCHIC = 1;
+    private static final int PSYCHIC = 8;
+    private static final int UPGRADE_PSYCHIC = 4;
 
     // /STAT DECLARATION/
 
@@ -40,14 +40,12 @@ public class MentalWard extends AbstractWrestlerCard {
     }
 
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new MentalWardPower(p, magicNumber), magicNumber));
     }
 
 
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

@@ -48,7 +48,7 @@ public class WeightTraining extends AbstractWrestlerCard {
         if (upgraded) {
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
         }
-        addToBot(new ApplyPowerAction(p, p, new WeightTrainingPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new WeightTrainingPower(p, 1), 1));
     }
 
     @Override

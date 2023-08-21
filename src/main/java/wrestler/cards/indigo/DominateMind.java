@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import wrestler.actions.PsychicDamageAction;
 import wrestler.cards.AbstractWrestlerCard;
 import wrestler.characters.TheWrestler;
-import wrestler.powers.CompelledPower;
+import wrestler.powers.HypnotizedPower;
 
 import static wrestler.Wrestler.makeCardPath;
 
@@ -48,7 +48,7 @@ public class DominateMind extends AbstractWrestlerCard {
         addToBot(new PsychicDamageAction(m, p, psychic));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
-        addToBot(new ApplyPowerAction(m, p, new CompelledPower(m, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new HypnotizedPower(m, p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.

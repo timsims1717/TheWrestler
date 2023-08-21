@@ -3,23 +3,21 @@ package wrestler.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import wrestler.deprecated.CloseQuartersPower;
 import wrestler.util.TextureLoader;
 
 import static wrestler.Wrestler.makePowerPath;
-import static wrestler.patches.PsychicDamagePatch.PSYCHIC_DAMAGE;
 
 public class GrapplePower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
+    public int turnsSinceApplied;
+    public int turnsUntilGone;
 
     public static final String POWER_ID = wrestler.Wrestler.makeID(GrapplePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -29,12 +27,12 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("GrapplePower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("GrapplePower32.png"));
 
-    public GrapplePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public GrapplePower(final AbstractCreature owner, final AbstractCreature source) {
         name = NAME;
         ID = POWER_ID;
 
         this.owner = owner;
-        this.amount = amount;
+        turnsSinceApplied = 0;
         this.source = source;
 
         type = PowerType.DEBUFF;
@@ -43,7 +41,30 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
-        this.description = DESCRIPTIONS[0];
+        updateDescription();
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        turnsSinceApplied = 0;
+        updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        turnsUntilGone = 1;
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(WeightTrainingPower.POWER_ID)) {
+            turnsUntilGone += p.getPower(WeightTrainingPower.POWER_ID).amount;
+        }
+        int diff = turnsUntilGone - turnsSinceApplied;
+        if (diff == 0) {
+            description = DESCRIPTIONS[0];
+        } else if (diff == 1) {
+            description = DESCRIPTIONS[1];
+        } else {
+            description = DESCRIPTIONS[2] + diff + DESCRIPTIONS[3];
+        }
     }
 
     @Override
@@ -59,22 +80,21 @@ public class GrapplePower extends AbstractPower implements CloneablePowerInterfa
 
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
-        int total = 1;
-        if (!AbstractDungeon.player.hasPower(WeightTrainingPower.POWER_ID)) {
-            if (owner.hasPower(StrengthPower.POWER_ID)) {
-                int str = owner.getPower(StrengthPower.POWER_ID).amount;
-                if (str > 0) {
-                    total += str;
-                }
-            }
-        } else {
-            AbstractDungeon.player.getPower(WeightTrainingPower.POWER_ID).flash();
+        turnsSinceApplied += 1;
+        turnsUntilGone = 1;
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(WeightTrainingPower.POWER_ID)) {
+            turnsUntilGone += p.getPower(WeightTrainingPower.POWER_ID).amount;
         }
-        addToBot(new ReducePowerAction(owner, owner, POWER_ID, total));
+        if (turnsUntilGone < turnsSinceApplied) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
+        } else {
+            updateDescription();
+        }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new GrapplePower(owner, source, amount);
+        return new GrapplePower(owner, source);
     }
 }

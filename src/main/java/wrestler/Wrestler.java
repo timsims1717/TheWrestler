@@ -44,13 +44,12 @@ import wrestler.potions.PlaceholderPotion;
 import wrestler.powers.FlourishPower;
 import wrestler.powers.PizzazzPower;
 import wrestler.relics.ComboCountOneRelic;
-import wrestler.relics.MultiGrappleRelic;
+import wrestler.relics.GrappleRelic;
 import wrestler.relics.ForgetAtStartRelic;
 import wrestler.rewards.ComboGoldReward;
 import wrestler.ui.ComboUI;
 import wrestler.util.IDCheckDontTouchPls;
 import wrestler.util.TextureLoader;
-import wrestler.variables.Grapple;
 import wrestler.variables.PsychicDamage;
 
 import java.io.File;
@@ -414,8 +413,8 @@ public class Wrestler implements
         BaseMod.addRelicToCustomPool(new ComboCountOneRelic(), TheWrestler.Enums.COLOR_INDIGO);
         UnlockTracker.markRelicAsSeen(ComboCountOneRelic.ID);
         // Uncommon
-        BaseMod.addRelicToCustomPool(new MultiGrappleRelic(), TheWrestler.Enums.COLOR_INDIGO);
-        UnlockTracker.markRelicAsSeen(MultiGrappleRelic.ID);
+        BaseMod.addRelicToCustomPool(new GrappleRelic(), TheWrestler.Enums.COLOR_INDIGO);
+        UnlockTracker.markRelicAsSeen(GrappleRelic.ID);
         // Rare
         BaseMod.addRelicToCustomPool(new ForgetAtStartRelic(), TheWrestler.Enums.COLOR_INDIGO);
         UnlockTracker.markRelicAsSeen(ForgetAtStartRelic.ID);
@@ -435,7 +434,6 @@ public class Wrestler implements
         // Add the Custom Dynamic Variables
         logger.info("Adding variables...");
         // Add the Custom Dynamic variables
-        BaseMod.addDynamicVariable(new Grapple());
         BaseMod.addDynamicVariable(new PsychicDamage());
 
         // Add the cards

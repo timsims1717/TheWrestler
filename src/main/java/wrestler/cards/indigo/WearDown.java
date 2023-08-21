@@ -38,14 +38,12 @@ public class WearDown extends AbstractWrestlerCard {
     public WearDown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
-    
-    // Actions the card should do.
+
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new WearDownPower(p, 1), 1));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {

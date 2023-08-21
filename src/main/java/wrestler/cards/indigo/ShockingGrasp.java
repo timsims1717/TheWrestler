@@ -36,19 +36,17 @@ public class ShockingGrasp extends AbstractWrestlerCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheWrestler.Enums.COLOR_INDIGO;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_DAMAGE = 3;
-    private static final int POWER = 4;
-    private static final int UPGRADE_POWER = 1;
+    private static final int DAMAGE = 3;
+    private static final int UPGRADE_DAMAGE = 2;
+    private static final int POWER = 3;
+    private static final int UPGRADE_POWER = 2;
 
     public ShockingGrasp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = POWER;
-        isMultiDamage = true;
-        wantsTargetGrapple = true;
     }
 
     @Override

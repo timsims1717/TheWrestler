@@ -44,17 +44,7 @@ public class InvisibleHand extends AbstractWrestlerCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         block = baseBlock = BLOCK;
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!isTargetGrappled(m)) {
-                glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-                break;
-            }
-        }
+        wantsTargetNonGrapple = true;
     }
 
     @Override

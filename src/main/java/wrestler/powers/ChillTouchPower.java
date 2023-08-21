@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import wrestler.util.TextureLoader;
 
@@ -46,13 +45,11 @@ public class ChillTouchPower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.type != PSYCHIC_DAMAGE) {
-            flash();
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (m != null && !m.isDeadOrEscaped() && m.hasPower(GrapplePower.POWER_ID)) {
-                    addToBot(new DamageAction(m, new DamageInfo(owner, amount, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
-                }
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            if (power.ID.equals(GrapplePower.POWER_ID)) {
+                addToBot(new DamageAction(target, new DamageInfo(owner, amount, PSYCHIC_DAMAGE), PSYCHIC_EFFECT));
+                flash();
             }
         }
     }
